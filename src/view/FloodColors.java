@@ -38,8 +38,13 @@ public class FloodColors {
 		List<Pair<Integer, Color>> resList = new ArrayList();
 		boolean done = false;
 		while(done == false) {
+			resList.add(colors.get(randColor.nextInt(n)));
 			if(resList.size() == size) {
-				
+				for(int i = 0; i < size; i++) {
+					if() {
+						
+					}
+				}
 			}
 		}
 		return resList; //colors.stream().filter(p -> p.getX() <= n).collect(Collectors.toList());
