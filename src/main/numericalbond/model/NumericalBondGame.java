@@ -2,12 +2,14 @@ package main.numericalbond.model;
 
 import java.util.Map;
 
-public class NumericalBondGrid {
+public class NumericalBondGame {
+	
+	private static final int NUM_LINES = 3;
 	
 	private final Map<Position, Block> blocks;
 
-	public NumericalBondGrid() {
-		LevelGenerator levelGenerator = new LevelGenerator();
+	public NumericalBondGame() {
+		LevelGenerator levelGenerator = new LevelGenerator(NUM_LINES);
 		this.blocks = levelGenerator.getBlocks();
 	}
 	

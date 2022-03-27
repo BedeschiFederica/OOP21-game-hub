@@ -31,4 +31,10 @@ public class Block {
 	public int getCurrentLinks() {
 		return this.linksPerSide.values().stream().reduce(0, (x, y) -> x + y);
 	}
+
+	@Override
+	public String toString() {
+		return "Block [maxLinks=" + maxLinks + "]";
+	}
+	
 }

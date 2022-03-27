@@ -1,13 +1,13 @@
 package main.numericalbond;
 
 import main.general.GameController;
+import main.numericalbond.model.NumericalBondGame;
 
 public class NumericalBondController implements GameController{
 
 	@Override
 	public void start() {
-		// TODO Auto-generated method stub
-		
+		NumericalBondGame game = new NumericalBondGame();
 	}
 
 }
