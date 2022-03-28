@@ -14,7 +14,6 @@ class NumericalBondTest {
 	@Test
 	void test() {
 		final GameController numericalBondController = new NumericalBondController();
-		numericalBondController.start();
 		//fail("Not yet implemented");
 		
 	}

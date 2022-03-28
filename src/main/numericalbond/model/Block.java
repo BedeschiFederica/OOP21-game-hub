@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class Block {
 	
+	private final int MAX_LINKS_PER_SIDE = 2;
+	
 	private final int maxLinks;
 	private final Map<Direction, Integer> linksPerSide;
 	
@@ -25,6 +27,9 @@ public class Block {
 	}
 	
 	public void addLink(final Direction direction) {
+		if (this.linksPerSide.get(direction) == MAX_LINKS_PER_SIDE) {
+			throw new IllegalStateException();
+		}
 		this.linksPerSide.put(direction, getLinks(direction) + 1);
 	}
 	
@@ -34,7 +39,7 @@ public class Block {
 
 	@Override
 	public String toString() {
-		return "Block [maxLinks=" + maxLinks + "]";
+		return "Block [maxLinks=" + this.maxLinks + ", linksPerSide" + this.linksPerSide + "]";
 	}
 	
 }

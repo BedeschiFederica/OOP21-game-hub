@@ -1,30 +1,53 @@
 package main.numericalbond.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Random;
 
 public class LevelGenerator {
 	
-	private static final int MAX_LINKS_PER_BLOCK = 99;
-	
-	private final int numLines;
-	private final Map<Position, Block> blocks = new HashMap<>();
+	private final Grid grid;
 
 	public LevelGenerator(final int numLines) {
-		this.numLines = numLines;
-		final int numBlocks = this.numLines * this.numLines;
-		for (int i = 0; i < numBlocks; i++) {
-			this.blocks.put(new Position(i / numLines, i % numLines), new Block(MAX_LINKS_PER_BLOCK));
-		}
-		generate();
+		this.grid = new Grid(numLines);
+		generate(numLines);
 	}
 	
-	private void generate() {
+	private void generate(final int numLines) {
+		createRandomLinks();
 		
 	}
 
-	public Map<Position, Block> getBlocks() {
-		return this.blocks;
+	private void createRandomLinks() {
+		final Random rand = new Random();
+		for (int count = 0; count < 20;) {
+			Position randomPos = new Position(rand.nextInt(3), rand.nextInt(3));
+			Block firstBlock = this.grid.getBlockAt(randomPos);
+			Direction randomDir;
+			Block secondBlock;
+			do {
+				randomDir = Direction.getRandomDirection();
+				try {
+					secondBlock = this.grid.getNearbyBlock(randomPos, randomDir);
+					break;
+				} catch (IllegalStateException e) {
+					continue;
+				}
+			} while (true);
+			try {
+				firstBlock.addLink(randomDir);
+			} catch (IllegalStateException e) {
+				continue;
+			}
+			secondBlock.addLink(randomDir.opposite());
+			count++;
+			//System.out.println(firstBlock);
+			//System.out.println(secondBlock);
+		}
+		System.out.println(this.grid);
+		this.grid.getBlocks().forEach((p,b) -> System.out.println(p + ", CurrentLinks=" + b.getCurrentLinks()));
+	}
+
+	public Grid getGrid() {
+		return this.grid;
 	}
 	
 }

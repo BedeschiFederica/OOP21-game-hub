@@ -26,7 +26,7 @@ public class Position {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj) {
 			return true;
 		}
@@ -37,12 +37,12 @@ public class Position {
 			return false;
 		}
 		Position other = (Position) obj;
-		return x == other.x && y == other.y;
+		return this.x == other.x && this.y == other.y;
 	}
 
 	@Override
 	public String toString() {
-		return "Position [x=" + x + ", y=" + y + "]";
+		return "Position [x=" + this.x + ", y=" + this.y + "]";
 	}
 	
 }
