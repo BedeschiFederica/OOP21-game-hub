@@ -1,38 +1,69 @@
 package controller;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import view.FloodItGUI;
+import model.Pair;
 
 public class FloodItController {
 	
 	private final int numOfCells;
-	private final List<Integer> table;
+	private final int numOfColors;
+	private final int currentColor;
+	private final List<Pair<Integer,Integer>> table;
+	private final List<Pair<Integer,Integer>> mainPuddle;
+	private final List<List<Pair<Integer,Integer>>> allPuddles;
 	
 	public FloodItController(int tSize, int colorsNumber){
 		this.numOfCells = tSize*tSize;
+		this.numOfColors = colorsNumber;
+		this.currentColor = 0;
 		this.table =  new LinkedList<>();
-		generateTable(colorsNumber);
+		this.mainPuddle =  new LinkedList<>(Arrays.asList(this.table.get(0)));
+		
+		generateTable();
+		findMainPuddle(this.mainPuddle.get(0));
 	}
 
-	public void generateTable(int nColors) {
+	public void generateTable() {
 		Random randNum = new Random();
-		List<Integer> possibleColors=  new LinkedList<>();
-		for(int j = 0; j < nColors; j++) {
+		List<Integer> possibleColors=  new LinkedList<>();  // Valutare la scelta casuale dei colori in metodo a parte!!!
+		for(int j = 0; j < this.numOfColors; j++) {
 			possibleColors.add(j);
 		}
 		
-		for(int i = 0; i < numOfCells; i++) {
-			table.add(randNum.nextInt(nColors));
+		for(int i = 0; i < this.numOfCells; i++) {
+			this.table.add(randNum.nextInt(this.numOfColors));
 		}
-		while(!table.containsAll(possibleColors)) {
-			int position = randNum.nextInt(numOfCells);
-			table.remove(position);
-			table.add(position, randNum.nextInt(nColors));
+		
+		//checks if the table contains all of the requested colors
+		while(!this.table.containsAll(possibleColors)) {
+			int position = randNum.nextInt(this.numOfCells);
+			this.table.remove(position);
+			this.table.add(position, randNum.nextInt(this.numOfColors));
 		}
-		table.forEach(i -> System.out.println(i));
+		this.table.forEach(i -> System.out.println(i));
+	}
+	
+	private void findMainPuddle(int clicked) {
+		//if(this.table.get(clicked + 1)) {
+			
+		//}
+	}
+	
+	private List<Integer> findPuddleBorders() {
+		for (int cell : mainPuddle) {
+			if(mainPuddle.get(mainPuddle.index)!= cell) {
+				
+			}
+		}
+		return null;
+	}
+	
+	private void makePuddles() {
+		
 	}
 	
 }
