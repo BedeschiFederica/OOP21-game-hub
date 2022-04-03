@@ -9,13 +9,11 @@ import main.numericalbond.NumericalBondController;
 import main.numericalbond.model.Block;
 import main.numericalbond.model.Direction;
 
-class NumericalBondTest {
+class NumericalBondModelTest {
 	
 	@Test
 	void test() {
-		final GameController numericalBondController = new NumericalBondController();
 		//fail("Not yet implemented");
-		
 	}
 	
 	@Test

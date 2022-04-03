@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import main.numericalbond.Position;
+
 public class LevelGenerator {
 	
 	private Grid grid;

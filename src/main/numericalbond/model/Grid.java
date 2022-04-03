@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+import main.numericalbond.Position;
+
 public class Grid {
 	
 	private static final int MAX_LINKS_PER_BLOCK = 99;
