@@ -10,15 +10,25 @@ public class Grid {
 	private static final int FIRST_LINE = 0;
 	
 	private final int lastLine;
-	private final Map<Position, Block> blocks = new HashMap<>();
+	private final Map<Position, Block> blocks;
 	
 	public Grid(final int numLines) {
 		this.lastLine = FIRST_LINE + numLines - 1;
+		this.blocks = new HashMap<>();
 		IntStream.range(FIRST_LINE, this.lastLine + 1)
-		.forEach(i -> IntStream.range(FIRST_LINE, this.lastLine + 1)
-				.forEach(j -> this.blocks.put(new Position(i, j), new Block(MAX_LINKS_PER_BLOCK))));
+				.forEach(i -> IntStream.range(FIRST_LINE, this.lastLine + 1)
+						.forEach(j -> this.blocks.put(new Position(i, j), new Block(MAX_LINKS_PER_BLOCK))));
 	}
 	
+	public Grid(final int numLines, final Map<Position, Block> blocks) {
+		this.lastLine = FIRST_LINE + numLines - 1;
+		this.blocks = Map.copyOf(blocks);
+	}
+
+	public int getNumLines() {
+		return this.lastLine - FIRST_LINE + 1;
+	}
+
 	public Map<Position, Block> getBlocks() {
 		return Map.copyOf(this.blocks);
 	}
