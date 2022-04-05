@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cell {
 
-	private int color;
+	private Colors color;
 	private Pair<Integer, Integer> position;
 	private boolean flooded;
 	
@@ -15,37 +15,44 @@ public class Cell {
 	private Cell rightCell;
 	private Cell leftCell;
 	
-	public Cell(int color, Pair<Integer, Integer> position, Cell top, Cell bottom, Cell right, Cell left) {
+	public Cell(Colors color, Pair<Integer, Integer> position) {
 		this.color = color;
 		this.position = position;
 		this.flooded = false;
+		this.topCell = null;
+		this.bottomCell = null;
+		this.rightCell = null;
+		this.leftCell = null;
+	}
+	
+	public void setColor(Colors newColor) {
+		this.color = newColor;
+	}
+	
+	public void flood() {
+		this.flooded = true;
+	}
+	
+	public void setAdjacentCells(Cell top, Cell bottom, Cell right, Cell left) {
 		this.topCell = top;
 		this.bottomCell = bottom;
 		this.rightCell = right;
 		this.leftCell = left;
 	}
 	
-	void setColor(int newColor) {
-		this.color = newColor;
-	}
-	
-	void flood() {
-		this.flooded = true;
-	}
-	
-	int getColor() {
+	public Colors getColor() {
 		return this.color;
 	}
 	
-	boolean isFlooded() {
+	public boolean isFlooded() {
 		return this.flooded;
 	}
 	
-	Pair<Integer, Integer> getPosition() {
+	public Pair<Integer, Integer> getPosition() {
 		return this.position;
 	}
 	
-	List<Cell> getAdjacentCells() {
+	public List<Cell> getAdjacentCells() {
 		return new LinkedList<>(Arrays.asList(topCell, bottomCell, rightCell, leftCell));
 	}
 
