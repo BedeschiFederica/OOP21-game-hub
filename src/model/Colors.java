@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -18,6 +19,7 @@ public enum Colors {
 	PURPLE(8, "Purple", new Color(190, 10, 255)),
 	MAGENTA(9, "Magenta", new Color(255, 0, 84));
 
+	private static final int MAX_COLOR_NUMBER = 10;
 	private final int colorValue;
 	private final String name;
 	private final Color actualColor;
@@ -28,17 +30,22 @@ public enum Colors {
 		this.actualColor = color;
 	}
 	
-	public static List<Colors> getRandomColors(int num){
-		/*Random randColors = new Random();
-		List<Colors> chosenColors = new LinkedList<>();
-		while(1=1) {
-			chosenColors.add(randColors.nextInt(num));
-		}*/
-		return null;
-	}
-	
-	public int getColorValue(int i) {
-		return this.colorValue;
+	public static List<Colors> getRandomColors(int n) {
+		List<Colors> result = new LinkedList<>(Arrays.asList(Colors.values()));
+		int colorNum = n;
+		
+		// Checks that the number of color requested doesn't exceed the maximum number of colors.
+		if (n > MAX_COLOR_NUMBER) {
+			System.err.println("Input number (" + n + ") was too large: input number adapted to the upper bound (" + MAX_COLOR_NUMBER + ")");
+			colorNum = MAX_COLOR_NUMBER;
+		}
+		
+		Random randColor = new Random();
+		for (int i = 0; i < (MAX_COLOR_NUMBER - colorNum); i++) {
+			result.remove(randColor.nextInt(MAX_COLOR_NUMBER - i));
+		}
+		
+		return result;
 	}
 	
 	public int getColorValue() {
@@ -56,5 +63,5 @@ public enum Colors {
 	public String toString() {
 		return this.name + ": " + this.colorValue + ", " + this.actualColor;
 	}
-	
+
 }

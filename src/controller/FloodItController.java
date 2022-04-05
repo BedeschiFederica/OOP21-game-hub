@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import model.Cell;
+import model.Colors;
 import model.Pair;
 
 public class FloodItController {
@@ -12,9 +14,10 @@ public class FloodItController {
 	private final int numOfCells;
 	private final int numOfColors;
 	private final int currentColor;
-	private final List<Pair<Integer,Integer>> table;  		//Pair<Position, Color code>
+	private final List<Cell> table;  		//Pair<Position, Color code>
 	private final List<Pair<Integer,Integer>> mainPuddle;
 	private final List<List<Pair<Integer,Integer>>> allPuddles;
+	private final List<Colors> selectedColors; 
 	
 	public FloodItController(int tSize, int colorsNumber){
 		this.numOfCells = tSize*tSize;
@@ -22,16 +25,47 @@ public class FloodItController {
 		this.currentColor = 0;
 		this.table =  new LinkedList<>();
 		this.allPuddles =  new LinkedList<>();
+		this.selectedColors = Colors.getRandomColors(numOfColors);
 		
 		generateTable();
 		//findMainPuddle(this.mainPuddle.get(0));
-		this.mainPuddle =  new LinkedList<>(Arrays.asList(this.table.get(0)));
+		//this.mainPuddle =  new LinkedList<>(Arrays.asList(this.table.get(0)));
 	}
 
 	public void generateTable() {
+		
+		Random randCellColor = new Random();
+		
+		for (int i = 0; i < numOfCells; i++) {
+			for (int j = 0; j < numOfCells; j++) {
+				table.add(null);
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Random randNum = new Random();
 		int newColor = randNum.nextInt(this.numOfColors);
-																				// Valutare la scelta casuale dei colori in metodo a parte!!!
+																				
 		for (int i = 0; i < this.numOfCells; i++) {
 			this.table.add(new Pair<>(i, randNum.nextInt(this.numOfColors)));
 		}
