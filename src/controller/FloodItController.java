@@ -12,27 +12,21 @@ import model.Pair;
 
 public class FloodItController {
 	
-	//private final int numOfCells;
 	private final int numOfColors;
-	private final int tableSize;
-	//private final int currentColor;
+	private final int boardSize;
+	private Colors currentColor;
 	private final List<Cell> table;
-	//private final List<Pair<Integer,Integer>> mainPuddle;
-	//private final List<List<Pair<Integer,Integer>>> allPuddles;
+	private final List<Cell> mainPuddle;
 	private final List<Colors> selectedColors; 
 	
 	public FloodItController(int tSize, int colorsNumber){
-		//this.numOfCells = tSize*tSize;
-		this.tableSize = tSize;
+		this.boardSize = tSize;
 		this.numOfColors = colorsNumber;
-		//this.currentColor = 0;
 		this.table =  new LinkedList<>();
-		//this.allPuddles =  new LinkedList<>();
+		this.mainPuddle =  new LinkedList<>();
 		this.selectedColors = Colors.getRandomColors(numOfColors);
 		
 		generateTable();
-		//findMainPuddle(this.mainPuddle.get(0));
-		//this.mainPuddle =  new LinkedList<>(Arrays.asList(this.table.get(0)));
 	}
 
 	private void generateTable() {
@@ -40,20 +34,14 @@ public class FloodItController {
 		Random rand = new Random();
 		List<Colors> colorMap = new LinkedList<>();
 		
-		for (int i = 0; i < tableSize; i++) {
-			for (int j = 0; j < tableSize; j++) {
+		for (int i = 0; i < boardSize; i++) {
+			for (int j = 0; j < boardSize; j++) {
 				int chosenColor = rand.nextInt(numOfColors);
 				table.add(new Cell(selectedColors.get(chosenColor), new Pair<>(i,j)));
 				colorMap.add(selectedColors.get(chosenColor));
 			}
 		}
-		
-		//selectedColors.forEach(col -> {
-		//	if (!colorMap.contains(col)) {
-		//		
-		//	}
-		//	});
-		
+																				//si può ricercare anche facendo un foreach della lista di colori possibili
 		//checks if the table contains all the requested colors
 		while (!colorMap.containsAll(selectedColors)) {
 			int pos = rand.nextInt(table.size());
@@ -68,8 +56,11 @@ public class FloodItController {
 		}
 		
 		table.get(0).flood();
-	
+		mainPuddle.add(table.get(0));
+		currentColor = table.get(0).getColor();
+		spreadPuddle(this.mainPuddle);
 	}
+	
 	
 	/*
 	private void findMainPuddle(int clicked) {
@@ -91,18 +82,34 @@ public class FloodItController {
 		this.table =  new LinkedList<>();
 	}*/
 	
+	public void spreadPuddle(List<Cell> cellsToCheck) {
+		List<Cell> checkList = new LinkedList<>();
+		
+		cellsToCheck.forEach(cell -> {
+			cell.getAdjacentCells().forEach(c -> {
+				if(c != null && !c.isFlooded() && c.getColor().equals(currentColor)) {
+					c.flood();
+					checkList.add(c);
+				}
+			});
+		});
+		
+		spreadPuddle(checkList);
+		
+	}
+	
 	private void setAdjacencies(int cellPosition) {
 		Cell top = null;
 		Cell bottom = null;
 		Cell right = null;
 		Cell left = null;
 		
-		if ((cellPosition - tableSize) >= 0) {
-			top = table.get(cellPosition - tableSize);
+		if ((cellPosition - boardSize) >= 0) {
+			top = table.get(cellPosition - boardSize);
 		}
 		
-		if ((cellPosition + tableSize) < table.size()) {
-			bottom = table.get(cellPosition + tableSize);
+		if ((cellPosition + boardSize) < table.size()) {
+			bottom = table.get(cellPosition + boardSize);
 		}
 		
 		if ((cellPosition + 1) < table.size()) {
@@ -112,7 +119,7 @@ public class FloodItController {
 		}
 		
 		if ((cellPosition - 1) >= 0) {
-			if (table.get(cellPosition - 1).getPosition().getY() != (tableSize - 1)) {
+			if (table.get(cellPosition - 1).getPosition().getY() != (boardSize - 1)) {
 				left = table.get(cellPosition - 1);
 			}
 		}
