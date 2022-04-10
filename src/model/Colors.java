@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public enum Colors {
 	
@@ -46,6 +47,15 @@ public enum Colors {
 		}
 		
 		return result;
+	}
+	
+	public static Colors translateColor(Color colorToTranslate) {
+		List<Colors> colorsList = new LinkedList<>(Arrays.asList(Colors.values()));
+		List<Colors> requestedColor = colorsList.stream().filter(c -> c.getActualColor().equals(colorToTranslate)).collect(Collectors.toList());
+		if(requestedColor.isEmpty()) {
+			return null;
+		}
+		return requestedColor.get(0);
 	}
 	
 	public int getColorValue() {

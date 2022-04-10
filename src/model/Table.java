@@ -3,6 +3,7 @@ package model;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Table {
 
@@ -77,7 +78,16 @@ public class Table {
 		table.get(cellPosition).setAdjacentCells(top, bottom, right, left);
 	}
 	
-	public List<Cell> getCells() {
+	public Cell getCell(int x, int y) {
+		List<Cell> requestedCell = table.stream().filter(cell -> cell.getPosition().equals(new Pair<Integer, Integer>(x, y))).collect(Collectors.toList());
+		if (requestedCell.isEmpty()) {
+			return null;
+		}
+		return requestedCell.get(0);
+	}
+	
+	public List<Cell> getAllCells() { //Valutare anche creazione foreach() con predicate o consumer
 		return this.table;
 	}
+
 }

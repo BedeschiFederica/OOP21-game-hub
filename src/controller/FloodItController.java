@@ -2,6 +2,7 @@ package controller;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.awt.event.ActionListener;
 
 import model.Cell;
 import model.Colors;
@@ -12,21 +13,26 @@ public class FloodItController {
 	
 	private final FloodItModel model;
 	private final FloodItGUI view;
+	private final ActionListener onClick;
 	
-	public FloodItController(int tSize, int colorsNumber){
+	public FloodItController(int tSize, int maxMoves, int colorsNumber){
 		List<Colors> selectedColors = Colors.getRandomColors(colorsNumber);
 		
-		this.model = new FloodItModel(tSize, colorsNumber, selectedColors);
-		this.view = new FloodItGUI(tSize, selectedColors);
+		this.model = new FloodItModel(tSize, colorsNumber, maxMoves, selectedColors);
+		this.onClick = e -> {
+        	model.setCurrentColor(null);
+        };
+		this.view = new FloodItGUI(this, this.model);
 		
 		startingPuddleSetUp();
+		view.display();
 	}
 
 	private void startingPuddleSetUp() {
 		// Sets up the starting puddle and color
-		model.getTable().getCells().get(0).flood();
-		model.getMainPuddle().add(model.getTable().getCells().get(0));
-		model.setCurrentColor(model.getTable().getCells().get(0).getColor());
+		model.getTable().getCell(0, 0).flood();
+		model.getMainPuddle().add(model.getTable().getCell(0, 0));
+		model.setCurrentColor(model.getTable().getCell(0, 0).getColor());
 		spreadPuddle(model.getMainPuddle(), model.getCurrentColor());
 	}
 	
@@ -45,6 +51,26 @@ public class FloodItController {
 		if(!checkList.isEmpty()) {
 			spreadPuddle(checkList, currentColor);
 		}
+	}
+	
+	private void updateFlooding() {
+		model.getTable().getAllCells().forEach(c -> {
+			if (c.isFlooded()) {
+				model.getMainPuddle().add(c);
+			}
+		});
+	}
+	
+	private void changeMainPuddleColor(Colors newColor) {
+		model.getMainPuddle().forEach(c -> c.setColor(newColor));
+	}
+	
+	public void onClick(Cell clickedCell) {
+		spreadPuddle(model.getMainPuddle(), clickedCell.getColor());
+		updateFlooding();
+		model.setCurrentColor(clickedCell.getColor());
+		changeMainPuddleColor(clickedCell.getColor());
+		view.updateView();
 	}
 	
 }
