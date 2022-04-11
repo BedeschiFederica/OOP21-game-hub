@@ -2,7 +2,6 @@ package controller;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.awt.event.ActionListener;
 
 import model.Cell;
 import model.Colors;
@@ -11,17 +10,16 @@ import view.FloodItGUI;
 
 public class FloodItController {
 	
+	private static final int MAX_MOVES_5 = 16;
+	private static final int MAX_MOVES_10 = 28;
+	private static final int MAX_MOVES_15 = 40;
 	private final FloodItModel model;
 	private final FloodItGUI view;
-	private final ActionListener onClick;
 	
-	public FloodItController(int tSize, int maxMoves, int colorsNumber){
+	public FloodItController(int tSize, int colorsNumber){
 		List<Colors> selectedColors = Colors.getRandomColors(colorsNumber);
-		
+		int maxMoves = findMaxMoves(tSize, colorsNumber);
 		this.model = new FloodItModel(tSize, colorsNumber, maxMoves, selectedColors);
-		this.onClick = e -> {
-        	model.setCurrentColor(null);
-        };
 		this.view = new FloodItGUI(this, this.model);
 		
 		startingPuddleSetUp();
@@ -70,7 +68,28 @@ public class FloodItController {
 		updateFlooding();
 		model.setCurrentColor(clickedCell.getColor());
 		changeMainPuddleColor(clickedCell.getColor());
+		model.incrementMoves();
+		checkResult();
 		view.updateView();
+	}
+	
+	private int findMaxMoves(int size, int colorsNum) {
+		switch(size) {
+		case 5:
+			return MAX_MOVES_5;
+		case 10:
+			return MAX_MOVES_10;
+		case 15:
+			return MAX_MOVES_15;
+		default: 
+			return 0;
+		}
+	}
+	
+	private void checkResult() {
+		if (model.getMoves() > model.getMaxMoves()) {
+			System.out.println("YOU LOST!");
+		}
 	}
 	
 }
