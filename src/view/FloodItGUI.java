@@ -42,10 +42,10 @@ public class FloodItGUI extends JFrame {
         this.getContentPane().add(mainPanel);
         
         this.gamePanel = new JPanel(new BorderLayout());
-        this.startPanel = new JPanel(new FlowLayout());
-        this.pausePanel = new JPanel(new GridLayout(model.getRowSize(), model.getRowSize()));
+        this.startPanel = new StartPanel(mainPanel, layout);
+        this.pausePanel = new JPanel();
+        pausePanel.setLayout(new BoxLayout(pausePanel,BoxLayout.PAGE_AXIS));
         createGamePanel();
-        createStartPanel();
         createPausePanel();
         mainPanel.add(startPanel, "1");
         mainPanel.add(gamePanel, "2");
@@ -108,43 +108,6 @@ public class FloodItGUI extends JFrame {
         gamePanel.add(lblMoves, BorderLayout.SOUTH);
     }
     
-    private void createStartPanel() {
-        
-    	startPanel.setBackground(Colors.LIGHT_BLUE.getActualColor());
-    	final JComboBox<Integer> cmbCells = new JComboBox<>(new Integer[] {5, 10, 15});
-    	final JComboBox<Integer> cmbColors = new JComboBox<>(new Integer[] {4, 5, 6, 7, 8, 9, 10});
-    	
-    	final JLabel lblTitle = new JLabel("F L O O D    I T");
-    	lblTitle.setForeground(Colors.YELLOW.getActualColor());
-    	lblTitle.setFont(new Font("Serif", Font.BOLD, 50));
-    	lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-    	lblTitle.setVerticalAlignment(SwingConstants.CENTER);
-    	
-    	final JLabel lblCells = new JLabel("Cells:");
-    	lblCells.setFont(new Font("Sans", Font.PLAIN, 25));
-    	
-    	final JLabel lblColors = new JLabel("Colors:");
-    	lblColors.setFont(new Font("Sans", Font.PLAIN, 25));
-    	
-    	final JButton btnStart = new JButton("S T A R T");
-    	btnStart.setSize(startPanel.getWidth()/4, startPanel.getHeight()/4);
-    	btnStart.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				layout.show(mainPanel, "2");
-			}
-    	});
-    	
-    	startPanel.add(lblTitle);
-    	startPanel.add(lblCells);
-    	startPanel.add(cmbCells);
-    	startPanel.add(lblColors);
-    	startPanel.add(cmbColors);
-    	startPanel.add(btnStart);
-        
-    }
-    
     private void createPausePanel() {
         
     	final JButton btnRestart = new JButton("Restart");
@@ -153,17 +116,16 @@ public class FloodItGUI extends JFrame {
     	final JButton btnExit = new JButton("Exit");
     	
     	btnResume.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				layout.show(mainPanel, "2");
 			}
     	});
     	
-    	pausePanel.add(btnRestart);
-    	pausePanel.add(btnResume);
-    	pausePanel.add(btnRules);
-    	pausePanel.add(btnExit);
+    	pausePanel.add(btnRestart, BorderLayout.CENTER);
+    	pausePanel.add(btnResume, BorderLayout.CENTER);
+    	pausePanel.add(btnRules, BorderLayout.CENTER);
+    	pausePanel.add(btnExit, BorderLayout.CENTER);
     }
     
 }
