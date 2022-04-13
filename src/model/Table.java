@@ -21,7 +21,7 @@ public class Table {
 		generateTable();
 	}
 	
-	private void generateTable() {
+	public void generateTable() {
 		Random rand = new Random();
 		List<Colors> colorMap = new LinkedList<>();
 		

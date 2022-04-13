@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 
+import controller.FloodItController;
 import model.Colors;
 
 import java.awt.*;
@@ -11,10 +12,12 @@ import java.awt.event.ActionListener;
 public class StartPanel extends JPanel{
 
 	private static final long serialVersionUID = 1188589790801007209L;
+	private final FloodItController controller;
 	private final JPanel mainPanel;
 	private final CardLayout mainLayout;
 
-	public StartPanel(JPanel mainPanel, CardLayout mLayout) {
+	public StartPanel(JPanel mainPanel, CardLayout mLayout, FloodItController controller) {
+		this.controller = controller;
 		this.mainPanel = mainPanel;
 		this.mainLayout = mLayout;
 		setBackground(Colors.LIGHT_BLUE.getActualColor());
@@ -79,6 +82,7 @@ public class StartPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				controller.newGame();
 				mainLayout.show(mainPanel, "2");
 			}
 		});

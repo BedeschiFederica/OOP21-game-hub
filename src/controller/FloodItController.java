@@ -92,4 +92,8 @@ public class FloodItController {
 		}
 	}
 	
+	public void newGame() {
+		model.getTable().generateTable();
+	}
+	
 }

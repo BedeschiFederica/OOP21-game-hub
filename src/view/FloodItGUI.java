@@ -42,11 +42,11 @@ public class FloodItGUI extends JFrame {
         this.getContentPane().add(mainPanel);
         
         this.gamePanel = new JPanel(new BorderLayout());
-        this.startPanel = new StartPanel(mainPanel, layout);
-        this.pausePanel = new JPanel();
-        pausePanel.setLayout(new BoxLayout(pausePanel,BoxLayout.PAGE_AXIS));
+        this.startPanel = new StartPanel(mainPanel, layout, controller);
+        this.pausePanel = new PausePanel(mainPanel, layout);
+        //pausePanel.setLayout(new BoxLayout(pausePanel,BoxLayout.PAGE_AXIS));
         createGamePanel();
-        createPausePanel();
+        //createPausePanel();
         mainPanel.add(startPanel, "1");
         mainPanel.add(gamePanel, "2");
         mainPanel.add(pausePanel, "3");
