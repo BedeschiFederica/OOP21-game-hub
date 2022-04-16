@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 
 import controller.FloodItController;
+import model.FloodItModel;
 import model.Colors;
 
 import java.awt.*;
@@ -15,6 +16,9 @@ public class StartPanel extends JPanel{
 	private final FloodItController controller;
 	private final JPanel mainPanel;
 	private final CardLayout mainLayout;
+	
+	private JComboBox<Integer> cmbColors;
+	private JComboBox<Integer> cmbCells;
 
 	public StartPanel(JPanel mainPanel, CardLayout mLayout, FloodItController controller) {
 		this.controller = controller;
@@ -47,7 +51,7 @@ public class StartPanel extends JPanel{
 		//cellsConstr.weighty = 1;
 		add(lblCells, cellsConstr);
 		
-		JComboBox<Integer> cmbCells = new JComboBox<>(new Integer[] {5, 10, 15});
+		this.cmbCells = new JComboBox<>(new Integer[] {5, 10, 15});
 		GridBagConstraints cellsComboConstr = new GridBagConstraints();
 		cellsComboConstr.anchor = GridBagConstraints.WEST;
 		cellsComboConstr.insets = new Insets(0,0,5,0);
@@ -67,7 +71,7 @@ public class StartPanel extends JPanel{
 		//colorsConstr.weighty = 1;
 		add(lblColors, colorsConstr);
 		
-		JComboBox<Integer> cmbColors = new JComboBox<>(new Integer[] {4, 5, 6, 7, 8, 9, 10});
+		this.cmbColors = new JComboBox<>(new Integer[] {4, 5, 6, 7, 8, 9, 10});
 		GridBagConstraints colorsComboConstr = new GridBagConstraints();
 		colorsComboConstr.anchor = GridBagConstraints.WEST;
 		colorsComboConstr.insets = new Insets(0,0,5,0);
@@ -82,7 +86,7 @@ public class StartPanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.newGame();
+				controller.newGame(getRowSize(), getColors());
 				mainLayout.show(mainPanel, "2");
 			}
 		});
@@ -95,4 +99,12 @@ public class StartPanel extends JPanel{
 		//startConstr.weighty = 1;
 		add(btnStart, startConstr);
 	}
+	
+	public int getRowSize() {
+    	return (int) cmbCells.getSelectedItem();
+    }
+    
+    public int getColors() {
+    	return (int) cmbColors.getSelectedItem();
+    }
 }

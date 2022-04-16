@@ -25,7 +25,7 @@ public class FloodItGUI extends JFrame {
     private final CardLayout layout;
     private final JPanel mainPanel;
     private final JPanel gamePanel;
-    private final JPanel startPanel;
+    private final StartPanel startPanel;
     private final JPanel pausePanel;
     final JLabel lblMoves;
     
@@ -41,11 +41,11 @@ public class FloodItGUI extends JFrame {
         this.mainPanel = new JPanel(layout);
         this.getContentPane().add(mainPanel);
         
-        this.gamePanel = new JPanel(new BorderLayout());
         this.startPanel = new StartPanel(mainPanel, layout, controller);
+        this.gamePanel = new GamePanel(mainPanel, layout, controller, model, cellsMap, cellButtons);
         this.pausePanel = new PausePanel(mainPanel, layout);
         //pausePanel.setLayout(new BoxLayout(pausePanel,BoxLayout.PAGE_AXIS));
-        createGamePanel();
+        //createGamePanel();
         //createPausePanel();
         mainPanel.add(startPanel, "1");
         mainPanel.add(gamePanel, "2");
@@ -72,60 +72,12 @@ public class FloodItGUI extends JFrame {
     	lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
     }
     
-    private void createGamePanel() {
-    	final JPanel boardPanel = new JPanel(new GridLayout(model.getRowSize(), model.getRowSize()));
-        
-    	final JButton btnPause = new JButton("Pause");
-    	btnPause.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				layout.show(mainPanel, "3");
-			}
-    	});
-    	
-    	gamePanel.add(btnPause, BorderLayout.NORTH);
-    	
-        ActionListener al = e -> {
-        	var clickedCell = (JButton)e.getSource();
-        	controller.onClick(cellsMap.get(clickedCell));
-        };
-                
-        for (int i = 0; i < model.getRowSize(); i++){
-            for (int j = 0; j < model.getRowSize(); j++){
-                final JButton button = new JButton(" ");
-                button.setBackground(model.getTable().getCell(i, j).getColor().getActualColor());
-                button.addActionListener(al);
-                this.cellButtons.add(button);
-                this.cellsMap.put(button, model.getTable().getCell(i, j));
-                boardPanel.add(button);
-            }
-        }
-        
-        gamePanel.add(boardPanel, BorderLayout.CENTER);
-        
-        lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
-        gamePanel.add(lblMoves, BorderLayout.SOUTH);
+    public int getComboSize() {
+    	return startPanel.getRowSize();
     }
     
-    private void createPausePanel() {
-        
-    	final JButton btnRestart = new JButton("Restart");
-    	final JButton btnResume = new JButton("Resume");
-    	final JButton btnRules = new JButton("Rules");
-    	final JButton btnExit = new JButton("Exit");
-    	
-    	btnResume.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				layout.show(mainPanel, "2");
-			}
-    	});
-    	
-    	pausePanel.add(btnRestart, BorderLayout.CENTER);
-    	pausePanel.add(btnResume, BorderLayout.CENTER);
-    	pausePanel.add(btnRules, BorderLayout.CENTER);
-    	pausePanel.add(btnExit, BorderLayout.CENTER);
+    public int getComboColors() {
+    	return startPanel.getColors();
     }
     
 }

@@ -16,18 +16,16 @@ public class FloodItController {
 	private final FloodItModel model;
 	private final FloodItGUI view;
 	
-	public FloodItController(int tSize, int colorsNumber){
-		List<Colors> selectedColors = Colors.getRandomColors(colorsNumber);
-		int maxMoves = findMaxMoves(tSize, colorsNumber);
-		this.model = new FloodItModel(tSize, colorsNumber, maxMoves, selectedColors);
+	public FloodItController(){
+		this.model = new FloodItModel();
 		this.view = new FloodItGUI(this, this.model);
-		
-		startingPuddleSetUp();
+		newGame(view.getComboSize(), view.getComboColors());
 		view.display();
 	}
 
-	private void startingPuddleSetUp() {
+	private void startingPuddleSetup() {
 		// Sets up the starting puddle and color
+		model.getMainPuddle().clear();
 		model.getTable().getCell(0, 0).flood();
 		model.getMainPuddle().add(model.getTable().getCell(0, 0));
 		model.setCurrentColor(model.getTable().getCell(0, 0).getColor());
@@ -92,8 +90,14 @@ public class FloodItController {
 		}
 	}
 	
-	public void newGame() {
-		model.getTable().generateTable();
+	public void newGame(int size, int colors) {
+		model.setTSize(size);
+		model.setNumofColors(colors);
+		model.setSelectedColors(Colors.getRandomColors(colors));
+		model.setMaxMoves(findMaxMoves(size, colors));
+		model.setTable();
+		startingPuddleSetup();
+		view.updateView();
 	}
 	
 }
