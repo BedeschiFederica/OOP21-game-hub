@@ -1,4 +1,4 @@
-Email dei componenti: federica.bedeschi4@studio.unibo.it, alesja.delja@studio.unibo.it, silvia.furegato@studio.unibo.it, marco.savarese@studio.unibo.it
+Email dei componenti: federica.bedeschi4@studio.unibo.it, alesja.delja@studio.unibo.it, silvia.furegato@studio.unibo.it
 
 Il gruppo si pone come obiettivo quello di realizzare un'applicazione che raccoglie diversi giochi.
 
@@ -9,14 +9,13 @@ Di seguito sono brevemente descritti alcuni dei giochi che verranno implementati
     Campo minato: ha come campo di gioco una griglia nxn con m mine. Obiettivo del gioco è quello di scoprire tutto il campo senza prendere le mine; appena il giocatore preme una cella con la mina il gioco finisce.
     Flood it: è un gioco di strategia in cui l’obiettivo è colorare l’intera griglia di gioco dello stesso colore, col minor numero di mosse. Una mossa consiste nella colorazione di n celle, quelle a partire dalla cella in alto a sinistra che hanno tutte lo stesso colore, del colore della cella premuta nella mossa corrente, con l’obiettivo di includere alla mossa successiva quante più celle possibili.
     Legame numerico: sono presenti n quadrati con all’interno un numero. L’obiettivo del gioco è quello di collegare i quadrati tra loro, verticalmente o orizzontalmente, facendo attenzione, per ogni quadrato, ad effettuare il numero di collegamenti indicato all’interno dello stesso, e di non superare il massimo di due collegamenti per lato.
-    Snake: il giocatore controlla un serpente il cui corpo si allunga quando la testa entra in contatto con un elemento generato in una posizione randomica della mappa di gioco. La partita si interrompe quando la testa del serpente entra in contatto con una parte del proprio corpo o con il bordo della mappa.
-
+    
 Nota: ci lasciamo la libertà di migliorare o modificare alcuni giochi rispetto alla loro classica implementazione conosciuta, ed eventualmente espandendo o aggiungendo alcuni meccanismi di gioco.
 
 
 Funzionalità minimali ritenute obbligatorie:
 
-    Implementazione dei seguenti giochi: Campo minato, Flood it, Legame numerico, Snake
+    Implementazione dei seguenti giochi: Campo minato, Flood it, Legame numerico
     Creazione del menù principale
     Creazione di menù per ogni gioco, con possibilità di scelta da parte del giocatore, di eventuali parametri di gioco (esempio: dimensione della griglia di gioco)
     Possibilità di mettere in pausa il gioco, riavviandolo o tornando ai menù se il giocatore lo richiede
@@ -26,7 +25,7 @@ Funzionalità minimali ritenute obbligatorie:
 
 Funzionalità opzionali:
 
-    Implementazione di uno o più dei seguenti giochi: 2048, Mastermind, Shooter, Tris
+    Implementazione di uno o più dei seguenti giochi: 2048, Mastermind, Tris
     Memorizzazione di record o statistiche di giochi su file, identificando i giocatori tramite username, e proponendo a video i record o le statistiche al fine di proporre sfide tra giocatori o stili di gioco differenti (esempio: challenge da completare)
 
 
@@ -42,7 +41,6 @@ Suddivisione del lavoro:
     Bedeschi: implementazione del gioco Legame numerico
     Delja: implementazione del gioco Campo minato
     Furegato: implementazione del gioco Flood it
-    Savarese: implementazione del gioco Snake
 
 L’implementazione del gioco comprende sia la parte logica che quella grafica.
 
