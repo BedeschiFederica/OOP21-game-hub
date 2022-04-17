@@ -4,14 +4,11 @@ import javax.swing.*;
 
 import controller.FloodItController;
 import model.Cell;
-import model.Colors;
 import model.FloodItModel;
 
 import java.util.*;
 import java.util.List;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class FloodItGUI extends JFrame {
     

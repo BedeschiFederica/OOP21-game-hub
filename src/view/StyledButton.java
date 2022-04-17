@@ -1,8 +1,5 @@
 package view;
 
-import java.awt.Font;
-import java.awt.Insets;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 

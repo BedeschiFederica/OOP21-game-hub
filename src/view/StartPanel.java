@@ -12,16 +12,12 @@ import java.awt.event.ActionListener;
 public class StartPanel extends JPanel{
 
 	private static final long serialVersionUID = 1188589790801007209L;
-	private final FloodItController controller;
-	private final JPanel mainPanel;
 	private final CardLayout mainLayout;
 	
 	private JComboBox<Integer> cmbColors;
 	private JComboBox<Integer> cmbCells;
 
 	public StartPanel(JPanel mainPanel, CardLayout mLayout, FloodItController controller) {
-		this.controller = controller;
-		this.mainPanel = mainPanel;
 		this.mainLayout = mLayout;
 		setBackground(Colors.LIGHT_BLUE.getActualColor());
 		GridBagLayout layout = new GridBagLayout();

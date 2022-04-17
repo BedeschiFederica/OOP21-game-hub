@@ -4,12 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
-import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -24,18 +22,18 @@ import model.FloodItModel;
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 5507460523553525591L;
-	private final FloodItController controller;
+	//private final FloodItController controller;
 	private final FloodItModel model;
-	private final JPanel mainPanel;
+	//private final JPanel mainPanel;
 	private final CardLayout mainLayout;
 	private final JLabel lblMoves;
 	private final Map<JButton, Cell> cellsMap;
 	private final List<JButton> cellButtons;
 	
 	public GamePanel(JPanel mainPanel, CardLayout mLayout, FloodItController controller, FloodItModel model, Map<JButton, Cell> map, List<JButton> cellButtons) {
-		this.controller = controller;
+		//this.controller = controller;
 		this.model = model;
-		this.mainPanel = mainPanel;
+		//this.mainPanel = mainPanel;
 		this.mainLayout = mLayout;
 		this.lblMoves = new JLabel();
 		this.cellsMap = map;

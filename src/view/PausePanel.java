@@ -3,19 +3,16 @@ package view;
 import model.Colors;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PausePanel extends JPanel{
 
-	private final JPanel mainPanel;
+	private static final long serialVersionUID = -7762097272351186299L;
 	private final CardLayout mainLayout;
 	
 	public PausePanel(JPanel mainPanel, CardLayout mLayout) {
-		this.mainPanel = mainPanel;
 		this.mainLayout = mLayout;
 		this.setBackground(Colors.LIGHT_BLUE.getActualColor());
 		GridBagLayout layout = new GridBagLayout();
