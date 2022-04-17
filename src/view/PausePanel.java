@@ -21,16 +21,14 @@ public class PausePanel extends JPanel{
 		GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);
 		
-		JButton btnRestart = new JButton("New Game");
+		JButton btnRestart = new StyledButton("New Game");
+		btnRestart.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnRestart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainLayout.show(mainPanel, "1");
 			}
 		});
-		btnRestart.setBackground(Colors.YELLOW.getActualColor());
-		btnRestart.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnRestart.setBorder(BorderFactory.createRaisedBevelBorder());
 		GridBagConstraints restartConstr = new GridBagConstraints();
 		restartConstr.fill = GridBagConstraints.BOTH;
 		restartConstr.insets = new Insets(100, 100, 20, 100);
@@ -40,16 +38,14 @@ public class PausePanel extends JPanel{
 		restartConstr.weighty = 1;
 		add(btnRestart, restartConstr);
 		
-		JButton btnResume = new JButton("Resume");
+		JButton btnResume = new StyledButton("Resume");
+		btnResume.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnResume.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainLayout.show(mainPanel, "2");
 			}
 		});
-		btnResume.setBackground(Colors.YELLOW.getActualColor());
-		btnResume.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnResume.setBorder(BorderFactory.createRaisedBevelBorder());
 		GridBagConstraints resumeConstr = new GridBagConstraints();
 		resumeConstr.fill = GridBagConstraints.BOTH;
 		resumeConstr.insets = new Insets(20, 100, 20, 100);
@@ -59,16 +55,14 @@ public class PausePanel extends JPanel{
 		resumeConstr.weighty = 1;
 		add(btnResume, resumeConstr);
 		
-		JButton btnRules = new JButton("Rules");
+		JButton btnRules = new StyledButton("Rules");
+		btnRules.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnRules.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnRules.setBackground(Colors.YELLOW.getActualColor());
-		btnRules.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnRules.setBorder(BorderFactory.createRaisedBevelBorder());
 		GridBagConstraints rulesConstr = new GridBagConstraints();
 		rulesConstr.fill = GridBagConstraints.BOTH;
 		rulesConstr.insets = new Insets(20, 100, 20, 100);
@@ -78,16 +72,14 @@ public class PausePanel extends JPanel{
 		rulesConstr.weighty = 1;
 		add(btnRules, rulesConstr);
 		
-		JButton btnExit = new JButton("Exit");
+		JButton btnExit = new StyledButton("Exit");
+		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnExit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		btnExit.setBackground(Colors.YELLOW.getActualColor());
-		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnExit.setBorder(BorderFactory.createRaisedBevelBorder());
 		GridBagConstraints exitConstr = new GridBagConstraints();
 		exitConstr.fill = GridBagConstraints.BOTH;
 		exitConstr.gridx = 1;

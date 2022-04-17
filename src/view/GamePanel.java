@@ -52,7 +52,7 @@ public class GamePanel extends JPanel {
 	    topPanel.setBackground(Colors.LIGHT_BLUE.getActualColor());
 	    add(topPanel, BorderLayout.NORTH);
 	    
-	    final JButton btnPause = new JButton("Menu");
+	    final JButton btnPause = new StyledButton("Menu");
 	    btnPause.setHorizontalAlignment(SwingConstants.LEFT);
 		btnPause.addActionListener(new ActionListener() {
 
@@ -64,10 +64,10 @@ public class GamePanel extends JPanel {
 		topPanel.add(btnPause);
 		
 		final JLabel lblTitle = new JLabel("Flood It!");
-		lblTitle.setFont(new Font("Tahome", Font.PLAIN, 20));
+		lblTitle.setFont(new Font("Tahome", Font.PLAIN, 30));
 		topPanel.add(lblTitle);
 		
-		final JButton btnExit = new JButton("Exit");
+		final JButton btnExit = new StyledButton("Exit");
 		btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnExit.addActionListener(new ActionListener() {
 

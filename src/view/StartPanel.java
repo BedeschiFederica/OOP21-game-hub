@@ -3,7 +3,6 @@ package view;
 import javax.swing.*;
 
 import controller.FloodItController;
-import model.FloodItModel;
 import model.Colors;
 
 import java.awt.*;
@@ -81,7 +80,7 @@ public class StartPanel extends JPanel{
 		//colorsComboConstr.weighty = 1;
 		add(cmbColors, colorsComboConstr);
 		
-		JButton btnStart = new JButton("START");
+		JButton btnStart = new StyledButton("START");
 		btnStart.addActionListener(new ActionListener() {
 			
 			@Override
