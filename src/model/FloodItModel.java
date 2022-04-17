@@ -84,4 +84,15 @@ public class FloodItModel {
 	public List<Colors> getSelectedColors() {
 		return this.selectedColors;
 	}
+	
+	public void clear() {
+		this.numOfColors = 0;
+		this.rowSize = 0;
+		this.currentColor = null;
+		this.table =  null;
+		this.moves = 0;
+		this.maxMoves = 0;
+		this.mainPuddle.clear();
+		this.selectedColors.clear();;
+	}
 }

@@ -24,7 +24,7 @@ public class FloodItGUI extends JFrame {
     
     private final CardLayout layout;
     private final JPanel mainPanel;
-    private final JPanel gamePanel;
+    private GamePanel gamePanel;
     private final StartPanel startPanel;
     private final JPanel pausePanel;
     final JLabel lblMoves;
@@ -42,13 +42,10 @@ public class FloodItGUI extends JFrame {
         this.getContentPane().add(mainPanel);
         
         this.startPanel = new StartPanel(mainPanel, layout, controller);
-        this.gamePanel = new GamePanel(mainPanel, layout, controller, model, cellsMap, cellButtons);
+        this.gamePanel = null;
         this.pausePanel = new PausePanel(mainPanel, layout);
-        //pausePanel.setLayout(new BoxLayout(pausePanel,BoxLayout.PAGE_AXIS));
-        //createGamePanel();
-        //createPausePanel();
+        
         mainPanel.add(startPanel, "1");
-        mainPanel.add(gamePanel, "2");
         mainPanel.add(pausePanel, "3");
         
         layout.show(mainPanel, "1");
@@ -69,7 +66,12 @@ public class FloodItGUI extends JFrame {
     			b.setBackground(model.getCurrentColor().getActualColor());
     		}
     	});
-    	lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
+    	gamePanel.updateLblMoves();
+    }
+    
+    public void createGameboard() {
+    	this.gamePanel = new GamePanel(mainPanel, layout, controller, model, cellsMap, cellButtons);
+    	this.mainPanel.add(gamePanel, "2");
     }
     
     public int getComboSize() {

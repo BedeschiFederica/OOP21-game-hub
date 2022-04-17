@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 
 import controller.FloodItController;
 import model.Cell;
+import model.Colors;
 import model.FloodItModel;
 
 public class GamePanel extends JPanel {
@@ -41,12 +42,14 @@ public class GamePanel extends JPanel {
 		this.cellButtons = cellButtons;
 		
 		setLayout(new BorderLayout(0, 0));
+		setBackground(Colors.LIGHT_BLUE.getActualColor());
 		
 		lblMoves.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
 	    add(lblMoves, BorderLayout.SOUTH);
 	    
 	    final JPanel topPanel = new JPanel();
+	    topPanel.setBackground(Colors.LIGHT_BLUE.getActualColor());
 	    add(topPanel, BorderLayout.NORTH);
 	    
 	    final JButton btnPause = new JButton("Menu");
@@ -76,6 +79,7 @@ public class GamePanel extends JPanel {
 		topPanel.add(btnExit);
 		
 		final JPanel boardPanel = new JPanel(new GridLayout(model.getRowSize(), model.getRowSize()));
+		boardPanel.setBackground(Colors.LIGHT_BLUE.getActualColor());
 		
 	    ActionListener al = e -> {
 	    	var clickedCell = (JButton)e.getSource();
@@ -95,6 +99,10 @@ public class GamePanel extends JPanel {
 	    
 	    add(boardPanel, BorderLayout.CENTER);
 	    
+	}
+	
+	public void updateLblMoves() {
+		lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
 	}
 	
 }

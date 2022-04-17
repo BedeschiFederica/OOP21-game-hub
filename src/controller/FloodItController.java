@@ -19,7 +19,6 @@ public class FloodItController {
 	public FloodItController(){
 		this.model = new FloodItModel();
 		this.view = new FloodItGUI(this, this.model);
-		newGame(view.getComboSize(), view.getComboColors());
 		view.display();
 	}
 
@@ -91,12 +90,14 @@ public class FloodItController {
 	}
 	
 	public void newGame(int size, int colors) {
+		model.clear();
 		model.setTSize(size);
 		model.setNumofColors(colors);
 		model.setSelectedColors(Colors.getRandomColors(colors));
 		model.setMaxMoves(findMaxMoves(size, colors));
 		model.setTable();
 		startingPuddleSetup();
+		view.createGameboard();
 		view.updateView();
 	}
 	
