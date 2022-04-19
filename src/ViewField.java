@@ -1,4 +1,7 @@
 import java.awt.*;
+import java.util.*;
+
+import javax.swing.*;
 
 public class ViewField {
 
@@ -9,15 +12,49 @@ public class ViewField {
 	private int colums=8;
 	private int mine=2;
 	Cells[][] cell;
-	//da vedere come si fa
+	
 	
 	//private int widthCell, heightCell;
 	
-	void build() {
-		//widthCell= getScreenSize().getWidth()/rows;
-		//heightCell=height/colums;
+	
+	ViewField() {
 		
-		//creating the table for the game and the position of the cells
+		JFrame Field = new JFrame();
+		Field.setTitle("CAMPO MINATO");
+		
+		
+		//da riguardare button della pausa
+		JButton jbPause = new JButton("PAUSE");
+		jbPause.setBackground(Color.lightGray);
+		jbPause.setPreferredSize(new Dimension(500,50));
+		JLabel jlMine = new JLabel("Mine presenti:" + mine);
+		
+		
+		
+		
+		
+		//da capire se usare il frame della Silvia
+		//jbPause.addActionListener(e -> {pause();});
+		JPanel jpField=new JPanel();
+		jpField.setBackground(Color.cyan);
+		jpField.add(jbPause);
+		jpField.add(jlMine);
+		Field.getContentPane().add(jpField);
+		Field.pack();
+		Field.setVisible(true);
+		
+	}
+
+
+		
+		
+		
+		
+		/*
+		//widthCell= getWidth()/rows;
+		heightCell=getHeight()/colums;
+		
+		creating the table for the game and the position of the cells
 		cell= new Cells[rows][colums];
 		for (int i=0;i< rows; i++) {
 			for (int j=0;j<colums;j++) {
@@ -26,12 +63,8 @@ public class ViewField {
 		}
 		//Da toglire appena si usano le mine 
 		System.out.print(mine);
-	}
+		}*/
 	
-	//questa deve essere implementato solo nella view del gioco
-	void draw() {
-		
-	}
 	
 	
 	
