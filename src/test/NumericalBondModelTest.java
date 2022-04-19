@@ -10,21 +10,21 @@ import main.numericalbond.model.Block;
 import main.numericalbond.model.Direction;
 
 class NumericalBondModelTest {
-	
-	@Test
-	void test() {
-		//fail("Not yet implemented");
-	}
-	
-	@Test
-	void blockTest() {
-		final Block block = new Block(5);
-		assertTrue(block.getMaxLinks() == 5);
-		block.addLink(Direction.UP);
-		assertTrue(block.getCurrentLinks() == 1);
-		block.addLink(Direction.DOWN);
-		block.addLink(Direction.UP);
-		assertTrue(block.getCurrentLinks() == 3);
-	}
+
+    @Test
+    void test() {
+        // fail("Not yet implemented");
+    }
+
+    @Test
+    void blockTest() {
+        final Block block = new Block(5);
+        assertEquals(block.getMaxLinks(), 5);
+        block.addLink(Direction.UP);
+        assertEquals(block.getCurrentLinks(), 1);
+        block.addLink(Direction.DOWN);
+        block.addLink(Direction.UP);
+        assertEquals(block.getCurrentLinks(), 3);
+    }
 
 }
