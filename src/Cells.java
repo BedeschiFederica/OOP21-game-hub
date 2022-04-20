@@ -1,35 +1,16 @@
+import java.awt.*;
 
+import javax.swing.JButton;
 public class Cells {
+	private int SPACING =5;
+	private int rows=8;
+	private int colums=8;
 
-	//position of the cell
-	int posX,posY;
-	boolean visible; //true if the cell is clicked by the player
-	boolean posMine; //true if the cell contains a mine 
-	boolean flag;	//true if the cell contains a flag
-	int closerMine;
-
-	public Cells(int posX, int posY) {
-		this.posX = posX;
-		this.posY = posY;
-		visible=false;
+	protected void cell(Graphics cell) {
+		for (int i=0;i< rows; i++) {
+			for (int j=0;j<colums;j++) {
+				cell.fillRect(SPACING+i*80, SPACING+j*80+80, 80-2*SPACING, 80-2*SPACING);
+			}
+		}
 	}
-	
-	//dato temporaneamente una height e una widht io
-		int widthCell=30;
-		int heightCell=30;
-		
-	//da mettere poi in un'altra parte
-	void Draw() {
-		//position of the first cell
-		int firstX=posX*widthCell;
-		int firstY=posY*heightCell;
-		//position of the last cell
-		int lastX=posX+widthCell;
-		int lasstY=posY+heightCell;
-		//i quadratini che voglio disegnare devono essere senza bordi?
-		//evento del mouse quando ci passa sopra ci serve per capire quando il player clicca su 
-		//un quadrato o meno
-		
-	}
-	
 }
