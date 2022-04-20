@@ -50,7 +50,7 @@ public class FloodItController {
 	
 	private void updateFlooding() {
 		model.getTable().getAllCells().forEach(c -> {
-			if (c.isFlooded()) {
+			if (c.isFlooded() && !model.getMainPuddle().contains(c)) {
 				model.getMainPuddle().add(c);
 			}
 		});
@@ -86,6 +86,8 @@ public class FloodItController {
 	private void checkResult() {
 		if (model.getMoves() > model.getMaxMoves()) {
 			System.out.println("YOU LOST!");
+		} else if ( model.getMainPuddle().size() == (model.getRowSize() * model.getRowSize()) ) {
+			System.out.println("YOU WIN!");
 		}
 	}
 	
