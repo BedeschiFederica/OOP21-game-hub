@@ -1,47 +1,70 @@
 package main.numericalbond;
 
-import main.general.GameController;
+import main.general.AbstractGameController;
+import main.general.GameView;
 import main.numericalbond.model.Grid;
 import main.numericalbond.model.LevelGenerator;
 import main.numericalbond.view.NumericalBondView;
 
-public class NumericalBondController implements GameController {
+public class NumericalBondController extends AbstractGameController {
 
+    private static final String GAME_NAME = "Numerical Bond";
     private static final int NUM_GRID_LINES = 3;
 
-    private final Grid grid;
+    private NumericalBondView view;
+    private Grid grid;
 
-    public NumericalBondController() {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public GameView getView() {
+        return this.view;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String getGameName() {
+        return GAME_NAME;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void startGame() {
         this.grid = new LevelGenerator(NUM_GRID_LINES).getGrid();
-        //System.out.println(this.grid);
-        final NumericalBondView view = new NumericalBondView(this);
+        this.view = new NumericalBondView(this, NUM_GRID_LINES);
+        setupView();
     }
 
-    public int getNumGridLines() {
-        return NUM_GRID_LINES;
+    private void setupView() {
+        this.grid.getBlocks().keySet()
+            .forEach(p -> this.view.setBlockNumber(p, getBlockNumber(p)));
     }
 
-    public int getBlockNumber(final Position pos) {
+    private int getBlockNumber(final Position pos) {
         return this.grid.getBlockAt(pos).getMaxLinks() - this.grid.getBlockAt(pos).getCurrentLinks();
     }
 
-    public boolean canLink(final Position pos1, final Position pos2) {
-        return this.grid.canLink(pos1, pos2);
+    private boolean gameEnded() {
+        return this.grid.isFinished();
     }
 
     public void link(final Position pos1, final Position pos2) {
-        if (!canLink(pos1, pos2)) {
-            throw new IllegalStateException("Can't link");
+        if (!this.grid.canLink(pos1, pos2)) {
+            return;
         }
         this.grid.link(pos1, pos2);
-    }
-
-    public int getLinks(final Position pos1, final Position pos2) {
-        return this.grid.getLinks(pos1, pos2);
-    }
-
-    public boolean gameEnded() {
-        return this.grid.isFinished();
+        this.view.createLink(pos1, pos2, this.grid.getLinks(pos1, pos2));
+        this.view.setBlockNumber(pos1, getBlockNumber(pos1));
+        this.view.setBlockNumber(pos2, getBlockNumber(pos2));
+        this.view.deselect();
+        if (gameEnded()) {
+            System.out.println("You won!");
+            this.view.dispose();
+            endGame();
+        }
     }
 
 }
