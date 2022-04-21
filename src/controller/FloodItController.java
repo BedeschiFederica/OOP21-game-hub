@@ -67,7 +67,7 @@ public class FloodItController {
 		changeMainPuddleColor(clickedCell.getColor());
 		model.incrementMoves();
 		checkResult();
-		view.updateView();
+		updateView();
 	}
 	
 	private int findMaxMoves(int size, int colorsNum) {
@@ -88,6 +88,7 @@ public class FloodItController {
 			System.out.println("YOU LOST!");
 		} else if ( model.getMainPuddle().size() == (model.getRowSize() * model.getRowSize()) ) {
 			System.out.println("YOU WIN!");
+			view.stop();
 		}
 	}
 	
@@ -100,7 +101,14 @@ public class FloodItController {
 		model.setTable();
 		startingPuddleSetup();
 		view.createGameboard();
-		view.updateView();
+		updateView();
 	}
+	
+	public void updateView() {
+		model.getMainPuddle().forEach(c -> {
+    		view.updateCellVisualization(c);
+    	});
+		view.updateMovesVisualization();
+    }
 	
 }

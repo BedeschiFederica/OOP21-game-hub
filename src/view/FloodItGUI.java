@@ -28,6 +28,7 @@ public class FloodItGUI extends JFrame {
     
     public FloodItGUI(FloodItController controller, FloodItModel model) {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setMinimumSize(new Dimension(400, 500));
         
         cellsMap = new HashMap<>();
         this.controller = controller;
@@ -57,26 +58,33 @@ public class FloodItGUI extends JFrame {
         this.setVisible(true);
     }
     
-    public void updateView() {
-    	cellButtons.forEach(b -> {
-    		if (model.getMainPuddle().contains(cellsMap.get(b))) {
-    			b.setBackground(model.getCurrentColor().getActualColor());
-    		}
-    	});
-    	gamePanel.updateLblMoves();
-    }
-    
     public void createGameboard() {
     	this.gamePanel = new GamePanel(mainPanel, layout, controller, model, cellsMap, cellButtons);
     	this.mainPanel.add(gamePanel, "2");
     }
     
+    public void updateCellVisualization(Cell cellToUpdate) {
+    	cellButtons.forEach(b -> {
+    		if (cellsMap.get(b).equals(cellToUpdate)) {
+    			b.setBackground(cellToUpdate.getColor().getActualColor());
+    		}
+    	});
+    }
+    
+    public void updateMovesVisualization() {
+    	gamePanel.updateLblMoves();
+    }
+    
     public int getComboSize() {
-    	return startPanel.getRowSize();
+    	return this.startPanel.getRowSize();
     }
     
     public int getComboColors() {
-    	return startPanel.getColors();
+    	return this.startPanel.getColors();
+    }
+    
+    public void stop() {
+    	cellButtons.forEach(b -> b.setEnabled(false));
     }
     
 }
