@@ -1,7 +1,7 @@
 package test;
 
+import main.games.numericalbond.controller.NumericalBondController;
 import main.general.GameController;
-import main.numericalbond.NumericalBondController;
 
 public class NumericalBondTest {
 

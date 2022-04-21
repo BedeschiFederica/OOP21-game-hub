@@ -1,10 +1,10 @@
-package main.numericalbond;
+package main.games.numericalbond.controller;
 
+import main.games.numericalbond.model.Grid;
+import main.games.numericalbond.model.LevelGenerator;
+import main.games.numericalbond.view.NumericalBondView;
 import main.general.AbstractGameController;
 import main.general.GameView;
-import main.numericalbond.model.Grid;
-import main.numericalbond.model.LevelGenerator;
-import main.numericalbond.view.NumericalBondView;
 
 public class NumericalBondController extends AbstractGameController {
 

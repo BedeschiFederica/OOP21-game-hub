@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import main.games.numericalbond.controller.NumericalBondController;
+import main.games.numericalbond.model.Block;
+import main.games.numericalbond.model.Direction;
 import main.general.GameController;
-import main.numericalbond.NumericalBondController;
-import main.numericalbond.model.Block;
-import main.numericalbond.model.Direction;
 
 class NumericalBondModelTest {
 

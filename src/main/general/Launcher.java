@@ -1,6 +1,7 @@
 package main.general;
 
-import main.numericalbond.NumericalBondController;
+import main.dashboard.controller.MainController;
+import main.games.numericalbond.controller.NumericalBondController;
 
 public final class Launcher {
 

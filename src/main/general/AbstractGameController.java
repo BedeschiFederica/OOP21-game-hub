@@ -1,5 +1,7 @@
 package main.general;
 
+import main.dashboard.controller.MainController;
+
 public abstract class AbstractGameController implements GameController {
 
     private MainController mainController;

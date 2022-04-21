@@ -1,4 +1,4 @@
-package main.numericalbond.model;
+package main.games.numericalbond.model;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
 
-import main.numericalbond.Position;
+import main.games.numericalbond.controller.Position;
 
 public enum Direction {
     UP(p -> new Position(p.getX() - 1, p.getY())),

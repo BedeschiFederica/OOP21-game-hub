@@ -1,4 +1,4 @@
-package main.numericalbond.view;
+package main.games.numericalbond.view;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import main.games.numericalbond.controller.NumericalBondController;
+import main.games.numericalbond.controller.Position;
 import main.general.GameView;
-import main.numericalbond.NumericalBondController;
-import main.numericalbond.Position;
 
 public class NumericalBondView extends JFrame implements GameView {
 

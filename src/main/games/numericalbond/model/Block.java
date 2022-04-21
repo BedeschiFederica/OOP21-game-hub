@@ -1,4 +1,4 @@
-package main.numericalbond.model;
+package main.games.numericalbond.model;
 
 import java.util.HashMap;
 import java.util.Map;

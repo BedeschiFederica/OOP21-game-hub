@@ -1,4 +1,4 @@
-package main.numericalbond.model;
+package main.games.numericalbond.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-import main.numericalbond.Position;
+import main.games.numericalbond.controller.Position;
 
 public class Grid {
 

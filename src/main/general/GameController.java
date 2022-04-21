@@ -1,5 +1,7 @@
 package main.general;
 
+import main.dashboard.controller.MainController;
+
 public interface GameController {
 
     /**

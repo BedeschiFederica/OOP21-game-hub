@@ -1,6 +1,9 @@
-package main.general;
+package main.dashboard.view;
 
 import javax.swing.*;
+
+import main.dashboard.controller.MainController;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.geom.*;

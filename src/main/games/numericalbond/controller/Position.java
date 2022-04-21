@@ -1,4 +1,4 @@
-package main.numericalbond;
+package main.games.numericalbond.controller;
 
 import java.util.Objects;
 
