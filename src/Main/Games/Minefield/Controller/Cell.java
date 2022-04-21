@@ -1,6 +1,6 @@
-package Main.Games.Minefield.Controller;
+package main.games.minefield.controller;
 
-import Main.Games.Minefield.Model.*;
+import main.games.minefield.model.*;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -14,10 +14,10 @@ public class Cell extends JButton {
     private Handler handler;
 
     public Cell(int type, int position, boolean discovered, boolean flagged, Handler handler) {
-    	/**
-    	 * variable used for knowing information about a cell
-    	 *
-    	 */
+        /**
+         * variable used for knowing information about a cell
+         *
+         */
         this.type = type;
         this.position = position;
         this.discovered = discovered;
@@ -27,27 +27,32 @@ public class Cell extends JButton {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(SwingUtilities.isRightMouseButton(e)) {
+                if (SwingUtilities.isRightMouseButton(e)) {
                     rightClickButton();
                 } else {
                     clickButton();
                 }
             }
 
-            public void mouseEntered(MouseEvent e) {}
-            public void mouseExited(MouseEvent e) {}
-            public void mousePressed(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            public void mouseExited(MouseEvent e) {
+            }
+
+            public void mousePressed(MouseEvent e) {
+            }
+
+            public void mouseReleased(MouseEvent e) {
+            }
         });
     }
 
     public int getType() {
-    	/**
-		 * method that returns:
-		 * - 0 if the cell is empty
-		 * - 1 if there is a mine
-		 * - 2 of there is a number
-		 */
+        /**
+         * method that returns: - 0 if the cell is empty - 1 if there is a mine - 2 of
+         * there is a number
+         */
         return type;
     }
 
@@ -72,16 +77,16 @@ public class Cell extends JButton {
     }
 
     public void clickButton() {
-    	/**
-		 * method that discovers the cells
-		 */
+        /**
+         * method that discovers the cells
+         */
         handler.click(this);
     }
 
     public void rightClickButton() {
-    	/**
-		 * method that puts the flag in the cell
-		 */
+        /**
+         * method that puts the flag in the cell
+         */
         handler.rightClick(this);
     }
 }

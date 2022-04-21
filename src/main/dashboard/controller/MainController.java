@@ -29,7 +29,11 @@ public class MainController {
         this.controllers.get(gameName).startGame();
     }
 
-    public void showGameEnding() {
+    public void startGame(final GameController controller) {
+        controller.startGame();
+    }
+
+    public void showGameEnding(final GameController controller) {
         // calling class GameEnding
 
         // temporary (this will be called by class GameEnding)
