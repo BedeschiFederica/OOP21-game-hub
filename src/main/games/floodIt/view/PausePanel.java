@@ -2,7 +2,7 @@ package main.games.floodit.view;
 
 import javax.swing.*;
 
-import main.games.floodIt.model.Colors;
+import main.games.floodit.model.Colors;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

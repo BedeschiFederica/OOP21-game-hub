@@ -1,11 +1,11 @@
 package main.games.minefield.model;
 
 import java.awt.Color;
-import Main.Games.Minefield.View.*;
-import Main.Games.Minefield.Controller.*;
-import Main.Games.Minefield.*;
+import main.games.minefield.view.*;
+import main.games.minefield.EndGame;
+import main.games.minefield.controller.*;
+import main.games.minefield.*;
 import java.util.ArrayList;
-import Main.Games.Minefield.View.*;
 
 public class Handler extends EndGame {
 

@@ -3,7 +3,7 @@ package main.games.floodit.view;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import main.games.floodIt.model.Colors;
+import main.games.floodit.model.Colors;
 
 public class StyledButton extends JButton {
 

@@ -3,10 +3,10 @@ package main.games.floodit.controller;
 import java.util.LinkedList;
 import java.util.List;
 
-import main.games.floodIt.model.Cell;
-import main.games.floodIt.model.Colors;
-import main.games.floodIt.model.FloodItModel;
-import main.games.floodIt.view.FloodItGUI;
+import main.games.floodit.model.Cell;
+import main.games.floodit.model.Colors;
+import main.games.floodit.model.FloodItModel;
+import main.games.floodit.view.FloodItGUI;
 
 public class FloodItController {
 

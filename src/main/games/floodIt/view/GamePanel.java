@@ -14,10 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import main.games.floodIt.controller.FloodItController;
-import main.games.floodIt.model.Cell;
-import main.games.floodIt.model.Colors;
-import main.games.floodIt.model.FloodItModel;
+import main.games.floodit.controller.FloodItController;
+import main.games.floodit.model.Cell;
+import main.games.floodit.model.Colors;
+import main.games.floodit.model.FloodItModel;
 
 public class GamePanel extends JPanel {
 

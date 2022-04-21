@@ -2,9 +2,9 @@ package main.games.floodit.view;
 
 import javax.swing.*;
 
-import main.games.floodIt.controller.FloodItController;
-import main.games.floodIt.model.Cell;
-import main.games.floodIt.model.FloodItModel;
+import main.games.floodit.controller.FloodItController;
+import main.games.floodit.model.Cell;
+import main.games.floodit.model.FloodItModel;
 
 import java.util.*;
 import java.util.List;
