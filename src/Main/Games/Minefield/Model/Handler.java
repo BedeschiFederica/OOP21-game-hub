@@ -1,6 +1,11 @@
-import java.awt.Color;
-import java.util.ArrayList;
+package Main.Games.Minefield.Model;
 
+import java.awt.Color;
+import Main.Games.Minefield.View.*;
+import Main.Games.Minefield.Controller.*;
+import Main.Games.Minefield.*;
+import java.util.ArrayList;
+import Main.Games.Minefield.View.*;
 public class Handler extends EndGame {
 
 	//array to know where is the player.

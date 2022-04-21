@@ -1,3 +1,6 @@
+package Main.Games.Minefield.Controller;
+
+import Main.Games.Minefield.Model.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

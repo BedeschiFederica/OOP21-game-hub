@@ -1,3 +1,5 @@
+package Main.Games.Minefield;
+
 import javax.swing.*;
 
 public class EndGame {

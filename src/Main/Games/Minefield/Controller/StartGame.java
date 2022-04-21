@@ -1,3 +1,8 @@
+package Main.Games.Minefield.Controller;
+
+import Main.Games.Minefield.Model.*;
+import Main.Games.Minefield.View.*;
+
 public class StartGame {
 
     public static final int GRIDSIZE = 4;
