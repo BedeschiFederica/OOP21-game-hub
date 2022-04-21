@@ -1,27 +1,27 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class ViewField {
 
-	 private static JFrame frame;
-	    private static String title;
+    private static JFrame frame;
+    private static String title;
 
-	    public ViewField(int width, int height, int gridSize, String title, Game game, Handler handler) {
-	        ViewField.title = title;
-	        frame = new JFrame(title);
+    public ViewField(int Size, String title, StartGame StartGame, Handler handler) {
+        ViewField.title = title;
+        frame = new JFrame(title);
 
-	        //frame.setPreferredSize(new Dimension(width, height));
-	        //frame.setMinimumSize(new Dimension(width, height));
-	        //frame.setMaximumSize(new Dimension(width, height));
-	        //frame.setResizable(false);
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
-	        //JPanel panel = new Grid(new GridLayout(gridSize, gridSize), handler);
+        JPanel jpField = new Field(new GridLayout(Size, Size), handler);
 
-	        //frame.setContentPane(panel);
-	        frame.pack();
+        frame.setContentPane(jpField);
+        update(0);
+        frame.pack();
+        frame.setVisible(true);
+    }
 
-	        frame.setVisible(true);
-	    }
-	
+    public static void update(int flag) {
+        frame.setTitle(title + "Mines: " + StartGame.MINES + " - Flags: " + flag);
+    }
 }
