@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class ViewField {
 
-    private static JFrame frame;
+    public static JFrame frame;
     private static String title;
 
     public ViewField(int Size, String title, StartGame StartGame, Handler handler) {
@@ -11,8 +11,6 @@ public class ViewField {
         frame = new JFrame(title);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-
         JPanel jpField = new Field(new GridLayout(Size, Size), handler);
 
         frame.setContentPane(jpField);

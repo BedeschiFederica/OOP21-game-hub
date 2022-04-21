@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class Handler {
+public class Handler extends EndGame {
 
 	//array to know where is the player.
     private ArrayList<Cell> now = new ArrayList<Cell>();
@@ -141,9 +141,12 @@ public class Handler {
                     if(Field.cell.get(x).getType() == 1) {
                     	Field.cell.get(x).setText("M");
                     	Field.cell.get(x).setBackground(Color.red);}
+                    	ViewField.frame.setVisible(false);
                 }
                 cell.setText("M");
                 cell.setBackground(Color.red);
+                status(false);
+            	show();
             }  
 
             for(int x = 0; x < queue.size(); x++) {
@@ -162,7 +165,10 @@ public class Handler {
             for(int x = 0; x < Field.cell.size(); x++) {
                 if(Field.cell.get(x).isDiscovered()) {
                     discovered++;
-                }
+                    if (discovered==StartGame.GRIDSIZE*StartGame.GRIDSIZE) {
+                    	status(true);
+                    	show();
+                    }                }
             }
 
             if(discovered == Field.cell.size() - StartGame.MINES) {
@@ -171,6 +177,7 @@ public class Handler {
                     	Field.cell.get(x).setEnabled(false);
                         Field.cell.get(x).setText("M");
                         Field.cell.get(x).setBackground(Color.red);
+                        ViewField.frame.setVisible(false);
                     } else {
                     	Field.cell.get(x).setEnabled(false);
                         Field.cell.get(x).setText("");
@@ -187,7 +194,6 @@ public class Handler {
         if(!cell.isDiscovered()) {
             if(!cell.isFlagged()) {
                 cell.setFlagged(true);
-                cell.setBackground(Color.yellow);
                 cell.setText("F");
                 putFlag++;
                 ViewField.update(putFlag);
