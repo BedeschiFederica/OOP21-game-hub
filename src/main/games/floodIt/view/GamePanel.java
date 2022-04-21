@@ -1,4 +1,4 @@
-package view;
+package main.games.floodIt.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -14,10 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import controller.FloodItController;
-import model.Cell;
-import model.Colors;
-import model.FloodItModel;
+import main.games.floodIt.controller.FloodItController;
+import main.games.floodIt.model.Cell;
+import main.games.floodIt.model.Colors;
+import main.games.floodIt.model.FloodItModel;
 
 public class GamePanel extends JPanel {
 

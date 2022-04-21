@@ -1,9 +1,9 @@
-package view;
+package main.games.floodIt.view;
 
 import javax.swing.*;
 
-import controller.FloodItController;
-import model.Colors;
+import main.games.floodIt.controller.FloodItController;
+import main.games.floodIt.model.Colors;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

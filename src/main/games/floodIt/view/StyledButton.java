@@ -1,9 +1,9 @@
-package view;
+package main.games.floodIt.view;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import model.Colors;
+import main.games.floodIt.model.Colors;
 
 public class StyledButton extends JButton {
 

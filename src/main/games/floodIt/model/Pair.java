@@ -1,4 +1,4 @@
-package model;
+package main.games.floodIt.model;
 
 public class Pair<X,Y> {
 	

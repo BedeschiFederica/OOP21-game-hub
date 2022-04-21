@@ -1,4 +1,4 @@
-package model;
+package main.games.floodIt.model;
 
 import java.util.LinkedList;
 import java.util.List;

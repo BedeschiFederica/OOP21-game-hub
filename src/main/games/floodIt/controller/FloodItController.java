@@ -1,12 +1,12 @@
-package controller;
+package main.games.floodIt.controller;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Cell;
-import model.Colors;
-import model.FloodItModel;
-import view.FloodItGUI;
+import main.games.floodIt.model.Cell;
+import main.games.floodIt.model.Colors;
+import main.games.floodIt.model.FloodItModel;
+import main.games.floodIt.view.FloodItGUI;
 
 public class FloodItController {
 	

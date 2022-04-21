@@ -1,10 +1,10 @@
-package view;
+package main.games.floodIt.view;
 
 import javax.swing.*;
 
-import controller.FloodItController;
-import model.Cell;
-import model.FloodItModel;
+import main.games.floodIt.controller.FloodItController;
+import main.games.floodIt.model.Cell;
+import main.games.floodIt.model.FloodItModel;
 
 import java.util.*;
 import java.util.List;

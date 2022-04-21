@@ -1,8 +1,9 @@
-package view;
-
-import model.Colors;
+package main.games.floodIt.view;
 
 import javax.swing.*;
+
+import main.games.floodIt.model.Colors;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
