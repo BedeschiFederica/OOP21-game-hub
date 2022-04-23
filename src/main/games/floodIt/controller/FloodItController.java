@@ -6,20 +6,22 @@ import java.util.List;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
-import main.games.floodit.view.FloodItGUI;
+import main.games.floodit.view.FloodItView;
+import main.general.AbstractGameController;
+import main.general.GameView;
 
-public class FloodItController {
+public class FloodItController extends AbstractGameController {
 
     private static final int MAX_MOVES_5 = 16;
     private static final int MAX_MOVES_10 = 28;
     private static final int MAX_MOVES_15 = 40;
+    private static final String GAME_NAME = "FloodIt";
     private final FloodItModel model;
-    private final FloodItGUI view;
+    private final FloodItView view;
 
     public FloodItController() {
         this.model = new FloodItModel();
-        this.view = new FloodItGUI(this, this.model);
-        view.display();
+        this.view = new FloodItView(this, this.model);
     }
 
     private void startingPuddleSetup() {
@@ -56,7 +58,7 @@ public class FloodItController {
         });
     }
 
-    private void changeMainPuddleColor(Colors newColor) {
+    private void changeMainPuddleColor(final Colors newColor) {
         model.getMainPuddle().forEach(c -> c.setColor(newColor));
     }
 
@@ -70,7 +72,7 @@ public class FloodItController {
         updateView();
     }
 
-    private int findMaxMoves(int size, int colorsNum) {
+    private int findMaxMoves(final int size, final int colorsNum) {
         switch (size) {
         case 5:
             return MAX_MOVES_5;
@@ -86,7 +88,7 @@ public class FloodItController {
     private void checkResult() {
         if (model.getMoves() > model.getMaxMoves()) {
             System.out.println("YOU LOST!");
-        } else if (model.getMainPuddle().size() == (model.getRowSize() * model.getRowSize())) {
+        } else if (model.getMainPuddle().size() == model.getRowSize() * model.getRowSize()) {
             System.out.println("YOU WIN!");
             view.stop();
         }
@@ -109,6 +111,21 @@ public class FloodItController {
             view.updateCellVisualization(c);
         });
         view.updateMovesVisualization();
+    }
+
+    @Override
+    public GameView getView() {
+        return this.view;
+    }
+
+    @Override
+    public String getGameName() {
+        return GAME_NAME;
+    }
+
+    @Override
+    public void startGame() {
+        view.display();
     }
 
 }
