@@ -31,7 +31,7 @@ public class FloodItView implements GameView {
 
     public FloodItView(FloodItController controller, FloodItModel model) {
         this.frame = new JFrame();
-        this.frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setMinimumSize(new Dimension(400, 500));
 
         cellsMap = new HashMap<>();
@@ -45,7 +45,7 @@ public class FloodItView implements GameView {
 
         this.startPanel = new StartPanel(mainPanel, layout, controller);
         this.gamePanel = null;
-        //this.pausePanel = new PausePanel(mainPanel, layout);
+        this.pausePanel = new JPanel(); //new PausePanel(mainPanel, layout);
 
         mainPanel.add(startPanel, "1");
         mainPanel.add(pausePanel, "3");
