@@ -18,7 +18,7 @@ public class FloodItModel {
         this.numOfColors = 0;
         this.rowSize = 0;
         this.currentColor = null;
-        this.table = null;// new Table(tSize, colorsNumber, selectedColors);
+        this.table = null;
         this.moves = 0;
         this.maxMoves = 0;
         this.mainPuddle = new LinkedList<>();
