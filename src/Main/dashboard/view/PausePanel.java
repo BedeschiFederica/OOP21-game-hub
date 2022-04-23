@@ -1,7 +1,8 @@
-package main.games.floodit.view;
+package main.dashboard.view;
 
 import javax.swing.*;
 
+import main.dashboard.controller.MainController;
 import main.games.floodit.model.Colors;
 
 import java.awt.*;
@@ -12,22 +13,24 @@ public class PausePanel extends JPanel {
 
     private static final long serialVersionUID = -7762097272351186299L;
     private final CardLayout mainLayout;
+    private final MainController mainController;
 
-    public PausePanel(JPanel mainPanel, CardLayout mLayout) {
+    public PausePanel(final JPanel mainPanel, final CardLayout mLayout, final MainController mainController) {
         this.mainLayout = mLayout;
+        this.mainController = mainController;
         this.setBackground(Colors.LIGHT_BLUE.getActualColor());
-        GridBagLayout layout = new GridBagLayout();
+        final GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
 
-        JButton btnRestart = new StyledButton("New Game");
+        final JButton btnRestart = new JButton("New Game");
         btnRestart.setFont(new Font("Tahoma", Font.PLAIN, 25));
         btnRestart.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                mainLayout.show(mainPanel, "1");
+            public void actionPerformed(final ActionEvent e) {
+                mainController.startGame(null);
             }
         });
-        GridBagConstraints restartConstr = new GridBagConstraints();
+        final GridBagConstraints restartConstr = new GridBagConstraints();
         restartConstr.fill = GridBagConstraints.BOTH;
         restartConstr.insets = new Insets(100, 100, 20, 100);
         restartConstr.gridx = 1;
@@ -36,15 +39,15 @@ public class PausePanel extends JPanel {
         restartConstr.weighty = 1;
         add(btnRestart, restartConstr);
 
-        JButton btnResume = new StyledButton("Resume");
+        final JButton btnResume = new JButton("Resume");
         btnResume.setFont(new Font("Tahoma", Font.PLAIN, 25));
         btnResume.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                mainLayout.show(mainPanel, "2");
+            public void actionPerformed(final ActionEvent e) {
+                mainController.resumeGame(null);
             }
         });
-        GridBagConstraints resumeConstr = new GridBagConstraints();
+        final GridBagConstraints resumeConstr = new GridBagConstraints();
         resumeConstr.fill = GridBagConstraints.BOTH;
         resumeConstr.insets = new Insets(20, 100, 20, 100);
         resumeConstr.gridx = 1;
@@ -53,15 +56,15 @@ public class PausePanel extends JPanel {
         resumeConstr.weighty = 1;
         add(btnResume, resumeConstr);
 
-        JButton btnRules = new StyledButton("Rules");
+        final JButton btnRules = new JButton("Rules");
         btnRules.setFont(new Font("Tahoma", Font.PLAIN, 25));
         btnRules.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
 
             }
         });
-        GridBagConstraints rulesConstr = new GridBagConstraints();
+        final GridBagConstraints rulesConstr = new GridBagConstraints();
         rulesConstr.fill = GridBagConstraints.BOTH;
         rulesConstr.insets = new Insets(20, 100, 20, 100);
         rulesConstr.gridx = 1;
@@ -70,15 +73,15 @@ public class PausePanel extends JPanel {
         rulesConstr.weighty = 1;
         add(btnRules, rulesConstr);
 
-        JButton btnExit = new StyledButton("Exit");
+        final JButton btnExit = new JButton("Exit");
         btnExit.setFont(new Font("Tahoma", Font.PLAIN, 25));
         btnExit.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+            public void actionPerformed(final ActionEvent e) {
+                mainController.showMainMenu();
             }
         });
-        GridBagConstraints exitConstr = new GridBagConstraints();
+        final GridBagConstraints exitConstr = new GridBagConstraints();
         exitConstr.fill = GridBagConstraints.BOTH;
         exitConstr.gridx = 1;
         exitConstr.gridy = 4;
