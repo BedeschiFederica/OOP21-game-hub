@@ -9,13 +9,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PausePanel extends JPanel {
+public class MainPausePanel extends JPanel {
 
     private static final long serialVersionUID = -7762097272351186299L;
     private final CardLayout mainLayout;
     private final MainController mainController;
 
-    public PausePanel(final JPanel mainPanel, final CardLayout mLayout, final MainController mainController) {
+    public MainPausePanel(final JPanel mainPanel, final CardLayout mLayout, final MainController mainController) {
         this.mainLayout = mLayout;
         this.mainController = mainController;
         this.setBackground(Colors.LIGHT_BLUE.getActualColor());
