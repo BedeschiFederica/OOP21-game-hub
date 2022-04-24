@@ -1,14 +1,19 @@
 package main.dashboard.view;
 
-import javax.swing.*;
-
 import main.dashboard.controller.MainController;
 
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
-import java.awt.geom.*;
 import java.util.List;
 
+/**
+ * Class that represents the main menu of the application.
+ * It allows the user to choose which game he wants to play.
+ */
 public class MainMenu extends JFrame {
 
     /**
@@ -19,6 +24,13 @@ public class MainMenu extends JFrame {
 
     private final MainController controller;
 
+    /**
+     * Builds a new {@link MainController}.
+     * @param controller
+     *          the main controller
+     * @param gameNames
+     *          the names of the available games
+     */
     public MainMenu(final MainController controller, final List<String> gameNames) {
         this.controller = controller;
 

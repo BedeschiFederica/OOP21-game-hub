@@ -6,10 +6,18 @@ import java.util.Random;
 
 import main.games.numericalbond.controller.Position;
 
+/**
+ * Class that represents a level generator of the game Numerical Bond.
+ */
 public class LevelGenerator {
 
     private Grid grid;
 
+    /**
+     * Builds a new {@link LevelGenerator}.
+     * @param numLines
+     *          the number of lines that the grid of the game will have
+     */
     public LevelGenerator(final int numLines) {
         this.grid = new Grid(numLines);
         generate(numLines);
@@ -57,6 +65,10 @@ public class LevelGenerator {
         this.grid = new Grid(this.grid.getNumLines(), initialisedBlocks);
     }
 
+    /**
+     * Gets the generated grid for the game.
+     * @return the grid
+     */
     public Grid getGrid() {
         return this.grid;
     }

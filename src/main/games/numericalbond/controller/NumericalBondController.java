@@ -6,6 +6,9 @@ import main.games.numericalbond.view.NumericalBondView;
 import main.general.AbstractGameController;
 import main.general.GameView;
 
+/**
+ * Class that represents a controller of the game Numerical bond.
+ */
 public class NumericalBondController extends AbstractGameController {
 
     private static final String GAME_NAME = "Numerical Bond";
@@ -25,6 +28,7 @@ public class NumericalBondController extends AbstractGameController {
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getGameName() {
         return GAME_NAME;
     }
@@ -32,6 +36,7 @@ public class NumericalBondController extends AbstractGameController {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void startGame() {
         this.grid = new LevelGenerator(NUM_GRID_LINES).getGrid();
         this.view = new NumericalBondView(this, NUM_GRID_LINES);
@@ -48,9 +53,17 @@ public class NumericalBondController extends AbstractGameController {
     }
 
     private boolean gameEnded() {
-        return this.grid.isFinished();
+        return this.grid.isComplete();
     }
 
+    /**
+     * Links the two blocks specified by the two given positions.
+     * It manages both model and view.
+     * @param pos1
+     *          the position of the first block
+     * @param pos2
+     *          the position of the second block
+     */
     public void link(final Position pos1, final Position pos2) {
         if (!this.grid.canLink(pos1, pos2)) {
             return;

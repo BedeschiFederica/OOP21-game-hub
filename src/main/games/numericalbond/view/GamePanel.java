@@ -16,12 +16,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Class that represents the game panel of the game Numerical bond.
+ * It shows a grid of blocks (JButtons).
+ */
 public class GamePanel extends JPanel {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = -3838746067867960423L;
+    static final long serialVersionUID = -3838746067867960423L;
 
     private final NumericalBondView view;
     private final Map<JButton, Position> positions = new HashMap<>();
@@ -30,6 +31,11 @@ public class GamePanel extends JPanel {
     private boolean isOneBlockSelected;
     private JButton selectedBlock;
 
+    /**
+     * Builds a new {@link GamePanel}.
+     * @param view
+     *          the view that has the panel
+     */
     public GamePanel(final NumericalBondView view) {
         super();
 
@@ -65,28 +71,50 @@ public class GamePanel extends JPanel {
         this.isOneBlockSelected = true;
     }
 
+    /**
+     * Deselects the selected block.
+     */
     public void deselect() {
         this.selectedBlock.setBackground(getBackground());
         this.isOneBlockSelected = false;
     }
 
+    /**
+     * Sets the number of the block specified by the given position to the given block number.
+     * @param pos
+     *          the position of the block
+     * @param blockNumber
+     *          the block number that has to be set
+     */
     public void setBlockNumber(final Position pos, final int blockNumber) {
         this.blocks.get(pos).setText(Integer.toString(blockNumber));
     }
 
+    /**
+     * Creates a link between the two blocks specified by the given positions.
+     * @param pos1
+     *          the position of the first block
+     * @param pos2
+     *          the position of the second block
+     * @param links
+     *          the number of existing links between the two blocks
+     */
     public void createLink(final Position pos1, final Position pos2, final int links) {
         final JButton source = this.blocks.get(pos1);
         final JButton destination = this.blocks.get(pos2);
         if (links == 1) {
-            this.links.add(new Link(source, destination, links));
+            this.links.add(new Link(source, destination));
         } else if (links == 2) {
-            this.links.get(this.links.indexOf(new Link(source, destination, links))).setNumLinks(links);
+            this.links.get(this.links.indexOf(new Link(source, destination))).setNumLinks(links);
         } else {
-            this.links.remove(new Link(source, destination, links));
+            this.links.remove(new Link(source, destination));
         }
         repaint();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void paintComponent(final Graphics g) {
         super.paintComponent(g);
