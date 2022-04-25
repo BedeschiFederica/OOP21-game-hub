@@ -1,4 +1,4 @@
-package Main.Games.Minefield;
+package main.games.minefield;
 
 import javax.swing.*;
 
@@ -24,22 +24,23 @@ public class EndGame {
         jp.add(jbMenu);
         jf.getContentPane().add(jp);
         jf.pack();
-         
-    } 
-	
-	public void status(boolean state) {
-		if (state==true) {
-			this.jlResult = new JLabel("You Won!!!");
-		} else {this.jlResult = new JLabel("You Lost!Try Again!");}
-		jp.add(jlResult);
-	}
-	
-	
-	public void show() {
-		jf.setVisible(true);
-	}
-	private void hide() {
-		jf.setVisible(false);
-	}
-	
+    }
+
+    public void status(boolean state) {
+        if (state == true) {
+            this.jlResult = new JLabel("You Won!!!");
+        } else {
+            this.jlResult = new JLabel("You Lost!Try Again!");
+        }
+        jp.add(jlResult);
+    }
+
+    public void show() {
+        jf.setVisible(true);
+    }
+
+    private void hide() {
+        jf.setVisible(false);
+    }
+
 }

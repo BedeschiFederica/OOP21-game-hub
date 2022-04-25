@@ -1,7 +1,8 @@
-package Main.Games.Minefield.View;
+package main.games.minefield.view;
 
-import Main.Games.Minefield.Controller.*;
-import Main.Games.Minefield.Model.*;
+import main.games.minefield.controller.*;
+import main.games.minefield.model.*;
+
 import javax.swing.*;
 import java.awt.*;
 
