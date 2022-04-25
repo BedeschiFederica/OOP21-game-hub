@@ -1,6 +1,7 @@
 package main.games.minefield.controller;
 
 import main.games.minefield.model.*;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -49,10 +50,12 @@ public class Cell extends JButton {
     }
 
     public int getType() {
-        /**
-         * method that returns: - 0 if the cell is empty - 1 if there is a mine - 2 of
-         * there is a number
-         */
+    	/**
+		 * method that returns:
+		 * - 0 if the cell is empty
+		 * - 1 if there is a mine
+		 * - 2 of there is a number
+		 */
         return type;
     }
 
