@@ -27,18 +27,16 @@ public class FloodItView implements GameView {
     private GamePanel gamePanel;
     private final StartPanel startPanel;
     private final JPanel pausePanel;
-    final JLabel lblMoves;
 
     public FloodItView(FloodItController controller, FloodItModel model) {
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setMinimumSize(new Dimension(400, 500));
 
-        cellsMap = new HashMap<>();
+        this.cellsMap = new HashMap<>();
         this.controller = controller;
         this.model = model;
-        layout = new CardLayout();
-        lblMoves = new JLabel();
+        this.layout = new CardLayout();
 
         this.mainPanel = new JPanel(layout);
         this.frame.getContentPane().add(mainPanel);
@@ -47,10 +45,10 @@ public class FloodItView implements GameView {
         this.gamePanel = null;
         this.pausePanel = new JPanel(); //new PausePanel(mainPanel, layout);
 
-        mainPanel.add(startPanel, "1");
-        mainPanel.add(pausePanel, "3");
+        this.mainPanel.add(startPanel, "1");
+        this.mainPanel.add(pausePanel, "3");
 
-        layout.show(mainPanel, "1");
+        this.layout.show(mainPanel, "1");
 
     }
 
@@ -75,8 +73,8 @@ public class FloodItView implements GameView {
         });
     }
 
-    public void updateMovesVisualization() {
-        gamePanel.updateLblMoves();
+    public void updateMovesVisualization(String newString) {
+        gamePanel.getLblMoves().setText(newString);
     }
 
     public int getComboSize() {

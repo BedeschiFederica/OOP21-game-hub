@@ -98,7 +98,7 @@ public class FloodItController extends AbstractGameController {
         model.getMainPuddle().forEach(c -> {
             view.updateCellVisualization(c);
         });
-        view.updateMovesVisualization();
+        view.updateMovesVisualization(model.getMoves() + " / " + model.getMaxMoves());
     }
 
     public void setMCounter(MovesCounter newCounter) {

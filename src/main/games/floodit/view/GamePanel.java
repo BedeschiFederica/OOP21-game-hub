@@ -44,7 +44,6 @@ public class GamePanel extends JPanel {
         setBackground(Colors.LIGHT_BLUE.getActualColor());
 
         lblMoves.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
         add(lblMoves, BorderLayout.SOUTH);
 
         final JPanel topPanel = new JPanel();
@@ -100,8 +99,8 @@ public class GamePanel extends JPanel {
 
     }
 
-    public void updateLblMoves() {
-        lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
+    public JLabel getLblMoves() {
+        return this.lblMoves;
     }
 
 }
