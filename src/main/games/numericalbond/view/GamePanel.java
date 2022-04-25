@@ -2,6 +2,7 @@ package main.games.numericalbond.view;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import main.games.numericalbond.controller.Position;
 
@@ -9,12 +10,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Class that represents the game panel of the game Numerical bond.
@@ -23,6 +22,12 @@ import java.util.Optional;
 public class GamePanel extends JPanel {
 
     static final long serialVersionUID = -3838746067867960423L;
+    static final Color BACKGROUND_COLOR = Color.CYAN;
+    static final Color LINES_COLOR = Color.BLUE;
+    static final Color BUTTON_DEFAULT_COLOR = Color.WHITE;
+    static final Color BUTTON_PRESSED_COLOR = Color.LIGHT_GRAY;
+    static final Color BUTTON_CLEARED_COLOR = Color.GREEN;
+    static final Color BUTTON_ERROR_COLOR = Color.RED;
 
     private final NumericalBondView view;
     private final Map<JButton, Position> positions = new HashMap<>();
@@ -42,8 +47,10 @@ public class GamePanel extends JPanel {
         this.view = view;
         final int numLines = this.view.getNumLines();
         this.setLayout(new GridLayout(numLines, numLines,
-                this.view.getSizeConst() * numLines / (2 * numLines - 1),
-                this.view.getSizeConst() * numLines / (2 * numLines - 1)));
+                (int) this.view.getPreferredSize().getWidth() / (2 * numLines - 1),
+                (int) this.view.getPreferredSize().getHeight() / (2 * numLines - 1)));
+        this.setBackground(BACKGROUND_COLOR);
+        this.setForeground(LINES_COLOR);
 
         for (int i = 0; i < numLines; i++) {
             for (int j = 0; j < numLines; j++) {
@@ -60,6 +67,7 @@ public class GamePanel extends JPanel {
                         this.view.getController().link(this.positions.get(this.selectedBlock), this.positions.get(jb));
                     }
                 });
+                jb.setBackground(BUTTON_DEFAULT_COLOR);
                 this.add(jb);
             }
         }
@@ -67,7 +75,7 @@ public class GamePanel extends JPanel {
 
     private void select(final JButton jb) {
         this.selectedBlock = jb;
-        this.selectedBlock.setBackground(Color.LIGHT_GRAY);
+        this.selectedBlock.setBackground(BUTTON_PRESSED_COLOR);
         this.isOneBlockSelected = true;
     }
 
@@ -75,7 +83,7 @@ public class GamePanel extends JPanel {
      * Deselects the selected block.
      */
     public void deselect() {
-        this.selectedBlock.setBackground(getBackground());
+        this.selectedBlock.setBackground(BUTTON_DEFAULT_COLOR);
         this.isOneBlockSelected = false;
     }
 
@@ -88,6 +96,28 @@ public class GamePanel extends JPanel {
      */
     public void setBlockNumber(final Position pos, final int blockNumber) {
         this.blocks.get(pos).setText(Integer.toString(blockNumber));
+        if (blockNumber > 0) {
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    GamePanel.this.blocks.get(pos).setBackground(BUTTON_DEFAULT_COLOR);
+                }
+            }); 
+        } else if (blockNumber < 0) {
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    GamePanel.this.blocks.get(pos).setBackground(BUTTON_ERROR_COLOR);
+                }
+            });
+        } else {
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    GamePanel.this.blocks.get(pos).setBackground(BUTTON_CLEARED_COLOR);
+                }
+            });
+        }
     }
 
     /**

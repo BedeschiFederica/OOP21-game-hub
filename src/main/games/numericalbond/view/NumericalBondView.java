@@ -1,9 +1,15 @@
 package main.games.numericalbond.view;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.BorderLayout;
 
 import main.games.numericalbond.controller.NumericalBondController;
@@ -16,7 +22,13 @@ import main.general.GameView;
 public class NumericalBondView extends JFrame implements GameView {
 
     private static final long serialVersionUID = 3090475070554411461L;
-    private static final int SIZE_CONST = 100; // to be modified
+    private static final int FRAME_SIZE_DIV = 2;
+    private static final int SEPARATOR_GAP_DIV_X = 200;
+    private static final int SEPARATOR_GAP_DIV_Y = 100;
+    private static final Color UP_PANEL_COLOR = Color.BLUE;
+    private static final Color OPTIONS_PANEL_COLOR = Color.ORANGE;
+    private static final Color PAUSE_BUTTON_COLOR = Color.YELLOW;
+    private static final Color PAUSE_BUTTON_TEXT_COLOR = Color.RED;
 
     private final NumericalBondController controller;
     private final int numLines;
@@ -34,14 +46,24 @@ public class NumericalBondView extends JFrame implements GameView {
         this.numLines = numLines;
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(SIZE_CONST * numLines, SIZE_CONST * numLines));
+        final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setPreferredSize(new Dimension(screenSize.width / FRAME_SIZE_DIV, screenSize.height / FRAME_SIZE_DIV));
 
         final JPanel mainPanel = new JPanel(new BorderLayout());
         final GamePanel gamePanel = new GamePanel(this);
         this.gamePanel = gamePanel;
         mainPanel.add(gamePanel, BorderLayout.CENTER);
-        final JPanel optionsPanel = new JPanel();               // temporary
-        mainPanel.add(optionsPanel, BorderLayout.SOUTH);        // temporary
+        final JPanel upPanel = new JPanel(new BorderLayout());
+        final JPanel optionsPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+        optionsPanel.setBackground(OPTIONS_PANEL_COLOR);
+        upPanel.add(optionsPanel, BorderLayout.CENTER);
+        upPanel.add(new JSeparator(JSeparator.HORIZONTAL), BorderLayout.SOUTH);
+        upPanel.setBackground(UP_PANEL_COLOR);
+        //mainPanel.add(optionsPanel, BorderLayout.NORTH);
+        mainPanel.add(upPanel, BorderLayout.NORTH);
+        final int gapX = screenSize.width / SEPARATOR_GAP_DIV_X;
+        final int gapY = screenSize.height / SEPARATOR_GAP_DIV_Y;
+        gamePanel.setBorder(BorderFactory.createEmptyBorder(gapY, gapX, gapY, gapX));
         this.getContentPane().add(mainPanel);
 
         final JButton pause = new JButton("Pause");
@@ -49,16 +71,18 @@ public class NumericalBondView extends JFrame implements GameView {
             this.setVisible(false);
             this.controller.pause();
         });
-        optionsPanel.add(pause); // temporary
+        pause.setBackground(PAUSE_BUTTON_COLOR);
+        pause.setForeground(PAUSE_BUTTON_TEXT_COLOR);
+        optionsPanel.add(pause);
         // mainPanel.add(pause, BorderLayout.SOUTH);
 
-        // temporary
-        final JButton menu = new JButton("Menu");
-        menu.addActionListener(e -> {
-            this.setVisible(false);
-            this.controller.closeGame();
-        });
-        optionsPanel.add(menu);
+//        // temporary
+//        final JButton menu = new JButton("Menu");
+//        menu.addActionListener(e -> {
+//            this.setVisible(false);
+//            this.controller.closeGame();
+//        });
+//        optionsPanel.add(menu);
 
         this.pack();
         this.setLocationByPlatform(true);
@@ -94,14 +118,6 @@ public class NumericalBondView extends JFrame implements GameView {
      */
     public void deselect() {
         this.gamePanel.deselect();
-    }
-
-    /**
-     * Gets the size constant of the frame.
-     * @return the size constant of the frame
-     */
-    public int getSizeConst() {
-        return SIZE_CONST;
     }
 
     /**
