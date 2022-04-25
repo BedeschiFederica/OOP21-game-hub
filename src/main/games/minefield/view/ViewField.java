@@ -2,6 +2,7 @@ package main.games.minefield.view;
 
 import main.games.minefield.controller.*;
 import main.games.minefield.model.*;
+
 import javax.swing.*;
 import java.awt.*;
 

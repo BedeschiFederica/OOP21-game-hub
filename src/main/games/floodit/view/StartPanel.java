@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Colors;
+import main.games.floodit.model.MaxMovesCounter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -80,7 +81,8 @@ public class StartPanel extends JPanel {
         btnStart.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
+                controller.setMCounter(new MaxMovesCounter(getRowSize()));
                 controller.newGame(getRowSize(), getColors());
                 mainLayout.show(mainPanel, "2");
             }

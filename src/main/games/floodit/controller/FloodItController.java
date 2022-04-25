@@ -6,20 +6,23 @@ import java.util.List;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
-import main.games.floodit.view.FloodItGUI;
+import main.games.floodit.model.MaxMovesCounter;
+import main.games.floodit.model.MovesCounter;
+import main.games.floodit.view.FloodItView;
+import main.general.AbstractGameController;
+import main.general.GameView;
 
-public class FloodItController {
+public class FloodItController extends AbstractGameController {
 
-    private static final int MAX_MOVES_5 = 16;
-    private static final int MAX_MOVES_10 = 28;
-    private static final int MAX_MOVES_15 = 40;
+    private static final String GAME_NAME = "Flood It";
     private final FloodItModel model;
-    private final FloodItGUI view;
+    private final FloodItView view;
+    private MovesCounter mCounter;
 
     public FloodItController() {
         this.model = new FloodItModel();
-        this.view = new FloodItGUI(this, this.model);
-        view.display();
+        this.view = new FloodItView(this, this.model);
+        this.mCounter = null;
     }
 
     private void startingPuddleSetup() {
@@ -32,7 +35,7 @@ public class FloodItController {
     }
 
     public void spreadPuddle(List<Cell> cellsToCheck, Colors currentColor) {
-        List<Cell> checkList = new LinkedList<>();
+        final List<Cell> checkList = new LinkedList<>();
 
         cellsToCheck.forEach(cell -> {
             cell.getAdjacentCells().forEach(c -> {
@@ -56,11 +59,11 @@ public class FloodItController {
         });
     }
 
-    private void changeMainPuddleColor(Colors newColor) {
+    private void changeMainPuddleColor(final Colors newColor) {
         model.getMainPuddle().forEach(c -> c.setColor(newColor));
     }
 
-    public void onClick(Cell clickedCell) {
+    public void onClick(final Cell clickedCell) {
         spreadPuddle(model.getMainPuddle(), clickedCell.getColor());
         updateFlooding();
         model.setCurrentColor(clickedCell.getColor());
@@ -70,34 +73,21 @@ public class FloodItController {
         updateView();
     }
 
-    private int findMaxMoves(int size, int colorsNum) {
-        switch (size) {
-        case 5:
-            return MAX_MOVES_5;
-        case 10:
-            return MAX_MOVES_10;
-        case 15:
-            return MAX_MOVES_15;
-        default:
-            return 0;
-        }
-    }
-
     private void checkResult() {
         if (model.getMoves() > model.getMaxMoves()) {
             System.out.println("YOU LOST!");
-        } else if (model.getMainPuddle().size() == (model.getRowSize() * model.getRowSize())) {
+        } else if (model.getMainPuddle().size() == model.getRowSize() * model.getRowSize()) {
             System.out.println("YOU WIN!");
             view.stop();
         }
     }
 
-    public void newGame(int size, int colors) {
+    public void newGame(final int size, final int colors) {
         model.clear();
         model.setTSize(size);
         model.setNumofColors(colors);
         model.setSelectedColors(Colors.getRandomColors(colors));
-        model.setMaxMoves(findMaxMoves(size, colors));
+        model.setMaxMoves(mCounter.count());
         model.setTable();
         startingPuddleSetup();
         view.createGameboard();
@@ -109,6 +99,25 @@ public class FloodItController {
             view.updateCellVisualization(c);
         });
         view.updateMovesVisualization();
+    }
+
+    public void setMCounter(MovesCounter newCounter) {
+        this.mCounter = newCounter;
+    }
+
+    @Override
+    public GameView getView() {
+        return this.view;
+    }
+
+    @Override
+    public String getGameName() {
+        return GAME_NAME;
+    }
+
+    @Override
+    public void startGame() {
+        view.display();
     }
 
 }

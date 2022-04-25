@@ -5,16 +5,22 @@ public class Pair<X, Y> {
     private final X x;
     private final Y y;
 
-    public Pair(X x, Y y) {
+    public Pair(final X x, final Y y) {
         super();
         this.x = x;
         this.y = y;
     }
 
+    /**
+     * @return X
+     */
     public X getX() {
         return x;
     }
 
+    /**
+     * @return Y
+     */
     public Y getY() {
         return y;
     }
