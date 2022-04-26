@@ -1,7 +1,6 @@
 package main.dashboard.view;
 
 import main.dashboard.controller.MainController;
-import main.general.GameColor;
 import main.general.GameController;
 
 import javax.swing.Box;
@@ -9,14 +8,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.text.AttributeSet.ColorAttribute;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Class that represents the main menu of the application.
@@ -30,37 +27,7 @@ public class MainMenuGUI extends JFrame implements MainMenu {
     private static final long serialVersionUID = -7833926492439181130L;
     private static final int FRAME_SIZE_DIV = 3;
     private static final Color BACKGROUND_COLOR = Color.ORANGE;
-
-    /**
-     * MIN_COLOR has to be in range 0 - 255.
-     * Note: it must be true that MIN_COLOR + COLOR_RANGE <= 256
-     */
-    private static final int MIN_COLOR = 0;
-
-    /**
-     * COLOR_RANGE has to be in range 0 - 256.
-     * Note: it must be true that MIN_COLOR + COLOR_RANGE <= 256
-     */
-    private static final int COLOR_RANGE = 256;
-
-    private static final Map<GameColor, Color> COLORS;
-    static {
-        final Map<GameColor, Color> map = new HashMap<>();
-        map.put(GameColor.WHITE, Color.WHITE);
-        map.put(GameColor.LIGHT_GRAY, Color.LIGHT_GRAY);
-        map.put(GameColor.GRAY, Color.GRAY);
-        map.put(GameColor.DARK_GRAY, Color.DARK_GRAY);
-        map.put(GameColor.BLACK, Color.BLACK);
-        map.put(GameColor.RED, Color.RED);
-        map.put(GameColor.PINK, Color.PINK);
-        map.put(GameColor.ORANGE, Color.ORANGE);
-        map.put(GameColor.YELLOW, Color.YELLOW);
-        map.put(GameColor.GREEN, Color.GREEN);
-        map.put(GameColor.MAGENTA, Color.MAGENTA);
-        map.put(GameColor.CYAN, Color.CYAN);
-        map.put(GameColor.BLUE, Color.BLUE);
-        COLORS = Collections.unmodifiableMap(map);
-    }
+    private static final Color BUTTONS_COLOR = Color.YELLOW;
 
     private final MainController mainController;
 
@@ -92,7 +59,7 @@ public class MainMenuGUI extends JFrame implements MainMenu {
                 this.dispose();
             });
             jb.setAlignmentX(CENTER_ALIGNMENT);
-            jb.setBackground(COLORS.get(c.getGameColor()));
+            jb.setBackground(BUTTONS_COLOR);
 //            jb.setBackground(new Color(MIN_COLOR + random.nextInt(COLOR_RANGE),
 //                    MIN_COLOR + random.nextInt(COLOR_RANGE), 
 //                    MIN_COLOR + random.nextInt(COLOR_RANGE)));
