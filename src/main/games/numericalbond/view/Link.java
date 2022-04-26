@@ -120,4 +120,12 @@ public class Link {
                 || Objects.equals(this.source, other.destination) && Objects.equals(this.destination, other.source);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return "Link [numLinks=" + numLinks + "]";
+    }
+
 }

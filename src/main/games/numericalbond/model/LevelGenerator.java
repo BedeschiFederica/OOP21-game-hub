@@ -1,69 +1,14 @@
 package main.games.numericalbond.model;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
-
-import main.games.numericalbond.controller.Position;
-
 /**
- * Class that represents a level generator of the game Numerical Bond.
+ * Interface that represents a level generator of the game Numerical Bond.
  */
-public class LevelGenerator {
-
-    private static final Random RANDOM_SEED = new Random();
-
-    private Grid grid;
-
-    /**
-     * Builds a new {@link LevelGenerator}.
-     * @param numLines
-     *          the number of lines that the grid of the game will have
-     */
-    public LevelGenerator(final int numLines) {
-        this.grid = new Grid(numLines);
-        generate(numLines);
-    }
-
-    private void generate(final int numLines) {
-        createRandomLinks(numLines);
-        initialiseBlocks();
-    }
-
-    private void createRandomLinks(final int numLines) {
-        final int numLinks = (int) (Math.pow(numLines, 3) / 2);
-        for (int count = 0; count < numLinks;) {
-            final Position firstPos = new Position(RANDOM_SEED.nextInt(numLines), RANDOM_SEED.nextInt(numLines));
-            final Block firstBlock = this.grid.getBlockAt(firstPos);
-            Direction direction;
-            Optional<Position> secondPos;
-            do {
-                direction = Direction.getRandomDirection();
-                secondPos = this.grid.getNearbyPosition(firstPos, direction);
-            } while (secondPos.isEmpty());
-            if (firstBlock.canLink(direction)) {
-                firstBlock.addLink(direction);
-            } else {
-                continue;
-            }
-            this.grid.getBlockAt(secondPos.get()).addLink(direction.opposite());
-            count++;
-        }
-    }
-
-    private void initialiseBlocks() {
-        final Map<Position, Block> initialisedBlocks = new HashMap<>();
-        this.grid.getBlocks().forEach((p, b) -> initialisedBlocks.put(p, new Block(b.getCurrentLinks())));
-        this.grid = new Grid(this.grid.getNumLines(), initialisedBlocks);
-    }
+public interface LevelGenerator {
 
     /**
      * Gets the generated grid for the game.
      * @return the grid
      */
-    public Grid getGrid() {
-        return this.grid;
-    }
+    Grid getGrid();
 
 }

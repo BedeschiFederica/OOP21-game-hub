@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-import main.games.numericalbond.controller.Position;
+import main.games.numericalbond.utility.Position;
 
 /**
  * Class that represents a (square) grid of blocks.

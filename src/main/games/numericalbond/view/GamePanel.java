@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import main.games.numericalbond.controller.Position;
+import main.games.numericalbond.utility.Position;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,7 +29,7 @@ public class GamePanel extends JPanel {
     static final Color BUTTON_CLEARED_COLOR = Color.GREEN;
     static final Color BUTTON_ERROR_COLOR = Color.RED;
 
-    private final NumericalBondView view;
+    private final NumericalBondGUI view;
     private final Map<JButton, Position> positions = new HashMap<>();
     private final Map<Position, JButton> blocks = new HashMap<>();
     private final List<Link> links = new ArrayList<>();
@@ -41,7 +41,7 @@ public class GamePanel extends JPanel {
      * @param view
      *          the view that has the panel
      */
-    public GamePanel(final NumericalBondView view) {
+    public GamePanel(final NumericalBondGUI view) {
         super();
 
         this.view = view;

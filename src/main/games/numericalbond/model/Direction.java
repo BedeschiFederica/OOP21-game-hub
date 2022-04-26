@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.function.Function;
 
-import main.games.numericalbond.controller.Position;
+import main.games.numericalbond.utility.Position;
 
 /**
  * Enum that represents a direction.

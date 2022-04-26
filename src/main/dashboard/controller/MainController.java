@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import main.dashboard.view.MainMenu;
+import main.dashboard.view.MainMenuGUI;
 import main.general.GameController;
 
 /**
@@ -27,7 +28,7 @@ public class MainController {
             this.controllers.put(c.getGameName(), c);
             c.setMainController(this);
         }
-        this.menu = new MainMenu(this, getGameNames());
+        this.menu = new MainMenuGUI(this, getGameNames());
     }
 
     private List<String> getGameNames() {
