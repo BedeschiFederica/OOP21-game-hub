@@ -46,14 +46,22 @@ public class GameStartGUI extends JFrame {
         titleConstr.gridy = 0;
         mainPanel.add(lblTitle, titleConstr);
 
-        final JButton btnRules = new JButton("RULES");
-        btnRules.addActionListener(e -> System.out.println("Rules")); // JDialog?
-        final GridBagConstraints rulesConstr = new GridBagConstraints();
-        rulesConstr.fill = GridBagConstraints.VERTICAL;
-        //rulesConstr.gridwidth = 2;
-        rulesConstr.gridx = 0; // 1
-        rulesConstr.gridy = 1; // 3
-        mainPanel.add(btnRules, rulesConstr);
+        final JPanel inputPanel = new JPanel();
+        final GridBagConstraints inputConstr = new GridBagConstraints();
+        inputConstr.fill = GridBagConstraints.VERTICAL;
+        inputConstr.gridx = 0;
+        inputConstr.gridy = 1;
+        mainPanel.add(inputPanel, inputConstr);
+        this.inputPanels.forEach(p -> inputPanel.add(p));
+
+//        final JButton btnRules = new JButton("RULES");
+//        btnRules.addActionListener(e -> System.out.println("Rules")); // JDialog?
+//        final GridBagConstraints rulesConstr = new GridBagConstraints();
+//        rulesConstr.fill = GridBagConstraints.VERTICAL;
+//        //rulesConstr.gridwidth = 2;
+//        rulesConstr.gridx = 0; // 1
+//        rulesConstr.gridy = 2; // 3
+//        mainPanel.add(btnRules, rulesConstr);
 
         final JButton btnStart = new JButton("PLAY");
         btnStart.addActionListener(e -> {
@@ -68,14 +76,6 @@ public class GameStartGUI extends JFrame {
         // startConstr.weightx = 1;
         // startConstr.weighty = 1;
         mainPanel.add(btnStart, startConstr);
-
-        final JPanel inputPanel = new JPanel();
-        final GridBagConstraints inputConstr = new GridBagConstraints();
-        inputConstr.fill = GridBagConstraints.VERTICAL;
-        inputConstr.gridx = 0;
-        inputConstr.gridy = 3;
-        mainPanel.add(inputPanel, inputConstr);
-        this.inputPanels.forEach(p -> inputPanel.add(p));
 
         this.pack();
         this.setLocationByPlatform(true);

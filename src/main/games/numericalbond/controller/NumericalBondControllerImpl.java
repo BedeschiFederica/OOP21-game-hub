@@ -10,7 +10,6 @@ import main.games.numericalbond.view.NumericalBondGUI;
 import main.games.numericalbond.view.NumericalBondInputPanelsCreator;
 import main.games.numericalbond.view.NumericalBondView;
 import main.general.AbstractGameController;
-import main.general.GameColor;
 import main.general.GameView;
 
 /**
@@ -19,7 +18,6 @@ import main.general.GameView;
 public class NumericalBondControllerImpl extends AbstractGameController implements NumericalBondController {
 
     private static final String GAME_NAME = "Numerical Bond";
-    private static final GameColor GAME_COLOR = GameColor.YELLOW;
 
     private NumericalBondView view;
     private Grid grid;
@@ -46,14 +44,6 @@ public class NumericalBondControllerImpl extends AbstractGameController implemen
     @Override
     public String getGameName() {
         return GAME_NAME;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public GameColor getGameColor() {
-        return GAME_COLOR;
     }
 
     /**

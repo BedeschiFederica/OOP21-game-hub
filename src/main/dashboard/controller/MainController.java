@@ -32,10 +32,6 @@ public class MainController {
         this.menu = new MainMenuGUI(this, List.copyOf(this.controllers.values()));
     }
 
-//    private List<String> getGameNames() {
-//        return this.controllers.values().stream().map(c -> c.getGameName()).collect(Collectors.toList());
-//    }
-
     /**
      * Shows the start panel of the game specified by the given name.
      * @param gameName

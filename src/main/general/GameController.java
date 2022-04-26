@@ -36,12 +36,6 @@ public interface GameController {
     String getGameName();
 
     /**
-     * Gets the color of the game.
-     * @return the color of the game
-     */
-    GameColor getGameColor();
-
-    /**
      * Starts the game.
      * @param inputs
      *          the inputs needed by the game
