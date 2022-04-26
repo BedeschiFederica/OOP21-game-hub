@@ -1,7 +1,8 @@
-package Main.Games.Minefield.Controller;
+package main.games.minefield.controller;
 
-import Main.Games.Minefield.Model.*;
-import javax.swing.*;
+import main.games.minefield.model.Handler;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import java.awt.event.*;
 
 public class Cell extends JButton {
@@ -13,11 +14,16 @@ public class Cell extends JButton {
 
     private Handler handler;
 
-    public Cell(int type, int position, boolean discovered, boolean flagged, Handler handler) {
-    	/**
-    	 * variable used for knowing information about a cell
-    	 *
-    	 */
+    /**
+     * variable used for knowing information about a cell.
+     * @param type is used for knowing if the cell is empty, a mine or a number.
+     * @param position is needed for knowing the position of the cell.
+     * @param discovered says if the cell is discovered by the player or not.
+     * @param flagged is used to know if the player put a flag in the cell or not.
+     * @param handler that makes all the check for the game.
+     *
+     */
+    public Cell(final int type, final int position, final boolean discovered, final boolean flagged, final Handler handler) {
         this.type = type;
         this.position = position;
         this.discovered = discovered;
@@ -26,62 +32,78 @@ public class Cell extends JButton {
 
         addMouseListener(new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                if(SwingUtilities.isRightMouseButton(e)) {
+            public void mouseClicked(final MouseEvent e) {
+                if (SwingUtilities.isRightMouseButton(e)) {
                     rightClickButton();
                 } else {
                     clickButton();
                 }
             }
 
-            public void mouseEntered(MouseEvent e) {}
-            public void mouseExited(MouseEvent e) {}
-            public void mousePressed(MouseEvent e) {}
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(final MouseEvent e) { }
+            public void mouseExited(final MouseEvent e) { }
+            public void mousePressed(final MouseEvent e) { }
+            public void mouseReleased(final MouseEvent e) { }
         });
     }
 
+    /**
+     *@return method that returns the type.
+     * - 0 if the cell is empty
+     * - 1 if there is a mine
+     * - 2 of there is a number
+     */
     public int getType() {
-    	/**
-		 * method that returns:
-		 * - 0 if the cell is empty
-		 * - 1 if there is a mine
-		 * - 2 of there is a number
-		 */
         return type;
     }
 
+    /**
+     *@return the position of the cell.
+     */
     public int getPosition() {
         return position;
     }
 
+    /**
+     *@return if the cell is discovered.
+     */
     public boolean isDiscovered() {
         return discovered;
     }
 
-    public void setDiscovered(boolean d) {
-        this.discovered = d;
+    /**
+     *sets if the cell is discovered or not.
+     *@param discover if cell is pressed by the player.
+     */
+    public void setDiscovered(final boolean discover) {
+        this.discovered = discover;
     }
 
+    /**
+     *@return if the cell is flagged.
+     */
     public boolean isFlagged() {
         return flagged;
     }
 
-    public void setFlagged(boolean f) {
-        this.flagged = f;
+    /**
+     *@param flag used to set if cell is flagged
+     */
+    public void setFlagged(final boolean flag) {
+        this.flagged = flag;
     }
 
+    /**
+     *method that discovers the cells.
+     */
     public void clickButton() {
-    	/**
-		 * method that discovers the cells
-		 */
         handler.click(this);
     }
 
+    /**
+     * method that puts the flag in the cell.
+     */
     public void rightClickButton() {
-    	/**
-		 * method that puts the flag in the cell
-		 */
         handler.rightClick(this);
     }
 }
