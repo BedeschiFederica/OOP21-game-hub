@@ -3,8 +3,10 @@ package main.games.minefield.controller;
 
 import main.games.minefield.model.Handler;
 import main.games.minefield.view.ViewField;
+import main.general.AbstractGameController;
+import main.general.GameView;
 
-public class StartGame {
+public class StartGame extends AbstractGameController{
 
     /**
      * the GRINDSIZE is needed for knowing the size of the table.
@@ -14,14 +16,28 @@ public class StartGame {
      * the MINES is needed for knowing how many mines there are.
      */
     public static final int MINES = (int) Math.round(GRIDSIZE * GRIDSIZE * .1);
-
+    /**
+     * the NAME of the game.
+    */
+    public static final String NAME = "Minefield";
     private Handler handler = new Handler();
+    private final ViewField viewField = new ViewField(GRIDSIZE, "Minefield - ", this, handler);
 
-    public StartGame() {
-        new ViewField(GRIDSIZE, "Minefield - ", this, handler);
+    @Override
+    public GameView getView() {
+        // TODO Auto-generated method stub
+        return viewField;
     }
 
-    public static void main(final String[] args) {
+    @Override
+    public String getGameName() {
+        return NAME;
+    }
+
+    @Override
+    public void startGame() {
+        // TODO Auto-generated method stub
+        new ViewField(GRIDSIZE, "Minefield - ", this, handler);
         new StartGame();
     }
 

@@ -24,7 +24,7 @@ import main.general.GameView;
  * 
  * 
  */
-public class EndGame extends AbstractGameController {
+public class EndGame {
   private JFrame jf = new JFrame();
   private JLabel jlResult = new JLabel();
   private JPanel jp = new JPanel();
@@ -46,11 +46,11 @@ public class EndGame extends AbstractGameController {
     jbMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
     jbNewGame.addActionListener(e -> {
       hide(); 
-      startGame();
+      mainController.startGame(gameController.getGameName());
       });
     jbMenu.addActionListener(e -> { 
       hide(); 
-      closeGame(); });
+      mainController.showMainMenu(); });
     jp.setBackground(Color.cyan);
     jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
     jp.add(jbNewGame);
@@ -86,19 +86,6 @@ public class EndGame extends AbstractGameController {
   private void hide() {
     jf.setVisible(false);
   }
-@Override
-public GameView getView() {
-    // TODO Auto-generated method stub
-    return null;
-}
-@Override
-public String getGameName() {
-    // TODO Auto-generated method stub
-    return null;
-}
-@Override
-public void startGame() {
-    // TODO Auto-generated method stub
-}
+
 
 }

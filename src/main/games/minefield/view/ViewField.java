@@ -8,9 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import main.games.minefield.controller.StartGame;
 import main.games.minefield.model.Handler;
+import main.general.GameView;
 import main.games.minefield.controller.Field;
 
-public class ViewField {
+public class ViewField implements GameView {
 
     /**
      * frame is here so it can be used in every method.
@@ -38,7 +39,6 @@ public class ViewField {
         frame.setContentPane(jpField);
         update(0);
         frame.pack();
-        frame.setVisible(true);
     }
 
     /**
@@ -47,5 +47,10 @@ public class ViewField {
      */
     public static void update(final int flag) {
         frame.setTitle(title + "Mines: " + StartGame.MINES + " - Flags: " + flag);
+    }
+
+    @Override
+    public void setVisible(final boolean visible) {
+        frame.setVisible(visible);
     }
 }
