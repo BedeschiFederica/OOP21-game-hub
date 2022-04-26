@@ -1,7 +1,7 @@
-package Main.Games.Minefield.Controller;
+package main.games.minefield.controller;
 
-import Main.Games.Minefield.Model.*;
-import Main.Games.Minefield.View.*;
+import main.games.minefield.model.*;
+import main.games.minefield.view.*;
 
 public class StartGame {
 
@@ -11,12 +11,11 @@ public class StartGame {
     private Handler handler = new Handler();
 
     public StartGame() {
-        new ViewField( GRIDSIZE,"Minefield - " ,this, handler);
+        new ViewField(GRIDSIZE, "Minefield - ", this, handler);
     }
 
     public static void main(String[] args) {
         new StartGame();
-        
     }
 
 }
