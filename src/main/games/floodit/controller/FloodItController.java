@@ -3,6 +3,7 @@ package main.games.floodit.controller;
 import java.util.LinkedList;
 import java.util.List;
 
+import main.dashboard.view.InputPanel;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
@@ -10,6 +11,7 @@ import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.model.MovesCounter;
 import main.games.floodit.view.FloodItView;
 import main.general.AbstractGameController;
+import main.general.GameColor;
 import main.general.GameView;
 
 public class FloodItController extends AbstractGameController {
@@ -117,11 +119,24 @@ public class FloodItController extends AbstractGameController {
     }
 
     @Override
-    public void startGame() {
+    public void startGame(int... inputs) {
         view.display();
     }
 
     public void showStartPanel() {
         view.showStart();
     }
+
+    @Override
+    public List<InputPanel> getInputPanels() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public GameColor getGameColor() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

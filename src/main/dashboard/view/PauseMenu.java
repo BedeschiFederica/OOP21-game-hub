@@ -9,6 +9,7 @@ import main.general.GameController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class PauseMenu extends Frame {
 
@@ -27,7 +28,7 @@ public class PauseMenu extends Frame {
         btnRestart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                mainController.startGame(gameController.getGameName());
+                mainController.startGame(gameController, null);
             }
         });
         final GridBagConstraints restartConstr = new GridBagConstraints();
@@ -90,7 +91,7 @@ public class PauseMenu extends Frame {
         exitConstr.weighty = 1;
         panel.add(btnExit, exitConstr);
     }
-    
+
     public void display() {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
