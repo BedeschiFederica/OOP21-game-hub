@@ -1,15 +1,20 @@
 package main.dashboard.view;
 
-import javax.swing.*;
-
 import main.dashboard.controller.MainController;
 import main.games.floodit.model.Colors;
 import main.general.GameController;
 
-import java.awt.*;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.GridBagConstraints;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class PauseMenu extends JFrame {
 
@@ -90,7 +95,7 @@ public class PauseMenu extends JFrame {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
-        this.setSize(sw / 2, sw / 2);
+        this.setSize(sw / 2, sh / 2);
         this.setLocationByPlatform(true);
         this.setVisible(true);
     }

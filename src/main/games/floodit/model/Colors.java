@@ -67,6 +67,7 @@ public enum Colors {
 
     /**
      * Get a list of random colors of length n.
+     * 
      * @param n The number of colors.
      * @return A list of random colors.
      */
@@ -81,7 +82,10 @@ public enum Colors {
             colorNum = MAX_COLOR_NUMBER;
         }
 
+<<<<<<< HEAD
         //final Random randColor = new Random();
+=======
+>>>>>>> a3fa17c8b1044763704d2f4c5e691c50015645c0
         for (int i = 0; i < (MAX_COLOR_NUMBER - colorNum); i++) {
             result.remove(RAND_COLOR.nextInt(MAX_COLOR_NUMBER - i));
         }
