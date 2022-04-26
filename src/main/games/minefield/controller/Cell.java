@@ -40,10 +40,14 @@ public class Cell extends JButton {
                 }
             }
 
-            public void mouseEntered(final MouseEvent e) { }
-            public void mouseExited(final MouseEvent e) { }
-            public void mousePressed(final MouseEvent e) { }
-            public void mouseReleased(final MouseEvent e) { }
+            public void mouseEntered(final MouseEvent e) {
+            }
+            public void mouseExited(final MouseEvent e) {
+            }
+            public void mousePressed(final MouseEvent e) {
+            }
+            public void mouseReleased(final MouseEvent e) {
+            }
         });
     }
 
