@@ -48,7 +48,16 @@ public class Block {
     }
 
     /**
+     * Gets the current number of total links of the block.
+     * @return the current number of total links of the block
+     */
+    public int getCurrentLinks() {
+        return this.linksPerSide.values().stream().reduce(0, (x, y) -> x + y);
+    }
+
+    /**
      * Tells if the block can be linked in the given direction or not.
+     * It checks the number of links per side.
      * @param direction
      *          the direction of the link
      * @return true if the block can be linked in the given direction
@@ -60,7 +69,8 @@ public class Block {
 
     /**
      * Adds a link in the given direction.
-     * If the block can't be linked in the given direction, it throws an IllegalStateException.
+     * Note: you should call the method canLink() before calling this one, otherwise
+     *       you'll get an IllegalStateException if the two blocks can't link.
      * @param direction
      *          the direction of the link
      */
@@ -88,14 +98,6 @@ public class Block {
         } else {
             addLink(direction);
         }
-    }
-
-    /**
-     * Gets the current number of total links of the block.
-     * @return the current number of total links of the block
-     */
-    public int getCurrentLinks() {
-        return this.linksPerSide.values().stream().reduce(0, (x, y) -> x + y);
     }
 
     /**

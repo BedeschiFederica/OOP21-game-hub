@@ -34,6 +34,8 @@ public enum Direction {
      */
     LEFT(p -> new Position(p.getX(), p.getY() - 1));
 
+    private static final Random RANDOM_SEED = new Random();
+
     private final Function<Position, Position> calculatePositionFunc;
 
     Direction(final Function<Position, Position> calculatePositionFunc) {
@@ -83,6 +85,6 @@ public enum Direction {
      * @return a random direction
      */
     public static Direction getRandomDirection() {
-        return Direction.values()[new Random().nextInt(Direction.values().length)];
+        return Direction.values()[RANDOM_SEED.nextInt(Direction.values().length)];
     }
 }

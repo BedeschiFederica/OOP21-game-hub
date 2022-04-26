@@ -2,6 +2,7 @@ package main.games.numericalbond.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 import main.games.numericalbond.controller.Position;
@@ -10,6 +11,8 @@ import main.games.numericalbond.controller.Position;
  * Class that represents a level generator of the game Numerical Bond.
  */
 public class LevelGenerator {
+
+    private static final Random RANDOM_SEED = new Random();
 
     private Grid grid;
 
@@ -30,33 +33,23 @@ public class LevelGenerator {
 
     private void createRandomLinks(final int numLines) {
         final int numLinks = (int) (Math.pow(numLines, 3) / 2);
-        final Random rand = new Random();
         for (int count = 0; count < numLinks;) {
-            final Position randomPos = new Position(rand.nextInt(numLines), rand.nextInt(numLines));
-            final Block firstBlock = this.grid.getBlockAt(randomPos);
-            Direction randomDir;
-            Block secondBlock;
+            final Position firstPos = new Position(RANDOM_SEED.nextInt(numLines), RANDOM_SEED.nextInt(numLines));
+            final Block firstBlock = this.grid.getBlockAt(firstPos);
+            Direction direction;
+            Optional<Position> secondPos;
             do {
-                randomDir = Direction.getRandomDirection();
-                try {
-                    secondBlock = this.grid.getNearbyBlock(randomPos, randomDir);
-                    break;
-                } catch (IllegalStateException e) {
-                    continue;
-                }
-            } while (true);
-            try {
-                firstBlock.addLink(randomDir);
-            } catch (IllegalStateException e) {
+                direction = Direction.getRandomDirection();
+                secondPos = this.grid.getNearbyPosition(firstPos, direction);
+            } while (secondPos.isEmpty());
+            if (firstBlock.canLink(direction)) {
+                firstBlock.addLink(direction);
+            } else {
                 continue;
             }
-            secondBlock.addLink(randomDir.opposite());
+            this.grid.getBlockAt(secondPos.get()).addLink(direction.opposite());
             count++;
-            // System.out.println(firstBlock);
-            // System.out.println(secondBlock);
         }
-        // System.out.println(this.grid);
-        // this.grid.getBlocks().forEach((p, b) -> System.out.println(p + ", CurrentLinks=" + b.getCurrentLinks()));
     }
 
     private void initialiseBlocks() {
