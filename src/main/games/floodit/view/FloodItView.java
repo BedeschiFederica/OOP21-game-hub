@@ -5,10 +5,17 @@ import main.games.floodit.model.Cell;
 import main.games.floodit.model.Table;
 import main.general.GameView;
 
-import javax.swing.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.awt.*;
+import java.util.Map;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class FloodItView implements GameView {
 

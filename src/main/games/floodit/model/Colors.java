@@ -54,6 +54,7 @@ public enum Colors {
     MAGENTA(9, "Magenta", new Color(255, 0, 84));
 
     private static final int MAX_COLOR_NUMBER = 10;
+    private static final Random RAND_COLOR = new Random();
     private final int colorValue;
     private final String name;
     private final Color actualColor;
@@ -66,6 +67,7 @@ public enum Colors {
 
     /**
      * Get a list of random colors of length n.
+     * 
      * @param n The number of colors.
      * @return A list of random colors.
      */
@@ -80,9 +82,8 @@ public enum Colors {
             colorNum = MAX_COLOR_NUMBER;
         }
 
-        final Random randColor = new Random();
         for (int i = 0; i < (MAX_COLOR_NUMBER - colorNum); i++) {
-            result.remove(randColor.nextInt(MAX_COLOR_NUMBER - i));
+            result.remove(RAND_COLOR.nextInt(MAX_COLOR_NUMBER - i));
         }
 
         return result;

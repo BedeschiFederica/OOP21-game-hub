@@ -1,5 +1,10 @@
 package main.games.floodit.view;
 
+import main.games.floodit.controller.FloodItController;
+import main.games.floodit.model.Cell;
+import main.games.floodit.model.Colors;
+import main.games.floodit.model.Table;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Font;
@@ -8,17 +13,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
-import main.games.floodit.controller.FloodItController;
-import main.games.floodit.model.Cell;
-import main.games.floodit.model.Colors;
-import main.games.floodit.model.FloodItModel;
-import main.games.floodit.model.Table;
 
 public class GamePanel extends JPanel {
 
@@ -29,8 +27,8 @@ public class GamePanel extends JPanel {
     private final Map<JButton, Cell> cellsMap;
     private final List<JButton> cellButtons;
 
-    public GamePanel(JPanel mainPanel, CardLayout mLayout, FloodItController controller,
-            Map<JButton, Cell> map, List<JButton> cellButtons, final Table gameTable) {
+    public GamePanel(final JPanel mainPanel, final CardLayout mLayout, final FloodItController controller,
+            final Map<JButton, Cell> map, final List<JButton> cellButtons, final Table gameTable) {
         this.mainLayout = mLayout;
         this.lblMoves = new JLabel();
         this.cellsMap = map;
@@ -52,7 +50,7 @@ public class GamePanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.showStartPanel();
+                controller.pause();
             }
         });
         topPanel.add(btnPause);
