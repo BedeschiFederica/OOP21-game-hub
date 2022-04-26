@@ -3,11 +3,12 @@ package main.dashboard.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+import main.dashboard.view.EndGame;
 import main.dashboard.view.GameStartGUI;
 import main.dashboard.view.MainMenu;
 import main.dashboard.view.MainMenuGUI;
+import main.dashboard.view.PauseMenu;
 import main.general.GameController;
 
 /**
@@ -57,18 +58,14 @@ public class MainController {
      * @param controller
      *          the controller of the game
      */
-    public void showGameEnding(final GameController controller) {
-        // calling class GameEnding
-
-        // temporary (this will be called by class GameEnding)
-        showMainMenu();
+    public void showGameEnding(final GameController controller, final boolean isVictory) {
+        new EndGame(this, controller, isVictory);
     }
 
     /**
      * Shows the main menu of the application.
      */
-    public void showMainMenu() { // called by class GameEnding
-        //this.menu.pack();
+    public void showMainMenu() {
         this.menu.setVisible(true);
     }
 
@@ -78,11 +75,7 @@ public class MainController {
      *          the controller of the game
      */
     public void pauseGame(final GameController controller) {
-        // calling class PauseMenu (passing argument gameName)
-
-        // temporary (this will be called by class PauseMenu)
-        resumeGame(controller);
-        System.out.println("pause");
+        new PauseMenu(this, controller).display();
     }
 
     /**
@@ -90,7 +83,7 @@ public class MainController {
      * @param controller
      *          the controller of the game
      */
-    public void resumeGame(final GameController controller) { // called by class PauseMenu
+    public void resumeGame(final GameController controller) {
         controller.resume();
     }
 

@@ -44,8 +44,10 @@ public interface GameController {
 
     /**
      * Ends the game, showing its result.
+     * @param isVictory
+     *          indicates if it's a victory or not
      */
-    void endGame();
+    void endGame(boolean isVictory);
 
     /**
      * Pauses the game.

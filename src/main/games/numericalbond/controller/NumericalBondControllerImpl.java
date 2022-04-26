@@ -84,9 +84,8 @@ public class NumericalBondControllerImpl extends AbstractGameController implemen
         this.view.setBlockNumber(pos2, getBlockNumber(pos2));
         this.view.deselect();
         if (gameEnded()) {
-            System.out.println("You won!");
+            endGame(true);
             this.view.dispose();
-            endGame();
         }
     }
 

@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
-public class PauseMenu extends Frame {
+public class PauseMenu extends JFrame {
 
     private static final long serialVersionUID = -7762097272351186299L;
 
@@ -25,11 +25,9 @@ public class PauseMenu extends Frame {
 
         final JButton btnRestart = new JButton("New Game");
         btnRestart.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        btnRestart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                mainController.startGame(gameController, null);
-            }
+        btnRestart.addActionListener(e -> {
+            mainController.showStartPanel(gameController.getGameName());
+            this.dispose();
         });
         final GridBagConstraints restartConstr = new GridBagConstraints();
         restartConstr.fill = GridBagConstraints.BOTH;
@@ -42,11 +40,9 @@ public class PauseMenu extends Frame {
 
         final JButton btnResume = new JButton("Resume");
         btnResume.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        btnResume.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                mainController.resumeGame(gameController);
-            }
+        btnResume.addActionListener(e -> {
+            mainController.resumeGame(gameController);
+            this.dispose();
         });
         final GridBagConstraints resumeConstr = new GridBagConstraints();
         resumeConstr.fill = GridBagConstraints.BOTH;
@@ -57,30 +53,28 @@ public class PauseMenu extends Frame {
         resumeConstr.weighty = 1;
         panel.add(btnResume, resumeConstr);
 
-        final JButton btnRules = new JButton("Rules");
-        btnRules.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        btnRules.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-
-            }
-        });
-        final GridBagConstraints rulesConstr = new GridBagConstraints();
-        rulesConstr.fill = GridBagConstraints.BOTH;
-        rulesConstr.insets = new Insets(20, 100, 20, 100);
-        rulesConstr.gridx = 1;
-        rulesConstr.gridy = 3;
-        rulesConstr.weightx = 1;
-        rulesConstr.weighty = 1;
-        panel.add(btnRules, rulesConstr);
+//        final JButton btnRules = new JButton("Rules");
+//        btnRules.setFont(new Font("Tahoma", Font.PLAIN, 25));
+//        btnRules.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(final ActionEvent e) {
+//
+//            }
+//        });
+//        final GridBagConstraints rulesConstr = new GridBagConstraints();
+//        rulesConstr.fill = GridBagConstraints.BOTH;
+//        rulesConstr.insets = new Insets(20, 100, 20, 100);
+//        rulesConstr.gridx = 1;
+//        rulesConstr.gridy = 3;
+//        rulesConstr.weightx = 1;
+//        rulesConstr.weighty = 1;
+//        panel.add(btnRules, rulesConstr);
 
         final JButton btnExit = new JButton("Exit");
         btnExit.setFont(new Font("Tahoma", Font.PLAIN, 25));
-        btnExit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                mainController.showMainMenu();
-            }
+        btnExit.addActionListener(e -> {
+            mainController.showMainMenu();
+            this.dispose();
         });
         final GridBagConstraints exitConstr = new GridBagConstraints();
         exitConstr.fill = GridBagConstraints.BOTH;

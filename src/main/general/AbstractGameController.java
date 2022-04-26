@@ -21,8 +21,8 @@ public abstract class AbstractGameController implements GameController {
      * {@inheritDoc}
      */
     @Override
-    public void endGame() {
-        this.mainController.showGameEnding(this);
+    public void endGame(final boolean isVictory) {
+        this.mainController.showGameEnding(this, isVictory);
     }
 
     /**
