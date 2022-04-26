@@ -10,7 +10,7 @@ public final class Launcher {
     }
 
     public static void main(final String[] args) {
-        new MainController(new NumericalBondController()); //, new MinefieldController(), new FloodItController());
+        new MainController(new NumericalBondController(), new FloodItController()); //, new MinefieldController();
     }
 
 }

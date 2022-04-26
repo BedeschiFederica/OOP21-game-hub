@@ -2,7 +2,7 @@ package main.games.floodit.view;
 
 import javax.swing.*;
 
-import main.dashboard.view.MainPausePanel;
+import main.dashboard.view.PauseMenu;
 import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.FloodItModel;

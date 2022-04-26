@@ -10,11 +10,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainPausePanel extends Frame {
+public class PauseMenu extends Frame {
 
     private static final long serialVersionUID = -7762097272351186299L;
 
-    public MainPausePanel(final JPanel mainPanel, final CardLayout mLayout, final MainController mainController, final GameController gameController) {
+    public PauseMenu(final MainController mainController, final GameController gameController) {
 
         final JPanel panel = new JPanel();
         panel.setBackground(Colors.LIGHT_BLUE.getActualColor());
@@ -89,5 +89,14 @@ public class MainPausePanel extends Frame {
         exitConstr.weightx = 1;
         exitConstr.weighty = 1;
         panel.add(btnExit, exitConstr);
+    }
+    
+    public void display() {
+        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        final int sw = (int) screen.getWidth();
+        final int sh = (int) screen.getHeight();
+        this.setSize(sw / 2, sw / 2);
+        this.setLocationByPlatform(true);
+        this.setVisible(true);
     }
 }
