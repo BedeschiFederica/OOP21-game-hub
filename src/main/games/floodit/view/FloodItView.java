@@ -6,6 +6,7 @@ import main.dashboard.view.MainPausePanel;
 import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.FloodItModel;
+import main.games.floodit.model.Table;
 import main.general.GameView;
 
 import java.util.*;
@@ -19,7 +20,7 @@ public class FloodItView implements GameView {
     private final Map<JButton, Cell> cellsMap;
 
     private final FloodItController controller;
-    private final FloodItModel model;
+    private Table gameTable;
 
     private final JFrame frame;
     private final CardLayout layout;
@@ -28,14 +29,14 @@ public class FloodItView implements GameView {
     private final StartPanel startPanel;
     private final JPanel pausePanel;
 
-    public FloodItView(FloodItController controller, FloodItModel model) {
+    public FloodItView(FloodItController controller) {
         this.frame = new JFrame();
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setMinimumSize(new Dimension(400, 500));
 
         this.cellsMap = new HashMap<>();
         this.controller = controller;
-        this.model = model;
+        this.gameTable = null;
         this.layout = new CardLayout();
 
         this.mainPanel = new JPanel(layout);
@@ -48,7 +49,7 @@ public class FloodItView implements GameView {
         this.mainPanel.add(startPanel, "1");
         this.mainPanel.add(pausePanel, "3");
 
-        this.layout.show(mainPanel, "1");
+        showStart();
 
     }
 
@@ -61,7 +62,7 @@ public class FloodItView implements GameView {
     }
 
     public void createGameboard() {
-        this.gamePanel = new GamePanel(mainPanel, layout, controller, model, cellsMap, cellButtons);
+        this.gamePanel = new GamePanel(mainPanel, layout, controller, cellsMap, cellButtons, gameTable);
         this.mainPanel.add(gamePanel, "2");
     }
 
@@ -89,11 +90,18 @@ public class FloodItView implements GameView {
         cellButtons.forEach(b -> b.setEnabled(false));
     }
 
+    public void setGameTable(Table newTable) {
+        this.gameTable = newTable;
+    }
+
     @Override
     public void setVisible(boolean visible) {
         if (visible) {
-            layout.show(mainPanel, "1");
+            layout.show(mainPanel, "2");
         }
     }
-
+    
+    public void showStart() {
+        this.layout.show(mainPanel, "1");
+    }
 }
