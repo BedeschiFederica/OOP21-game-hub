@@ -2,6 +2,9 @@ package main.general;
 
 import main.dashboard.controller.MainController;
 
+/**
+ * Abstract class that represents a generic controller of a game.
+ */
 public abstract class AbstractGameController implements GameController {
 
     private MainController mainController;
