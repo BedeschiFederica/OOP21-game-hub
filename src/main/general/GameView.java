@@ -12,4 +12,9 @@ public interface GameView {
      */
     void setVisible(boolean visible);
 
+    /**
+     * Closes the view.
+     */
+    void dispose();
+
 }

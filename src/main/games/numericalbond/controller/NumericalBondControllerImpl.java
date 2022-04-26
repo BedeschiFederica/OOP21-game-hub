@@ -85,7 +85,6 @@ public class NumericalBondControllerImpl extends AbstractGameController implemen
         this.view.deselect();
         if (gameEnded()) {
             endGame(true);
-            this.view.dispose();
         }
     }
 
