@@ -74,7 +74,7 @@ public class FloodItView implements GameView {
         this.mainPanel.add(gamePanel, "2");
     }
 
-    public void updateCellVisualization(Cell cellToUpdate) {
+    public void updateCellVisualization(final Cell cellToUpdate) {
         cellButtons.forEach(b -> {
             if (cellsMap.get(b).equals(cellToUpdate)) {
                 b.setBackground(cellToUpdate.getColor().getActualColor());

@@ -54,6 +54,7 @@ public enum Colors {
     MAGENTA(9, "Magenta", new Color(255, 0, 84));
 
     private static final int MAX_COLOR_NUMBER = 10;
+    private static final int MIN_COLOR_NUMBER = 1;
     private static final Random RAND_COLOR = new Random();
     private final int colorValue;
     private final String name;
@@ -80,6 +81,10 @@ public enum Colors {
             System.err.println("Input number (" + n + ") was too large: input number adapted to the upper bound ("
                     + MAX_COLOR_NUMBER + ")");
             colorNum = MAX_COLOR_NUMBER;
+        } else if (n < MIN_COLOR_NUMBER) {
+            System.err.println("Input number (" + n + ") was too little: input number adapted to the lower bound ("
+                    + MIN_COLOR_NUMBER + ")");
+            colorNum = MIN_COLOR_NUMBER;
         }
 
         for (int i = 0; i < (MAX_COLOR_NUMBER - colorNum); i++) {
