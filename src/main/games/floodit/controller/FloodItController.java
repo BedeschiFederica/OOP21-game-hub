@@ -1,18 +1,16 @@
 package main.games.floodit.controller;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import main.dashboard.view.InputPanel;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
-import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.model.MovesCounter;
 import main.games.floodit.view.FloodItView;
 import main.general.AbstractGameController;
-import main.general.GameColor;
 import main.general.GameView;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class FloodItController extends AbstractGameController {
 
@@ -27,8 +25,8 @@ public class FloodItController extends AbstractGameController {
         this.mCounter = null;
     }
 
+    // Sets up the starting puddle and color
     private void startingPuddleSetup() {
-        // Sets up the starting puddle and color
         model.getMainPuddle().clear();
         model.getTable().getCell(0, 0).flood();
         model.getMainPuddle().add(model.getTable().getCell(0, 0));
@@ -129,14 +127,7 @@ public class FloodItController extends AbstractGameController {
 
     @Override
     public List<InputPanel> getInputPanels() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public GameColor getGameColor() {
-        // TODO Auto-generated method stub
-        return null;
+        return List.of(new InputPanel("Cells:", List.of(5, 10, 15)), new InputPanel("Colors:", List.of(4, 5, 6, 7, 8, 9, 10)));
     }
 
 }

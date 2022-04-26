@@ -1,21 +1,19 @@
 package main.dashboard.view;
 
+import main.dashboard.controller.MainController;
+import main.games.floodit.model.Colors;
+import main.general.GameController;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
-
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import main.dashboard.controller.MainController;
-import main.games.floodit.model.Colors;
-import main.general.GameController;
 
 public class GameStartGUI extends JFrame {
 
