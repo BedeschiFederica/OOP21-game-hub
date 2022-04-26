@@ -86,6 +86,24 @@ public class EndGame {
   private void hide() {
     jf.setVisible(false);
   }
+<<<<<<< HEAD
 
 
+=======
+@Override
+public GameView getView() {
+    // TODO Auto-generated method stub
+    return null;
+}
+@Override
+public String getGameName() {
+    // TODO Auto-generated method stub
+    return null;
+}
+@Override
+public void startGame() {
+    // TODO Auto-generated method stub
+}
+  
+>>>>>>> 39f450dd1fc83013ee33a962d46a104ba84278ef
 }

@@ -1,6 +1,7 @@
 package main.games.minefield.controller;
 
 import main.games.minefield.model.Handler;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
