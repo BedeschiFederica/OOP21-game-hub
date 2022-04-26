@@ -7,16 +7,13 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.dashboard.controller.MainController;
-import main.general.AbstractGameController;
 import main.general.GameController;
-import main.general.GameView;
 
 
 /** 
@@ -46,7 +43,7 @@ public class EndGame {
     jbMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
     jbNewGame.addActionListener(e -> {
       hide(); 
-      mainController.startGame(gameController.getGameName());
+      mainController.startGame(gameController);
       });
     jbMenu.addActionListener(e -> { 
       hide(); 
@@ -86,24 +83,4 @@ public class EndGame {
   private void hide() {
     jf.setVisible(false);
   }
-<<<<<<< HEAD
-
-
-=======
-@Override
-public GameView getView() {
-    // TODO Auto-generated method stub
-    return null;
-}
-@Override
-public String getGameName() {
-    // TODO Auto-generated method stub
-    return null;
-}
-@Override
-public void startGame() {
-    // TODO Auto-generated method stub
-}
-  
->>>>>>> 39f450dd1fc83013ee33a962d46a104ba84278ef
 }

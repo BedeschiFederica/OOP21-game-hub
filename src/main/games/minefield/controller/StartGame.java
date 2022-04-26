@@ -1,9 +1,13 @@
 package main.games.minefield.controller;
 
 
+import java.util.List;
+
+import main.dashboard.view.InputPanel;
 import main.games.minefield.model.Handler;
 import main.games.minefield.view.ViewField;
 import main.general.AbstractGameController;
+import main.general.GameColor;
 import main.general.GameView;
 
 public class StartGame extends AbstractGameController{
@@ -34,9 +38,21 @@ public class StartGame extends AbstractGameController{
         return NAME;
     }
 
+
     @Override
-    public void startGame() {
+    public List<InputPanel> getInputPanels() {
         // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public GameColor getGameColor() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void startGame(final int... inputs) {
         new ViewField(GRIDSIZE, "Minefield - ", this, handler);
         new StartGame();
     }
