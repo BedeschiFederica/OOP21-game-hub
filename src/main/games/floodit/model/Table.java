@@ -111,5 +111,9 @@ public class Table {
     public List<Cell> getAllCells() { // Valutare anche creazione foreach() con predicate o consumer
         return this.board;
     }
+    
+    public int getBoardSize() { // Valutare anche creazione foreach() con predicate o consumer
+        return this.boardSize;
+    }
 
 }

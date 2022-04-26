@@ -18,23 +18,19 @@ import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
+import main.games.floodit.model.Table;
 
 public class GamePanel extends JPanel {
 
     private static final long serialVersionUID = 5507460523553525591L;
-    // private final FloodItController controller;
-    private final FloodItModel model;
-    // private final JPanel mainPanel;
+
     private final CardLayout mainLayout;
     private final JLabel lblMoves;
     private final Map<JButton, Cell> cellsMap;
     private final List<JButton> cellButtons;
 
-    public GamePanel(JPanel mainPanel, CardLayout mLayout, FloodItController controller, FloodItModel model,
-            Map<JButton, Cell> map, List<JButton> cellButtons) {
-        // this.controller = controller;
-        this.model = model;
-        // this.mainPanel = mainPanel;
+    public GamePanel(JPanel mainPanel, CardLayout mLayout, FloodItController controller,
+            Map<JButton, Cell> map, List<JButton> cellButtons, final Table gameTable) {
         this.mainLayout = mLayout;
         this.lblMoves = new JLabel();
         this.cellsMap = map;
@@ -44,7 +40,6 @@ public class GamePanel extends JPanel {
         setBackground(Colors.LIGHT_BLUE.getActualColor());
 
         lblMoves.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
         add(lblMoves, BorderLayout.SOUTH);
 
         final JPanel topPanel = new JPanel();
@@ -57,7 +52,7 @@ public class GamePanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainLayout.show(mainPanel, "3");
+                controller.showStartPanel();
             }
         });
         topPanel.add(btnPause);
@@ -77,21 +72,21 @@ public class GamePanel extends JPanel {
         });
         topPanel.add(btnExit);
 
-        final JPanel boardPanel = new JPanel(new GridLayout(model.getRowSize(), model.getRowSize()));
+        final JPanel boardPanel = new JPanel(new GridLayout(gameTable.getBoardSize(), gameTable.getBoardSize()));
         boardPanel.setBackground(Colors.LIGHT_BLUE.getActualColor());
 
         ActionListener al = e -> {
-            var clickedCell = (JButton) e.getSource();
+            final var clickedCell = (JButton) e.getSource();
             controller.onClick(cellsMap.get(clickedCell));
         };
 
-        for (int i = 0; i < model.getRowSize(); i++) {
-            for (int j = 0; j < model.getRowSize(); j++) {
+        for (int i = 0; i < gameTable.getBoardSize(); i++) {
+            for (int j = 0; j < gameTable.getBoardSize(); j++) {
                 final JButton button = new JButton(" ");
-                button.setBackground(model.getTable().getCell(i, j).getColor().getActualColor());
+                button.setBackground(gameTable.getCell(i, j).getColor().getActualColor());
                 button.addActionListener(al);
                 this.cellButtons.add(button);
-                this.cellsMap.put(button, model.getTable().getCell(i, j));
+                this.cellsMap.put(button, gameTable.getCell(i, j));
                 boardPanel.add(button);
             }
         }
@@ -100,8 +95,8 @@ public class GamePanel extends JPanel {
 
     }
 
-    public void updateLblMoves() {
-        lblMoves.setText((model.getMoves() + " / " + model.getMaxMoves()));
+    public JLabel getLblMoves() {
+        return this.lblMoves;
     }
 
 }

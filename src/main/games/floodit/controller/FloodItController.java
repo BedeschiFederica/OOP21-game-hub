@@ -21,7 +21,7 @@ public class FloodItController extends AbstractGameController {
 
     public FloodItController() {
         this.model = new FloodItModel();
-        this.view = new FloodItView(this, this.model);
+        this.view = new FloodItView(this);
         this.mCounter = null;
     }
 
@@ -90,6 +90,7 @@ public class FloodItController extends AbstractGameController {
         model.setMaxMoves(mCounter.count());
         model.setTable();
         startingPuddleSetup();
+        view.setGameTable(model.getTable());
         view.createGameboard();
         updateView();
     }
@@ -98,7 +99,7 @@ public class FloodItController extends AbstractGameController {
         model.getMainPuddle().forEach(c -> {
             view.updateCellVisualization(c);
         });
-        view.updateMovesVisualization();
+        view.updateMovesVisualization(model.getMoves() + " / " + model.getMaxMoves());
     }
 
     public void setMCounter(MovesCounter newCounter) {
@@ -120,4 +121,7 @@ public class FloodItController extends AbstractGameController {
         view.display();
     }
 
+    public void showStartPanel() {
+        view.showStart();
+    }
 }
