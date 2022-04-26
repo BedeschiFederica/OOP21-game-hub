@@ -1,6 +1,9 @@
 package main.general;
 
+import java.util.List;
+
 import main.dashboard.controller.MainController;
+import main.dashboard.view.InputPanel;
 
 /**
  * Interface of a generic game controller.
@@ -15,6 +18,12 @@ public interface GameController {
     void setMainController(MainController mainController);
 
     /**
+     * Gets the input panels of the game.
+     * @return the input panels of the game
+     */
+    List<InputPanel> getInputPanels();
+
+    /**
      * Gets the view of the game.
      * @return the view of the game
      */
@@ -27,9 +36,17 @@ public interface GameController {
     String getGameName();
 
     /**
-     * Starts the game.
+     * Gets the color of the game.
+     * @return the color of the game
      */
-    void startGame();
+    GameColor getGameColor();
+
+    /**
+     * Starts the game.
+     * @param inputs
+     *          the inputs needed by the game
+     */
+    void startGame(int... inputs);
 
     /**
      * Ends the game, showing its result.

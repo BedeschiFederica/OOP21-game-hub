@@ -1,6 +1,8 @@
 package main.dashboard.view;
 
 import main.dashboard.controller.MainController;
+import main.general.GameColor;
+import main.general.GameController;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -11,8 +13,10 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 /**
  * Class that represents the main menu of the application.
@@ -39,17 +43,36 @@ public class MainMenuGUI extends JFrame implements MainMenu {
      */
     private static final int COLOR_RANGE = 256;
 
-    private final MainController controller;
+    private static final Map<GameColor, Color> COLORS;
+    static {
+        final Map<GameColor, Color> map = new HashMap<>();
+        map.put(GameColor.WHITE, Color.WHITE);
+        map.put(GameColor.LIGHT_GRAY, Color.LIGHT_GRAY);
+        map.put(GameColor.GRAY, Color.GRAY);
+        map.put(GameColor.DARK_GRAY, Color.DARK_GRAY);
+        map.put(GameColor.BLACK, Color.BLACK);
+        map.put(GameColor.RED, Color.RED);
+        map.put(GameColor.PINK, Color.PINK);
+        map.put(GameColor.ORANGE, Color.ORANGE);
+        map.put(GameColor.YELLOW, Color.YELLOW);
+        map.put(GameColor.GREEN, Color.GREEN);
+        map.put(GameColor.MAGENTA, Color.MAGENTA);
+        map.put(GameColor.CYAN, Color.CYAN);
+        map.put(GameColor.BLUE, Color.BLUE);
+        COLORS = Collections.unmodifiableMap(map);
+    }
+
+    private final MainController mainController;
 
     /**
      * Builds a new {@link MainController}.
-     * @param controller
+     * @param mainController
      *          the main controller
-     * @param gameNames
-     *          the names of the available games
+     * @param controllers
+     *          the controllers of the games
      */
-    public MainMenuGUI(final MainController controller, final List<String> gameNames) {
-        this.controller = controller;
+    public MainMenuGUI(final MainController mainController, final List<GameController> controllers) {
+        this.mainController = mainController;
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -61,17 +84,18 @@ public class MainMenuGUI extends JFrame implements MainMenu {
         panel.add(Box.createVerticalGlue());
         this.getContentPane().add(panel);
 
-        final Random random = new Random();
-        for (final String name : gameNames) {
-            final JButton jb = new JButton(name);
+        //final Random random = new Random();
+        for (final GameController c : controllers) {
+            final JButton jb = new JButton(c.getGameName());
             jb.addActionListener(e -> {
-                this.controller.startGame(((JButton) e.getSource()).getText());
+                this.mainController.showStartPanel(((JButton) e.getSource()).getText());
                 this.dispose();
             });
             jb.setAlignmentX(CENTER_ALIGNMENT);
-            jb.setBackground(new Color(MIN_COLOR + random.nextInt(COLOR_RANGE),
-                    MIN_COLOR + random.nextInt(COLOR_RANGE), 
-                    MIN_COLOR + random.nextInt(COLOR_RANGE)));
+            jb.setBackground(COLORS.get(c.getGameColor()));
+//            jb.setBackground(new Color(MIN_COLOR + random.nextInt(COLOR_RANGE),
+//                    MIN_COLOR + random.nextInt(COLOR_RANGE), 
+//                    MIN_COLOR + random.nextInt(COLOR_RANGE)));
             panel.add(jb);
             panel.add(Box.createVerticalGlue());
         }

@@ -1,11 +1,16 @@
 package main.games.numericalbond.controller;
 
+import java.util.List;
+
+import main.dashboard.view.InputPanel;
 import main.games.numericalbond.model.Grid;
 import main.games.numericalbond.model.LevelGeneratorImpl;
 import main.games.numericalbond.utility.Position;
 import main.games.numericalbond.view.NumericalBondGUI;
+import main.games.numericalbond.view.NumericalBondInputPanelsCreator;
 import main.games.numericalbond.view.NumericalBondView;
 import main.general.AbstractGameController;
+import main.general.GameColor;
 import main.general.GameView;
 
 /**
@@ -14,10 +19,18 @@ import main.general.GameView;
 public class NumericalBondControllerImpl extends AbstractGameController implements NumericalBondController {
 
     private static final String GAME_NAME = "Numerical Bond";
-    private static final int NUM_GRID_LINES = 3;
+    private static final GameColor GAME_COLOR = GameColor.YELLOW;
 
     private NumericalBondView view;
     private Grid grid;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<InputPanel> getInputPanels() {
+        return NumericalBondInputPanelsCreator.getInputPanels();
+    }
 
     /**
      * {@inheritDoc}
@@ -39,9 +52,18 @@ public class NumericalBondControllerImpl extends AbstractGameController implemen
      * {@inheritDoc}
      */
     @Override
-    public void startGame() {
-        this.grid = new LevelGeneratorImpl(NUM_GRID_LINES).getGrid();
-        this.view = new NumericalBondGUI(this, NUM_GRID_LINES);
+    public GameColor getGameColor() {
+        return GAME_COLOR;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void startGame(final int... inputs) {
+        final int numGridLines = inputs[0];
+        this.grid = new LevelGeneratorImpl(numGridLines).getGrid();
+        this.view = new NumericalBondGUI(this, numGridLines);
         setupView();
     }
 

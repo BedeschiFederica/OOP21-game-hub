@@ -14,6 +14,7 @@ import java.awt.BorderLayout;
 
 import main.games.numericalbond.controller.NumericalBondController;
 import main.games.numericalbond.utility.Position;
+import main.general.GameColor;
 
 /**
  * Class that represents the view of the game Numerical bond.
@@ -24,6 +25,7 @@ public class NumericalBondGUI extends JFrame implements NumericalBondView {
     private static final int FRAME_SIZE_DIV = 2;
     private static final int SEPARATOR_GAP_DIV_X = 200;
     private static final int SEPARATOR_GAP_DIV_Y = 100;
+    private static final GameColor GAME_COLOR = GameColor.GREEN;
     private static final Color UP_PANEL_COLOR = Color.BLUE;
     private static final Color OPTIONS_PANEL_COLOR = Color.ORANGE;
     private static final Color PAUSE_BUTTON_COLOR = Color.YELLOW;
@@ -86,6 +88,14 @@ public class NumericalBondGUI extends JFrame implements NumericalBondView {
         this.pack();
         this.setLocationByPlatform(true);
         this.setVisible(true);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public GameColor getGameColor() {
+        return GAME_COLOR;
     }
 
     /**

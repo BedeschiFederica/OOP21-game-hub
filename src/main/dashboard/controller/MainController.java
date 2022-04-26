@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import main.dashboard.view.GameStartGUI;
 import main.dashboard.view.MainMenu;
 import main.dashboard.view.MainMenuGUI;
 import main.general.GameController;
@@ -28,29 +29,31 @@ public class MainController {
             this.controllers.put(c.getGameName(), c);
             c.setMainController(this);
         }
-        this.menu = new MainMenuGUI(this, getGameNames());
+        this.menu = new MainMenuGUI(this, List.copyOf(this.controllers.values()));
     }
 
-    private List<String> getGameNames() {
-        return this.controllers.values().stream().map(c -> c.getGameName()).collect(Collectors.toList());
-    }
+//    private List<String> getGameNames() {
+//        return this.controllers.values().stream().map(c -> c.getGameName()).collect(Collectors.toList());
+//    }
 
     /**
-     * Starts the game specified by the given name.
+     * Shows the start panel of the game specified by the given name.
      * @param gameName
-     *          the name of the game
+     *         the name of the game
      */
-    public void startGame(final String gameName) {
-        this.controllers.get(gameName).startGame();
+    public void showStartPanel(final String gameName) {
+        new GameStartGUI(this, this.controllers.get(gameName));
     }
 
     /**
      * Starts the game specified by the given controller.
      * @param controller
      *          the controller of the game
+     * @param inputs
+     *          the inputs needed by the game
      */
-    public void startGame(final GameController controller) {
-        controller.startGame();
+    public void startGame(final GameController controller, final int... inputs) {
+        controller.startGame(inputs);
     }
 
     /**

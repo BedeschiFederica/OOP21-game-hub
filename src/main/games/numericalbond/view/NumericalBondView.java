@@ -3,6 +3,9 @@ package main.games.numericalbond.view;
 import main.games.numericalbond.utility.Position;
 import main.general.GameView;
 
+/**
+ * Interface that represents a view of the game Numerical bond.
+ */
 public interface NumericalBondView extends GameView {
 
     /**
