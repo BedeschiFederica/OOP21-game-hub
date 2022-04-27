@@ -2,8 +2,8 @@ package main.games.minefield.model;
 
 import java.awt.Color;
 
-import main.games.minefield.EndGame;
 import main.games.minefield.view.ViewField;
+import main.dashboard.view.EndGame;
 import main.games.minefield.controller.Cell;
 import main.games.minefield.controller.Field;
 import main.games.minefield.controller.MinefieldController;

@@ -1,4 +1,4 @@
-package main.games.minefield;
+package main.dashboard.view;
 
 import java.awt.Color;
 import java.awt.Component;
