@@ -18,7 +18,7 @@ public final class Launcher {
      *          ignored
      */
     public static void main(final String[] args) {
-        new MainController(new NumericalBondControllerImpl(), new FloodItController()); //, new MinefieldController();
+        new MainController(new NumericalBondControllerImpl(), new FloodItController()); //, new MinefieldController());
     }
 
 }
