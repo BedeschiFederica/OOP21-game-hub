@@ -93,10 +93,9 @@ public class FloodItController extends AbstractGameController {
     // Checks if the player won or not.
     private void checkResult() {
         if (model.getMoves() > model.getMaxMoves()) {
-            System.out.println("YOU LOST!");
+            this.endGame(false);
         } else if (model.getMainPuddle().size() == model.getRowSize() * model.getRowSize()) {
-            System.out.println("YOU WIN!");
-            view.stop();
+            this.endGame(true);
         }
     }
 

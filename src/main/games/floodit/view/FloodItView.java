@@ -72,13 +72,6 @@ public class FloodItView implements GameView {
     }
 
     /**
-     * Disables all the buttons of the table.
-     */
-    public void stop() {
-        cellButtons.forEach(b -> b.setEnabled(false));
-    }
-
-    /**
      * @return The view frame.
      */
     public JFrame getFrame() {
