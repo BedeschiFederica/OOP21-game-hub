@@ -39,6 +39,7 @@ public class Grid {
      *          the map of the blocks that the grid will have
      */
     public Grid(final int numLines, final Map<Position, Block> blocks) {
+        Objects.requireNonNull(blocks);
         this.numLines = numLines;
         this.blocks = Map.copyOf(blocks);
     }
