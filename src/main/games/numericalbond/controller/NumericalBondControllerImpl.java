@@ -63,7 +63,7 @@ public class NumericalBondControllerImpl extends AbstractGameController implemen
     }
 
     private int getBlockNumber(final Position pos) {
-        return this.grid.getBlockAt(pos).getMaxLinks() - this.grid.getBlockAt(pos).getCurrentLinks();
+        return this.grid.getBlockAt(pos).getLinksToHave() - this.grid.getBlockAt(pos).getCurrentLinks();
     }
 
     private boolean gameEnded() {

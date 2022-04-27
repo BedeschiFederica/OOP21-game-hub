@@ -22,7 +22,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
      *          the number of lines that the grid of the game will have
      */
     public LevelGeneratorImpl(final int numLines) {
-        this.grid = new Grid(numLines);
+        this.grid = new GridImpl(numLines);
         generate(numLines);
     }
 
@@ -54,8 +54,8 @@ public class LevelGeneratorImpl implements LevelGenerator {
 
     private void initialiseBlocks() {
         final Map<Position, Block> initialisedBlocks = new HashMap<>();
-        this.grid.getBlocks().forEach((p, b) -> initialisedBlocks.put(p, new Block(b.getCurrentLinks())));
-        this.grid = new Grid(this.grid.getNumLines(), initialisedBlocks);
+        this.grid.getBlocks().forEach((p, b) -> initialisedBlocks.put(p, new BlockImpl(b.getCurrentLinks())));
+        this.grid = new GridImpl(this.grid.getNumLines(), initialisedBlocks);
     }
 
     /**

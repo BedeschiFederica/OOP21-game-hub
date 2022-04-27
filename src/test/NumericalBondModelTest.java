@@ -10,8 +10,10 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 import main.games.numericalbond.model.Block;
+import main.games.numericalbond.model.BlockImpl;
 import main.games.numericalbond.model.Direction;
 import main.games.numericalbond.model.Grid;
+import main.games.numericalbond.model.GridImpl;
 import main.games.numericalbond.utility.Position;
 
 /**
@@ -24,7 +26,7 @@ class NumericalBondModelTest {
      */
     @Test
     void testBlockCurrentLinks() {
-        final Block block = new Block(5);
+        final Block block = new BlockImpl(5);
         block.link(Direction.UP);
         assertEquals(block.getCurrentLinks(), 1);
         block.link(Direction.DOWN);
@@ -41,7 +43,7 @@ class NumericalBondModelTest {
      */
     @Test
     void testBlockTooMuchLinksPerSide() {
-        final Block block = new Block(5);
+        final Block block = new BlockImpl(5);
         block.link(Direction.UP);
         block.link(Direction.UP);
         assertEquals(block.getCurrentLinks(), 2);
@@ -54,7 +56,7 @@ class NumericalBondModelTest {
      */
     @Test
     void testBlockNullDirections() {
-        final Block block = new Block(5);
+        final Block block = new BlockImpl(5);
         assertThrows(NullPointerException.class, () -> block.getLinks(null));
         assertThrows(NullPointerException.class, () -> block.canLink(null));
         assertThrows(NullPointerException.class, () -> block.addLink(null));
@@ -66,7 +68,7 @@ class NumericalBondModelTest {
      */
     @Test
     void testGridPositions() {
-        final Grid grid = new Grid(3);
+        final Grid grid = new GridImpl(3);
         assertTrue(grid.isLegal(new Position(0, 0)));
         assertTrue(grid.isLegal(new Position(2, 2)));
         assertTrue(grid.isLegal(new Position(1, 0)));
@@ -83,7 +85,7 @@ class NumericalBondModelTest {
      */
     @Test
     void testGridNearbyPositions() {
-        final Grid grid = new Grid(3);
+        final Grid grid = new GridImpl(3);
         assertEquals(grid.getNearbyPosition(new Position(0, 0), Direction.RIGHT).get(), new Position(0, 1));
         assertEquals(grid.getNearbyPosition(new Position(1, 2), Direction.LEFT).get(), new Position(1, 1));
         assertEquals(grid.getNearbyPosition(new Position(2, 2), Direction.UP).get(), new Position(1, 2));
@@ -97,7 +99,7 @@ class NumericalBondModelTest {
      */
     @Test
     void testGridDirections() {
-        final Grid grid = new Grid(3);
+        final Grid grid = new GridImpl(3);
         assertEquals(grid.getDirection(new Position(0, 0), new Position(0, 1)).get(), Direction.RIGHT);
         assertEquals(grid.getDirection(new Position(0, 1), new Position(0, 0)).get(), Direction.LEFT);
         assertEquals(grid.getDirection(new Position(1, 2), new Position(2, 2)).get(), Direction.DOWN);
@@ -111,7 +113,7 @@ class NumericalBondModelTest {
      */
     @Test
     void testGridLinks() {
-        final Grid grid = new Grid(3);
+        final Grid grid = new GridImpl(3);
         grid.link(new Position(0, 0), new Position(0, 1));
         assertEquals(grid.getLinks(new Position(0, 0), new Position(0, 1)), 1);
         grid.link(new Position(0, 0), new Position(0, 1));
@@ -128,8 +130,8 @@ class NumericalBondModelTest {
      */
     @Test
     void testGridIllegalInputs() {
-        assertThrows(NullPointerException.class, () -> new Grid(3, null));
-        final Grid grid = new Grid(3);
+        assertThrows(NullPointerException.class, () -> new GridImpl(3, null));
+        final Grid grid = new GridImpl(3);
         assertThrows(IllegalArgumentException.class, () -> grid.getBlockAt(null));
         assertThrows(IllegalArgumentException.class, () -> grid.getBlockAt(new Position(3, 0)));
         assertThrows(IllegalArgumentException.class, () -> grid.getNearbyPosition(new Position(0, -1), Direction.UP));

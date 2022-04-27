@@ -1,40 +1,15 @@
 package main.games.numericalbond.model;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 /**
- * Class that represents a block that can be linked to another block.
+ * Interface that represents a block that can be linked to another block.
  */
-public class Block {
-
-    private static final int DEFAULT_LINKS_PER_SIDE = 0;
-    private static final int MAX_LINKS_PER_SIDE = 2;
-
-    private final int maxLinks;
-    private final Map<Direction, Integer> linksPerSide;
+public interface Block {
 
     /**
-     * Builds a new {@link Block}.
-     * @param maxLinks
-     *          the total maximum of links that the block can have
+     * Gets the total number of links that the block will have to have.
+     * @return the total number of links that the block will have to have
      */
-    public Block(final int maxLinks) {
-        this.maxLinks = maxLinks;
-        this.linksPerSide = new HashMap<>();
-        for (final Direction d : Direction.values()) {
-            this.linksPerSide.put(d, DEFAULT_LINKS_PER_SIDE);
-        }
-    }
-
-    /**
-     * Gets the total maximum of links that the block can have.
-     * @return the total maximum of links
-     */
-    public int getMaxLinks() {
-        return this.maxLinks;
-    }
+    int getLinksToHave();
 
     /**
      * Gets the number of links that the block has in the given direction.
@@ -42,18 +17,13 @@ public class Block {
      *          the direction of the links
      * @return the number of links in the given direction
      */
-    public int getLinks(final Direction direction) {
-        Objects.requireNonNull(direction);
-        return this.linksPerSide.get(direction);
-    }
+    int getLinks(Direction direction);
 
     /**
      * Gets the current number of total links of the block.
      * @return the current number of total links of the block
      */
-    public int getCurrentLinks() {
-        return this.linksPerSide.values().stream().reduce(0, (x, y) -> x + y);
-    }
+    int getCurrentLinks();
 
     /**
      * Tells if the block can be linked in the given direction or not.
@@ -62,10 +32,7 @@ public class Block {
      *          the direction of the link
      * @return true if the block can be linked in the given direction
      */
-    public boolean canLink(final Direction direction) {
-        Objects.requireNonNull(direction);
-        return this.linksPerSide.get(direction) < MAX_LINKS_PER_SIDE;
-    }
+    boolean canLink(Direction direction);
 
     /**
      * Adds a link in the given direction.
@@ -74,16 +41,7 @@ public class Block {
      * @param direction
      *          the direction of the link
      */
-    public void addLink(final Direction direction) {
-        if (!canLink(direction)) {
-            throw new IllegalStateException();
-        }
-        this.linksPerSide.put(direction, getLinks(direction) + 1);
-    }
-
-    private void resetLinks(final Direction direction) {
-        this.linksPerSide.put(direction, DEFAULT_LINKS_PER_SIDE);
-    }
+    void addLink(Direction direction);
 
     /**
      * Links the block in the given direction.
@@ -92,20 +50,6 @@ public class Block {
      * @param direction
      *          the direction of the link
      */
-    public void link(final Direction direction) {
-        if (!canLink(direction)) {
-            resetLinks(direction);
-        } else {
-            addLink(direction);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        return "Block [maxLinks=" + this.maxLinks + ", linksPerSide" + this.linksPerSide + "]";
-    }
+    void link(Direction direction);
 
 }
