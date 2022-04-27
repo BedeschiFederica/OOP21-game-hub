@@ -62,6 +62,7 @@ public class FloodItModel {
      */
     public void setTable() {
         this.table = new Table(rowSize, numOfColors, selectedColors);
+        table.generateTable();
     }
 
     /**

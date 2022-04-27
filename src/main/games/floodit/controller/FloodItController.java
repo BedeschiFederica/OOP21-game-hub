@@ -5,7 +5,6 @@ import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
 import main.games.floodit.model.MaxMovesCounter;
-import main.games.floodit.model.MovesCounter;
 import main.games.floodit.view.FloodItView;
 import main.general.AbstractGameController;
 import main.general.GameView;
@@ -94,10 +93,9 @@ public class FloodItController extends AbstractGameController {
     // Checks if the player won or not.
     private void checkResult() {
         if (model.getMoves() > model.getMaxMoves()) {
-            System.out.println("YOU LOST!");
+            this.endGame(false);
         } else if (model.getMainPuddle().size() == model.getRowSize() * model.getRowSize()) {
-            System.out.println("YOU WIN!");
-            view.stop();
+            this.endGame(true);
         }
     }
 
@@ -111,7 +109,6 @@ public class FloodItController extends AbstractGameController {
         final int size = inputs[0];
         final int colors = inputs[1];
         model.clear();
-        System.out.println("pulisco");
         model.setTSize(size);
         model.setNumofColors(colors);
         model.setSelectedColors(Colors.getRandomColors(colors));
@@ -119,7 +116,7 @@ public class FloodItController extends AbstractGameController {
         model.setMCounter(new MaxMovesCounter(model.getRowSize()));
         model.setMaxMoves();
         this.startingPuddleSetup();
-        view.setGameTable(model.getTable());
+        view.setGamePanel(model.getTable());
         this.updateView();
         view.display();
     }

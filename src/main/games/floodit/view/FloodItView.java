@@ -2,7 +2,6 @@ package main.games.floodit.view;
 
 import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Cell;
-import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.model.Table;
 import main.general.GameView;
 
@@ -12,15 +11,12 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class FloodItView implements GameView {
 
-    private static final long serialVersionUID = -6218820567019985015L;
     private static final int SIZE_DIV = 2;
     private static final int MIN_WIDTH = 400;
     private static final int MIN_HEIGHT = 500;
@@ -42,6 +38,9 @@ public class FloodItView implements GameView {
         this.controller = controller;
     }
 
+    /**
+     * Sets the size of the frame and shows the view.
+     */
     public void display() {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
@@ -50,6 +49,11 @@ public class FloodItView implements GameView {
         this.frame.setVisible(true);
     }
 
+    /**
+     * Updates the visualization of the cells.
+     * 
+     * @param cellToUpdate The cells that needs to be updated.
+     */
     public void updateCellVisualization(final Cell cellToUpdate) {
         cellButtons.forEach(b -> {
             if (cellsMap.get(b).equals(cellToUpdate)) {
@@ -58,27 +62,47 @@ public class FloodItView implements GameView {
         });
     }
 
+    /**
+     * Updates the visualization of the moves.
+     * 
+     * @param newString The string that describes the moves situation.
+     */
     public void updateMovesVisualization(final String newString) {
         gamePanel.getLblMoves().setText(newString);
     }
 
-    public void stop() {
-        cellButtons.forEach(b -> b.setEnabled(false));
-    }
-
+    /**
+     * @return The view frame.
+     */
     public JFrame getFrame() {
         return this.frame;
     }
 
-    public void setGameTable(final Table newTable) {
+    /**
+     * Creates the game panel.
+     * 
+     * @param newTable The cells table to show.
+     */
+    public void setGamePanel(final Table newTable) {
         this.gamePanel = new GamePanel(controller, cellsMap, cellButtons, newTable, this);
         frame.getContentPane().removeAll();
         this.frame.getContentPane().add(gamePanel);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setVisible(final boolean visible) {
             frame.setVisible(visible);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void dispose() {
+        frame.dispose();
     }
 
 }
