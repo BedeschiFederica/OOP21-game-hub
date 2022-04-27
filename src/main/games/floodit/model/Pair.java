@@ -1,5 +1,11 @@
 package main.games.floodit.model;
 
+/**
+ * Class that simulates a pair of values.
+ *
+ * @param <X> X value.
+ * @param <Y> Y value.
+ */
 public class Pair<X, Y> {
 
     private final X x;
@@ -12,19 +18,22 @@ public class Pair<X, Y> {
     }
 
     /**
-     * @return X
+     * @return The X element.
      */
     public X getX() {
         return x;
     }
 
     /**
-     * @return Y
+     * @return The Y element.
      */
     public Y getY() {
         return y;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -34,29 +43,42 @@ public class Pair<X, Y> {
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @SuppressWarnings("rawtypes")
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        Pair other = (Pair) obj;
+        }
+        final Pair other = (Pair) obj;
         if (x == null) {
-            if (other.x != null)
+            if (other.x != null) {
                 return false;
-        } else if (!x.equals(other.x))
+            }
+        } else if (!x.equals(other.x)) {
             return false;
+        }
         if (y == null) {
-            if (other.y != null)
+            if (other.y != null) {
                 return false;
-        } else if (!y.equals(other.y))
+            }
+        } else if (!y.equals(other.y)) {
             return false;
+        }
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return "Pair [x=" + x + ", y=" + y + "]";

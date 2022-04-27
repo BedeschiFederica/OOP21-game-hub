@@ -1,7 +1,7 @@
 package main.games.floodit.model;
 
 /**
- * Counts the maximum moves.
+ * Counts the maximum moves allowed to flood the entire table.
  */
 public class MaxMovesCounter implements MovesCounter {
 

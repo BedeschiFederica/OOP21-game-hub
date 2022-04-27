@@ -22,17 +22,12 @@ public class GamePanel extends JPanel {
 
     private static final long serialVersionUID = 5507460523553525591L;
 
-    private final CardLayout mainLayout;
     private final JLabel lblMoves;
     private final Map<JButton, Cell> cellsMap;
-    private final List<JButton> cellButtons;
 
-    public GamePanel(final JPanel mainPanel, final CardLayout mLayout, final FloodItController controller,
-            final Map<JButton, Cell> map, final List<JButton> cellButtons, final Table gameTable) {
-        this.mainLayout = mLayout;
+    public GamePanel(final FloodItController controller, final Map<JButton, Cell> map, final List<JButton> cellButtons, final Table gameTable, final FloodItView gameView) {
         this.lblMoves = new JLabel();
         this.cellsMap = map;
-        this.cellButtons = cellButtons;
 
         setLayout(new BorderLayout(0, 0));
         setBackground(Colors.LIGHT_BLUE.getActualColor());
@@ -49,7 +44,7 @@ public class GamePanel extends JPanel {
         btnPause.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 controller.pause();
             }
         });
@@ -61,15 +56,13 @@ public class GamePanel extends JPanel {
 
         final JButton btnExit = new StyledButton("Exit");
         btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
-        btnExit.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        btnExit.addActionListener(e -> {
+                controller.closeGame();
+                gameView.getFrame().dispose();
+            });
         topPanel.add(btnExit);
 
+        // Generates the buttons table
         final JPanel boardPanel = new JPanel(new GridLayout(gameTable.getBoardSize(), gameTable.getBoardSize()));
         boardPanel.setBackground(Colors.LIGHT_BLUE.getActualColor());
 
@@ -83,7 +76,7 @@ public class GamePanel extends JPanel {
                 final JButton button = new JButton(" ");
                 button.setBackground(gameTable.getCell(i, j).getColor().getActualColor());
                 button.addActionListener(al);
-                this.cellButtons.add(button);
+                cellButtons.add(button);
                 this.cellsMap.put(button, gameTable.getCell(i, j));
                 boardPanel.add(button);
             }
