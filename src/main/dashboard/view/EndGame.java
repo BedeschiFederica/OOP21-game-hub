@@ -1,11 +1,11 @@
 package main.dashboard.view;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -50,6 +50,7 @@ public class EndGame extends JFrame {
             jlResult = new JLabel("You Lost!Try Again!");
         }
         jp.add(jlResult);
+        jlResult.setForeground(DashboardColor.TITLE.getActualColor());
         jlResult.setAlignmentX(Component.CENTER_ALIGNMENT);
         jlResult.setFont(fState);
 
@@ -57,6 +58,10 @@ public class EndGame extends JFrame {
         final JButton jbMenu = new JButton("RETURN TO MAIN MENU");
         jbNewGame.setAlignmentX(Component.CENTER_ALIGNMENT);
         jbMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jbNewGame.setBackground(DashboardColor.BUTTON.getActualColor());
+        jbMenu.setBackground(DashboardColor.BUTTON.getActualColor());
+        jbNewGame.setBorder(BorderFactory.createRaisedBevelBorder());
+        jbMenu.setBorder(BorderFactory.createRaisedBevelBorder());
         jbNewGame.addActionListener(e -> {
             mainController.showStartPanel(gameController.getGameName());
             this.dispose();
@@ -65,7 +70,7 @@ public class EndGame extends JFrame {
             mainController.showMainMenu();
             this.dispose();
         });
-        jp.setBackground(Color.CYAN);
+        jp.setBackground(DashboardColor.BACKGROUND.getActualColor());
         jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
         jp.add(jbNewGame);
         jp.add(jbMenu);

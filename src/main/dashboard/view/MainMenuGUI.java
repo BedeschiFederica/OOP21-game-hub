@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -31,8 +30,6 @@ public class MainMenuGUI extends JFrame implements MainMenu {
     private static final int BUTTON_SIZE_DIV = 18;
     private static final int FONT_SIZE_DIV = 36;
     private static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(400, 400);
-    private static final Color BACKGROUND_COLOR = DashboardColor.BACKGROUND.getActualColor();
-    private static final Color BUTTONS_COLOR = DashboardColor.BUTTON.getActualColor();
     //private static final Font BUTTON_FONT = new Font("Tahoma", Font.BOLD, 35);
     //private static final Insets INSETS = new Insets(BUTTON_SIZE_DIV, BUTTON_SIZE_DIV, BUTTON_SIZE_DIV, BUTTON_SIZE_DIV);
 
@@ -59,7 +56,7 @@ public class MainMenuGUI extends JFrame implements MainMenu {
 
         final JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
-        panel.setBackground(BACKGROUND_COLOR);
+        panel.setBackground(DashboardColor.BACKGROUND.getActualColor());
         this.getContentPane().add(panel);
 
         final GridBagConstraints jbConstr = new GridBagConstraints();
@@ -80,7 +77,7 @@ public class MainMenuGUI extends JFrame implements MainMenu {
                 this.dispose();
             });
             jb.setAlignmentX(CENTER_ALIGNMENT);
-            jb.setBackground(BUTTONS_COLOR);
+            jb.setBackground(DashboardColor.BUTTON.getActualColor());
             panel.add(jb, jbConstr);
         }
 
