@@ -4,6 +4,7 @@ import main.dashboard.view.InputPanel;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
+import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.model.MovesCounter;
 import main.games.floodit.view.FloodItView;
 import main.general.AbstractGameController;
@@ -20,14 +21,13 @@ public class FloodItController extends AbstractGameController {
     private static final String GAME_NAME = "Flood It";
     private static final List<Integer> POSSIBLE_CELLS = List.of(5, 10, 15);
     private static final List<Integer> POSSIBLE_COLORS = List.of(4, 5, 6, 7, 8, 9, 10);
+
     private final FloodItModel model;
     private final FloodItView view;
-    private MovesCounter mCounter;
 
     public FloodItController() {
         this.model = new FloodItModel();
         this.view = new FloodItView(this);
-        this.mCounter = null;
     }
 
     // Sets up the starting puddle and color.
@@ -106,19 +106,22 @@ public class FloodItController extends AbstractGameController {
      * 
      * @param inputs size and number of colors.
      */
-    public void newGame(final int... inputs) {
+    @Override
+    public void startGame(final int... inputs) {
         final int size = inputs[0];
         final int colors = inputs[1];
         model.clear();
+        System.out.println("pulisco");
         model.setTSize(size);
         model.setNumofColors(colors);
         model.setSelectedColors(Colors.getRandomColors(colors));
-        model.setMaxMoves(mCounter.count());
         model.setTable();
-        startingPuddleSetup();
+        model.setMCounter(new MaxMovesCounter(model.getRowSize()));
+        model.setMaxMoves();
+        this.startingPuddleSetup();
         view.setGameTable(model.getTable());
-        view.createGameboard();
-        updateView();
+        this.updateView();
+        view.display();
     }
 
     /**
@@ -129,15 +132,6 @@ public class FloodItController extends AbstractGameController {
             view.updateCellVisualization(c);
         });
         view.updateMovesVisualization(model.getMoves() + " / " + model.getMaxMoves());
-    }
-
-    /**
-     * Sets the maximum moves counter.
-     * 
-     * @param newCounter The moves counter.
-     */
-    public void setMCounter(final MovesCounter newCounter) {
-        this.mCounter = newCounter;
     }
 
     /**
@@ -154,21 +148,6 @@ public class FloodItController extends AbstractGameController {
     @Override
     public String getGameName() {
         return GAME_NAME;
-    }
-
-    /**
-     * Starts the game.
-     */
-    @Override
-    public void startGame(final int... inputs) {
-        view.display();
-    }
-
-    /**
-     * Shows flood it start panel.
-     */
-    public void showStartPanel() {
-        view.showStart();
     }
 
     /**

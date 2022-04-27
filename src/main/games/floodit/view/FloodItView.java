@@ -2,6 +2,7 @@ package main.games.floodit.view;
 
 import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Cell;
+import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.model.Table;
 import main.general.GameView;
 
@@ -28,14 +29,9 @@ public class FloodItView implements GameView {
     private final Map<JButton, Cell> cellsMap;
 
     private final FloodItController controller;
-    private Table gameTable;
 
     private final JFrame frame;
-    private final CardLayout layout;
-    private final JPanel mainPanel;
     private GamePanel gamePanel;
-    private final StartPanel startPanel;
-    private final JPanel pausePanel;
 
     public FloodItView(final FloodItController controller) {
         this.frame = new JFrame();
@@ -44,21 +40,6 @@ public class FloodItView implements GameView {
 
         this.cellsMap = new HashMap<>();
         this.controller = controller;
-        this.gameTable = null;
-        this.layout = new CardLayout();
-
-        this.mainPanel = new JPanel(layout);
-        this.frame.getContentPane().add(mainPanel);
-
-        this.startPanel = new StartPanel(mainPanel, layout, controller);
-        this.gamePanel = null;
-        this.pausePanel = new JPanel();
-
-        this.mainPanel.add(startPanel, "1");
-        this.mainPanel.add(pausePanel, "3");
-
-        this.layout.show(mainPanel, "1");
-
     }
 
     public void display() {
@@ -69,11 +50,6 @@ public class FloodItView implements GameView {
         this.frame.setVisible(true);
     }
 
-    public void createGameboard() {
-        this.gamePanel = new GamePanel(mainPanel, layout, controller, cellsMap, cellButtons, gameTable);
-        this.mainPanel.add(gamePanel, "2");
-    }
-
     public void updateCellVisualization(final Cell cellToUpdate) {
         cellButtons.forEach(b -> {
             if (cellsMap.get(b).equals(cellToUpdate)) {
@@ -82,34 +58,27 @@ public class FloodItView implements GameView {
         });
     }
 
-    public void updateMovesVisualization(String newString) {
+    public void updateMovesVisualization(final String newString) {
         gamePanel.getLblMoves().setText(newString);
-    }
-
-    public int getComboSize() {
-        return this.startPanel.getRowSize();
-    }
-
-    public int getComboColors() {
-        return this.startPanel.getColors();
     }
 
     public void stop() {
         cellButtons.forEach(b -> b.setEnabled(false));
     }
 
-    public void setGameTable(Table newTable) {
-        this.gameTable = newTable;
+    public JFrame getFrame() {
+        return this.frame;
+    }
+
+    public void setGameTable(final Table newTable) {
+        this.gamePanel = new GamePanel(controller, cellsMap, cellButtons, newTable, this);
+        frame.getContentPane().removeAll();
+        this.frame.getContentPane().add(gamePanel);
     }
 
     @Override
     public void setVisible(final boolean visible) {
-        if (visible) {
-            layout.show(mainPanel, "2");
-        }
+            frame.setVisible(visible);
     }
 
-    public void showStart() {
-        this.layout.show(mainPanel, "1");
-    }
 }

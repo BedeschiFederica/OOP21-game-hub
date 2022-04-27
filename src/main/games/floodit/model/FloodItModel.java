@@ -14,6 +14,7 @@ public class FloodItModel {
     private Table table;
     private int moves;
     private int maxMoves;
+    private MovesCounter mCounter;
     private final List<Cell> mainPuddle;
     private final List<Colors> selectedColors;
 
@@ -22,6 +23,7 @@ public class FloodItModel {
         this.rowSize = 0;
         this.moves = 0;
         this.maxMoves = 0;
+        this.mCounter = null;
         this.currentColor = null;
         this.table = null;
         this.mainPuddle = new LinkedList<>();
@@ -64,11 +66,18 @@ public class FloodItModel {
 
     /**
      * Set the maximum of moves the player can make.
-     * 
-     * @param mMoves The maximum number of moves.
      */
-    public void setMaxMoves(final int mMoves) {
-        this.maxMoves = mMoves;
+    public void setMaxMoves() {
+        this.maxMoves = this.mCounter.count();
+    }
+
+    /**
+     * Sets the maximum moves counter.
+     * 
+     * @param newCounter The moves counter.
+     */
+    public void setMCounter(final MovesCounter newCounter) {
+        this.mCounter = newCounter;
     }
 
     /**
@@ -128,6 +137,13 @@ public class FloodItModel {
      */
     public int getMaxMoves() {
         return this.maxMoves;
+    }
+
+    /**
+     * @return The moves counter.
+     */
+    public MovesCounter getMCounter() {
+        return this.mCounter;
     }
 
     /**
