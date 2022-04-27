@@ -7,15 +7,14 @@ import main.dashboard.view.InputPanel;
 import main.games.minefield.model.Handler;
 import main.games.minefield.view.ViewField;
 import main.general.AbstractGameController;
-import main.general.GameColor;
 import main.general.GameView;
 
-public class StartGame extends AbstractGameController{
+public class MinefieldController extends AbstractGameController{
 
     /**
      * the GRINDSIZE is needed for knowing the size of the table.
      */
-    public static final int GRIDSIZE = 4;
+    public static final int GRIDSIZE = 8 ;
     /**
      * the MINES is needed for knowing how many mines there are.
      */
@@ -37,24 +36,14 @@ public class StartGame extends AbstractGameController{
     public String getGameName() {
         return NAME;
     }
-
-
     @Override
     public List<InputPanel> getInputPanels() {
-        // TODO Auto-generated method stub
-        return null;
+        return List.of(new InputPanel("Cells:", List.of(4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20)), new InputPanel("Mines:", List.of(4, 5, 6, 7, 8, 9, 10)));
     }
-
-    @Override
-    public GameColor getGameColor() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     @Override
     public void startGame(final int... inputs) {
         new ViewField(GRIDSIZE, "Minefield - ", this, handler);
-        new StartGame();
+        new MinefieldController();
     }
 
 }
