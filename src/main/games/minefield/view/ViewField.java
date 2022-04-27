@@ -6,11 +6,12 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import main.games.minefield.controller.StartGame;
+import main.games.minefield.controller.MinefieldController;
 import main.games.minefield.model.Handler;
+import main.general.GameView;
 import main.games.minefield.controller.Field;
 
-public class ViewField {
+public class ViewField implements GameView {
 
     /**
      * frame is here so it can be used in every method.
@@ -26,7 +27,7 @@ public class ViewField {
      * @param handler that makes all the check for the game.
      * 
      */
-    public ViewField(final int size, final String title, final StartGame startGame, final Handler handler) {
+    public ViewField(final int size, final String title, final MinefieldController startGame, final Handler handler) {
         ViewField.title = title;
         frame = new JFrame(title);
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -38,7 +39,6 @@ public class ViewField {
         frame.setContentPane(jpField);
         update(0);
         frame.pack();
-        frame.setVisible(true);
     }
 
     /**
@@ -46,6 +46,11 @@ public class ViewField {
      * @param flag needed to update in real time the number of flag
      */
     public static void update(final int flag) {
-        frame.setTitle(title + "Mines: " + StartGame.MINES + " - Flags: " + flag);
+        frame.setTitle(title + "Mines: " + MinefieldController.MINES + " - Flags: " + flag);
+    }
+
+    @Override
+    public void setVisible(final boolean visible) {
+        frame.setVisible(visible);
     }
 }

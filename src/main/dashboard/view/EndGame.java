@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import main.dashboard.controller.MainController;
 import main.general.GameController;
 
-/**
+/** 
  * Class that is needed for the endGame.
  * 
  * 

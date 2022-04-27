@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Field extends JPanel {
 
     //needed to draw the table
-    private int grid = StartGame.GRIDSIZE * StartGame.GRIDSIZE;
+    private int grid = MinefieldController.GRIDSIZE * MinefieldController.GRIDSIZE;
     //variable neede to know if a cell is picked to have a mine or not
     private boolean mine = false;
     //array that has the position of all the mines
@@ -30,7 +30,7 @@ public class Field extends JPanel {
      * @param handler that makes all the check for the game.
     */
     public void createCells(final Handler handler) {
-        for (int i = 1; i <= StartGame.MINES; i++) {
+        for (int i = 1; i <= MinefieldController.MINES; i++) {
             while (!mine) {
                 int minePosition = (int) (Math.random() * grid);
                 if (!mines.contains(minePosition)) {
@@ -44,35 +44,35 @@ public class Field extends JPanel {
         for (int i = 0; i < grid; i++) {
             if (mines.contains(i)) {
                 cell.add(new Cell(1, i, false, false, handler));
-            } else if (i % StartGame.GRIDSIZE == 0) {
-                if (mines.contains(i - StartGame.GRIDSIZE) 
-                        || mines.contains(i - StartGame.GRIDSIZE + 1) 
+            } else if (i % MinefieldController.GRIDSIZE == 0) {
+                if (mines.contains(i - MinefieldController.GRIDSIZE) 
+                        || mines.contains(i - MinefieldController.GRIDSIZE + 1) 
                         || mines.contains(i + 1) 
-                        || mines.contains(i + StartGame.GRIDSIZE) 
-                        || mines.contains(i + StartGame.GRIDSIZE + 1)) {
+                        || mines.contains(i + MinefieldController.GRIDSIZE) 
+                        || mines.contains(i + MinefieldController.GRIDSIZE + 1)) {
                     cell.add(new Cell(2, i, false, false, handler));
                 } else {
                     cell.add(new Cell(0, i, false, false, handler));
                 }
-            } else if (i % StartGame.GRIDSIZE == StartGame.GRIDSIZE - 1) {
-                if (mines.contains(i - StartGame.GRIDSIZE - 1) 
-                        || mines.contains(i - StartGame.GRIDSIZE) 
+            } else if (i % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
+                if (mines.contains(i - MinefieldController.GRIDSIZE - 1) 
+                        || mines.contains(i - MinefieldController.GRIDSIZE) 
                         || mines.contains(i - 1)
-                        || mines.contains(i + StartGame.GRIDSIZE - 1)
-                        || mines.contains(i + StartGame.GRIDSIZE)) {
+                        || mines.contains(i + MinefieldController.GRIDSIZE - 1)
+                        || mines.contains(i + MinefieldController.GRIDSIZE)) {
                     cell.add(new Cell(2, i, false, false, handler));
                 } else {
                     cell.add(new Cell(0, i, false, false, handler));
                 }
             } else {
-                if (mines.contains(i - StartGame.GRIDSIZE - 1) 
-                        || mines.contains(i - StartGame.GRIDSIZE) 
-                        || mines.contains(i - StartGame.GRIDSIZE + 1) 
+                if (mines.contains(i - MinefieldController.GRIDSIZE - 1) 
+                        || mines.contains(i - MinefieldController.GRIDSIZE) 
+                        || mines.contains(i - MinefieldController.GRIDSIZE + 1) 
                         || mines.contains(i - 1) 
                         || mines.contains(i + 1) 
-                        || mines.contains(i + StartGame.GRIDSIZE - 1) 
-                        || mines.contains(i + StartGame.GRIDSIZE) 
-                        || mines.contains(i + StartGame.GRIDSIZE + 1)) {
+                        || mines.contains(i + MinefieldController.GRIDSIZE - 1) 
+                        || mines.contains(i + MinefieldController.GRIDSIZE) 
+                        || mines.contains(i + MinefieldController.GRIDSIZE + 1)) {
                     cell.add(new Cell(2, i, false, false, handler));
                 } else {
                     cell.add(new Cell(0, i, false, false, handler));
