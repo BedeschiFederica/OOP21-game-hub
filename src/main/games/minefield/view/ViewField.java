@@ -53,4 +53,9 @@ public class ViewField implements GameView {
     public void setVisible(final boolean visible) {
         frame.setVisible(visible);
     }
+
+    @Override
+    public void dispose() {
+        frame.dispose();
+    }
 }
