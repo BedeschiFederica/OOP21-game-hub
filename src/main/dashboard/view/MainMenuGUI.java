@@ -26,8 +26,8 @@ public class MainMenuGUI extends JFrame implements MainMenu {
      */
     private static final long serialVersionUID = -7833926492439181130L;
     private static final int FRAME_SIZE_DIV = 3;
-    private static final Color BACKGROUND_COLOR = Color.ORANGE;
-    private static final Color BUTTONS_COLOR = Color.YELLOW;
+    private static final Color BACKGROUND_COLOR = DashboardColor.BACKGROUND.getActualColor();
+    private static final Color BUTTONS_COLOR = DashboardColor.BUTTON.getActualColor();
 
     private final MainController mainController;
 

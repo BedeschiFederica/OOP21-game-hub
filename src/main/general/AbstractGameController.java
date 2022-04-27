@@ -49,6 +49,7 @@ public abstract class AbstractGameController implements GameController {
     @Override
     public void closeGame() {
         this.mainController.showMainMenu();
+        getView().dispose();
     }
 
 }

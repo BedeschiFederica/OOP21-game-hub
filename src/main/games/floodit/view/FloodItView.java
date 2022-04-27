@@ -81,4 +81,9 @@ public class FloodItView implements GameView {
             frame.setVisible(visible);
     }
 
+    @Override
+    public void dispose() {
+        frame.dispose();
+    }
+
 }

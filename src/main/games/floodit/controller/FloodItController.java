@@ -111,7 +111,6 @@ public class FloodItController extends AbstractGameController {
         final int size = inputs[0];
         final int colors = inputs[1];
         model.clear();
-        System.out.println("pulisco");
         model.setTSize(size);
         model.setNumofColors(colors);
         model.setSelectedColors(Colors.getRandomColors(colors));
