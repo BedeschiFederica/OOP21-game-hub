@@ -78,7 +78,7 @@ public class GamePanel extends JPanel {
 
         for (int i = 0; i < gameTable.getBoardSize(); i++) {
             for (int j = 0; j < gameTable.getBoardSize(); j++) {
-                final JButton button = new JButton(" ");
+                final JButton button = new JButton();
                 button.setBackground(gameTable.getCell(i, j).getColor().getActualColor());
                 button.addActionListener(al);
                 cellButtons.add(button);

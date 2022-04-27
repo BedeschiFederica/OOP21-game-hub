@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class PauseMenu extends JFrame {
 
     private static final long serialVersionUID = -7762097272351186299L;
-    private static final int SIZE_DIV = 2;
+    private static final int SIZE_DIV = 3;
     private static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(600, 600);
     private static final Font BUTTON_FONT = new Font("Tahoma", Font.BOLD, 50);
     private static final Insets TOP_INSETS = new Insets(100, 100, 20, 100);
@@ -91,7 +91,6 @@ public class PauseMenu extends JFrame {
     public void display() {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
-        final int sh = (int) screen.getHeight();
         this.setSize(sw / SIZE_DIV, sw / SIZE_DIV);
         this.setMinimumSize(MINIMUM_FRAME_DIMENSION);
         this.setLocationByPlatform(true);
