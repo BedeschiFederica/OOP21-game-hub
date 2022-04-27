@@ -21,8 +21,9 @@ public abstract class AbstractGameController implements GameController {
      * {@inheritDoc}
      */
     @Override
-    public void endGame() {
-        this.mainController.showGameEnding(this);
+    public void endGame(final boolean isVictory) {
+        this.mainController.showGameEnding(this, isVictory);
+        getView().dispose();
     }
 
     /**
@@ -31,6 +32,7 @@ public abstract class AbstractGameController implements GameController {
     @Override
     public void pause() {
         this.mainController.pauseGame(this);
+        getView().dispose();
     }
 
     /**
@@ -47,6 +49,7 @@ public abstract class AbstractGameController implements GameController {
     @Override
     public void closeGame() {
         this.mainController.showMainMenu();
+        getView().dispose();
     }
 
 }

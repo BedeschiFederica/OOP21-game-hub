@@ -58,7 +58,6 @@ public class NumericalBondGUI extends JFrame implements NumericalBondView {
         upPanel.add(optionsPanel, BorderLayout.CENTER);
         upPanel.add(new JSeparator(JSeparator.HORIZONTAL), BorderLayout.SOUTH);
         upPanel.setBackground(UP_PANEL_COLOR);
-        //mainPanel.add(optionsPanel, BorderLayout.NORTH);
         mainPanel.add(upPanel, BorderLayout.NORTH);
         final int gapX = screenSize.width / SEPARATOR_GAP_DIV_X;
         final int gapY = screenSize.height / SEPARATOR_GAP_DIV_Y;
@@ -66,22 +65,10 @@ public class NumericalBondGUI extends JFrame implements NumericalBondView {
         this.getContentPane().add(mainPanel);
 
         final JButton pause = new JButton("Pause");
-        pause.addActionListener(e -> {
-            this.setVisible(false);
-            this.controller.pause();
-        });
+        pause.addActionListener(e -> this.controller.pause());
         pause.setBackground(PAUSE_BUTTON_COLOR);
         pause.setForeground(PAUSE_BUTTON_TEXT_COLOR);
         optionsPanel.add(pause);
-        // mainPanel.add(pause, BorderLayout.SOUTH);
-
-//        // temporary
-//        final JButton menu = new JButton("Menu");
-//        menu.addActionListener(e -> {
-//            this.setVisible(false);
-//            this.controller.closeGame();
-//        });
-//        optionsPanel.add(menu);
 
         this.pack();
         this.setLocationByPlatform(true);

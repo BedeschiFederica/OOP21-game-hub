@@ -20,8 +20,6 @@ public class Table {
         this.boardSize = tSize;
         this.selectedColors = selectedColors;
         this.board = new LinkedList<>();
-
-        generateTable();
     }
 
     /**
@@ -108,12 +106,14 @@ public class Table {
     /**
      * @return All of the cells contained in the table.
      */
-    public List<Cell> getAllCells() { // Valutare anche creazione foreach() con predicate o consumer
+    public List<Cell> getAllCells() {
         return this.board;
     }
-    
-    public int getBoardSize() { // Valutare anche creazione foreach() con predicate o consumer
+
+    /**
+     * @return The board rows number.
+     */
+    public int getBoardSize() { 
         return this.boardSize;
     }
-
 }

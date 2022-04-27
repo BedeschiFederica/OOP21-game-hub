@@ -16,7 +16,7 @@ public final class NumericalBondInputPanelsCreator {
      * Gets the input panels.
      * @return the input panels
      */
-    public static List<InputPanel> getInputPanels() {                   // just for testing
-        return List.of(new InputPanel("Number of lines", List.of(3, 4)), new InputPanel("Something", List.of(1, 2, 3)));
+    public static List<InputPanel> getInputPanels() {
+        return List.of(new InputPanel("Number of lines", List.of(3, 4)));
     }
 }
