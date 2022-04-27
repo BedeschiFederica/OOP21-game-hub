@@ -2,6 +2,7 @@ package main.general;
 
 import main.dashboard.controller.MainController;
 import main.games.floodit.controller.FloodItController;
+import main.games.minefield.controller.MinefieldController;
 import main.games.numericalbond.controller.NumericalBondControllerImpl;
 
 /**
@@ -18,7 +19,7 @@ public final class Launcher {
      *          ignored
      */
     public static void main(final String[] args) {
-        new MainController(new NumericalBondControllerImpl(), new FloodItController()); //, new MinefieldController();
+        new MainController(new NumericalBondControllerImpl(), new FloodItController(), new MinefieldController());
     }
 
 }

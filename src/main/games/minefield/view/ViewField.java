@@ -39,6 +39,7 @@ public class ViewField implements GameView {
         frame.setContentPane(jpField);
         update(0);
         frame.pack();
+        frame.setVisible(true);
     }
 
     /**
@@ -52,5 +53,10 @@ public class ViewField implements GameView {
     @Override
     public void setVisible(final boolean visible) {
         frame.setVisible(visible);
+    }
+
+    @Override
+    public void dispose() {
+        frame.dispose();
     }
 }

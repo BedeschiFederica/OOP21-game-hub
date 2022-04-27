@@ -24,7 +24,7 @@ public class MinefieldController extends AbstractGameController{
     */
     public static final String NAME = "Minefield";
     private Handler handler = new Handler();
-    private final ViewField viewField = new ViewField(GRIDSIZE, "Minefield - ", this, handler);
+    private ViewField viewField;
 
     @Override
     public GameView getView() {
@@ -42,7 +42,7 @@ public class MinefieldController extends AbstractGameController{
     }
     @Override
     public void startGame(final int... inputs) {
-        new ViewField(GRIDSIZE, "Minefield - ", this, handler);
+        this.viewField = new ViewField(GRIDSIZE, "Minefield - ", this, handler);
         new MinefieldController();
     }
 
