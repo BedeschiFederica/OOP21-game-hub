@@ -20,8 +20,6 @@ public class Table {
         this.boardSize = tSize;
         this.selectedColors = selectedColors;
         this.board = new LinkedList<>();
-
-        generateTable();
     }
 
     /**

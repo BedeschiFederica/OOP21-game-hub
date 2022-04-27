@@ -5,7 +5,6 @@ import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
 import main.games.floodit.model.MaxMovesCounter;
-import main.games.floodit.model.MovesCounter;
 import main.games.floodit.view.FloodItView;
 import main.general.AbstractGameController;
 import main.general.GameView;
@@ -118,7 +117,7 @@ public class FloodItController extends AbstractGameController {
         model.setMCounter(new MaxMovesCounter(model.getRowSize()));
         model.setMaxMoves();
         this.startingPuddleSetup();
-        view.setGameTable(model.getTable());
+        view.setGamePanel(model.getTable());
         this.updateView();
         view.display();
     }
