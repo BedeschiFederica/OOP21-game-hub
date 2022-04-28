@@ -3,10 +3,8 @@ package main.games.minefield.model;
 import java.awt.Color;
 
 import main.games.minefield.view.ViewField;
-import main.dashboard.view.EndGame;
 import main.games.minefield.controller.Cell;
 import main.games.minefield.controller.Field;
-import main.games.minefield.controller.MinefieldController;
 
 import java.util.ArrayList;
 public class Handler  {
@@ -235,7 +233,7 @@ public class Handler  {
                 }
                 cell.setText("M");
                 cell.setBackground(Color.red);
-                //this.controller.EndGame(false);
+                result(false);
             }
 
             for (int x = 0; x < queue.size(); x++) {
@@ -254,10 +252,9 @@ public class Handler  {
             for (int x = 0; x < Field.getCell().size(); x++) {
                  if (Field.getCell().get(x).isDiscovered()) {
                     discovered++;
-                   // if (discovered == StartGame.GRIDSIZE * StartGame.GRIDSIZE) {
-                        //status(true);
-                       //show();
-                    //}
+                   if (discovered == ViewField.getGridSize() * ViewField.getGridSize()) {
+                        result(true);
+                    }
                  }
             }
 
@@ -295,5 +292,13 @@ public class Handler  {
                 ViewField.update(putFlag);
             }
         }
+    }
+    /**
+     * 
+     * @param res tells if the player has won or not
+     * @return if the game is won or not
+     */
+    public static boolean result(final boolean res) {
+        return res;
     }
 }

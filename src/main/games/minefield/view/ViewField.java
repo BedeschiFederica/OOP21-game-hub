@@ -47,7 +47,6 @@ public class ViewField implements GameView {
         getFrame().setVisible(true);
     }
 
-    
 
     /**
      * Updates the title of the frame to know how many mines and flag are in the game.
