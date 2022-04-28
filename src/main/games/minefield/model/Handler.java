@@ -30,213 +30,212 @@ public class Handler  {
 
             int position = cell.getPosition();
             if (cell.getType() == 0) {
-                if (position < MinefieldController.GRIDSIZE) {
-                    if (position % MinefieldController.GRIDSIZE == 0) {
-                        queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE)));
-                        queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE + 1)));
-                        queue.add(Field.cell.get((position + 1)));
-                    } else if (position % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
-                        queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE)));
-                        queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE - 1)));
-                        queue.add(Field.cell.get((position - 1)));
+                if (position < ViewField.getGridSize()) {
+                    if (position % ViewField.getGridSize() == 0) {
+                        queue.add(Field.getCell().get((position + ViewField.getGridSize())));
+                        queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
+                        queue.add(Field.getCell().get((position + 1)));
+                    } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
+                        queue.add(Field.getCell().get((position + ViewField.getGridSize())));
+                        queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
+                        queue.add(Field.getCell().get((position - 1)));
                     } else {
-                        queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE)));
-                        queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE + 1)));
-                        queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE - 1)));
-                        queue.add(Field.cell.get((position + 1)));
-                        queue.add(Field.cell.get((position - 1)));
+                        queue.add(Field.getCell().get((position + ViewField.getGridSize())));
+                        queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
+                        queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
+                        queue.add(Field.getCell().get((position + 1)));
+                        queue.add(Field.getCell().get((position - 1)));
                     }
-                } else if (position >= (MinefieldController.GRIDSIZE * (MinefieldController.GRIDSIZE - 1))) {
-                    if (position % MinefieldController.GRIDSIZE == 0) {
-                        queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE)));
-                        queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE + 1)));
-                        queue.add(Field.cell.get((position + 1)));
-                    } else if (position % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
-                        queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE)));
-                        queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE - 1)));
-                        queue.add(Field.cell.get((position - 1)));
+                } else if (position >= (ViewField.getGridSize() * (ViewField.getGridSize() - 1))) {
+                    if (position % ViewField.getGridSize() == 0) {
+                        queue.add(Field.getCell().get((position - ViewField.getGridSize())));
+                        queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
+                        queue.add(Field.getCell().get((position + 1)));
+                    } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
+                        queue.add(Field.getCell().get((position - ViewField.getGridSize())));
+                        queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
+                        queue.add(Field.getCell().get((position - 1)));
                     } else {
-                        queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE)));
-                        queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE + 1)));
-                        queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE - 1)));
-                        queue.add(Field.cell.get((position + 1)));
-                        queue.add(Field.cell.get((position - 1)));
+                        queue.add(Field.getCell().get((position - ViewField.getGridSize())));
+                        queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
+                        queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
+                        queue.add(Field.getCell().get((position + 1)));
+                        queue.add(Field.getCell().get((position - 1)));
                     }
-                } else if (position % MinefieldController.GRIDSIZE == 0) {
-                    queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE)));
-                    queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE)));
-                    queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE + 1)));
-                    queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE + 1)));
-                    queue.add(Field.cell.get((position + 1)));
-                } else if (position % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
-                    queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE)));
-                    queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE)));
-                    queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE - 1)));
-                    queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE - 1)));
-                    queue.add(Field.cell.get((position - 1)));
+                } else if (position % ViewField.getGridSize() == 0) {
+                    queue.add(Field.getCell().get((position - ViewField.getGridSize())));
+                    queue.add(Field.getCell().get((position + ViewField.getGridSize())));
+                    queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
+                    queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
+                    queue.add(Field.getCell().get((position + 1)));
+                } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
+                    queue.add(Field.getCell().get((position - ViewField.getGridSize())));
+                    queue.add(Field.getCell().get((position + ViewField.getGridSize())));
+                    queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
+                    queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
+                    queue.add(Field.getCell().get((position - 1)));
                 } else {
-                    queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE)));
-                    queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE)));
-                    queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE - 1)));
-                    queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE - 1)));
-                    queue.add(Field.cell.get((position - MinefieldController.GRIDSIZE + 1)));
-                    queue.add(Field.cell.get((position + MinefieldController.GRIDSIZE + 1)));
-                    queue.add(Field.cell.get((position - 1)));
-                    queue.add(Field.cell.get((position + 1)));
+                    queue.add(Field.getCell().get((position - ViewField.getGridSize())));
+                    queue.add(Field.getCell().get((position + ViewField.getGridSize())));
+                    queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
+                    queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
+                    queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
+                    queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
+                    queue.add(Field.getCell().get((position - 1)));
+                    queue.add(Field.getCell().get((position + 1)));
                 }
             } else if (cell.getType() == 2) {
                 //i see if there is a mine near the cell
                 int dangerCount = 0;
-                if (position < MinefieldController.GRIDSIZE) {
-                    if (position % MinefieldController.GRIDSIZE == 0) {
-                        if (Field.cell.get(position + MinefieldController.GRIDSIZE).getType() == 1) { 
+                if (position < ViewField.getGridSize()) {
+                    if (position % ViewField.getGridSize() == 0) {
+                        if (Field.getCell().get(position + ViewField.getGridSize()).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position + MinefieldController.GRIDSIZE + 1).getType() == 1) { 
+                        if (Field.getCell().get(position + ViewField.getGridSize() + 1).getType() == 1) { 
                             dangerCount++; 
                             } 
-                        if (Field.cell.get(position + 1).getType() == 1) { 
+                        if (Field.getCell().get(position + 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                    } else if (position % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
-                        if (Field.cell.get(position + MinefieldController.GRIDSIZE).getType() == 1) { 
+                    } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
+                        if (Field.getCell().get(position + ViewField.getGridSize()).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position + MinefieldController.GRIDSIZE - 1).getType() == 1) { 
+                        if (Field.getCell().get(position + ViewField.getGridSize() - 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - 1).getType() == 1) { 
+                        if (Field.getCell().get(position - 1).getType() == 1) { 
                             dangerCount++; 
                             }
                     } else {
-                        if (Field.cell.get(position + MinefieldController.GRIDSIZE).getType() == 1) { 
+                        if (Field.getCell().get(position + ViewField.getGridSize()).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position + MinefieldController.GRIDSIZE + 1).getType() == 1) { 
+                        if (Field.getCell().get(position + ViewField.getGridSize() + 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position + MinefieldController.GRIDSIZE - 1).getType() == 1) { 
+                        if (Field.getCell().get(position + ViewField.getGridSize() - 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position + 1).getType() == 1) { 
+                        if (Field.getCell().get(position + 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - 1).getType() == 1) { 
+                        if (Field.getCell().get(position - 1).getType() == 1) { 
                             dangerCount++; 
                             }
                         System.out.println(dangerCount);
                     }
-                } else if (position >= (MinefieldController.GRIDSIZE * (MinefieldController.GRIDSIZE - 1))) {
-                    if (position % MinefieldController.GRIDSIZE == 0) {
-                        if (Field.cell.get(position - MinefieldController.GRIDSIZE).getType() == 1) { 
+                } else if (position >= (ViewField.getGridSize() * (ViewField.getGridSize() - 1))) {
+                    if (position % ViewField.getGridSize() == 0) {
+                        if (Field.getCell().get(position - ViewField.getGridSize()).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - MinefieldController.GRIDSIZE + 1).getType() == 1) { 
+                        if (Field.getCell().get(position - ViewField.getGridSize() + 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position + 1).getType() == 1) { 
+                        if (Field.getCell().get(position + 1).getType() == 1) { 
                             dangerCount++; 
                         }
-                    } else if (position % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
-                        if (Field.cell.get(position - MinefieldController.GRIDSIZE).getType() == 1) {
+                    } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
+                        if (Field.getCell().get(position - ViewField.getGridSize()).getType() == 1) {
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - MinefieldController.GRIDSIZE - 1).getType() == 1) { 
+                        if (Field.getCell().get(position - ViewField.getGridSize() - 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - 1).getType() == 1) { 
+                        if (Field.getCell().get(position - 1).getType() == 1) { 
                             dangerCount++; 
                             }
                     } else {
-                        if (Field.cell.get(position - MinefieldController.GRIDSIZE).getType() == 1) { 
+                        if (Field.getCell().get(position - ViewField.getGridSize()).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - MinefieldController.GRIDSIZE + 1).getType() == 1) { 
+                        if (Field.getCell().get(position - ViewField.getGridSize() + 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - MinefieldController.GRIDSIZE - 1).getType() == 1) { 
+                        if (Field.getCell().get(position - ViewField.getGridSize() - 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position + 1).getType() == 1) { 
+                        if (Field.getCell().get(position + 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        if (Field.cell.get(position - 1).getType() == 1) { 
+                        if (Field.getCell().get(position - 1).getType() == 1) { 
                             dangerCount++; 
                             }
                     }
-                } else if (position % MinefieldController.GRIDSIZE == 0) {
-                    if (Field.cell.get(position - MinefieldController.GRIDSIZE).getType() == 1) { 
+                } else if (position % ViewField.getGridSize() == 0) {
+                    if (Field.getCell().get(position - ViewField.getGridSize()).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get(position + MinefieldController.GRIDSIZE).getType() == 1) { 
+                    if (Field.getCell().get(position + ViewField.getGridSize()).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get(position - MinefieldController.GRIDSIZE + 1).getType() == 1) { 
+                    if (Field.getCell().get(position - ViewField.getGridSize() + 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get(position + MinefieldController.GRIDSIZE + 1).getType() == 1) { 
+                    if (Field.getCell().get(position + ViewField.getGridSize() + 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get(position + 1).getType() == 1) { 
+                    if (Field.getCell().get(position + 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                } else if (position % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
-                    if (Field.cell.get((position - MinefieldController.GRIDSIZE)).getType() == 1) {
+                } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
+                    if (Field.getCell().get((position - ViewField.getGridSize())).getType() == 1) {
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position + MinefieldController.GRIDSIZE)).getType() == 1) { 
+                    if (Field.getCell().get((position + ViewField.getGridSize())).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position - MinefieldController.GRIDSIZE - 1)).getType() == 1) { 
+                    if (Field.getCell().get((position - ViewField.getGridSize() - 1)).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position + MinefieldController.GRIDSIZE - 1)).getType() == 1) { 
+                    if (Field.getCell().get((position + ViewField.getGridSize() - 1)).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position - 1)).getType() == 1) { 
+                    if (Field.getCell().get((position - 1)).getType() == 1) { 
                         dangerCount++; 
                         }
                 } else {
-                    if (Field.cell.get((position - MinefieldController.GRIDSIZE)).getType() == 1) { 
+                    if (Field.getCell().get((position - ViewField.getGridSize())).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position + MinefieldController.GRIDSIZE)).getType() == 1) { 
+                    if (Field.getCell().get((position + ViewField.getGridSize())).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position - MinefieldController.GRIDSIZE - 1)).getType() == 1) { 
+                    if (Field.getCell().get((position - ViewField.getGridSize() - 1)).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position + MinefieldController.GRIDSIZE - 1)).getType() == 1) { 
+                    if (Field.getCell().get((position + ViewField.getGridSize() - 1)).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position - MinefieldController.GRIDSIZE + 1)).getType() == 1) { 
+                    if (Field.getCell().get((position - ViewField.getGridSize() + 1)).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position + MinefieldController.GRIDSIZE + 1)).getType() == 1) { 
+                    if (Field.getCell().get((position + ViewField.getGridSize() + 1)).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position - 1)).getType() == 1) { 
+                    if (Field.getCell().get((position - 1)).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.cell.get((position + 1)).getType() == 1) { 
+                    if (Field.getCell().get((position + 1)).getType() == 1) { 
                         dangerCount++; 
                         }
                 }
                 cell.setText(String.valueOf(dangerCount));
             } else if (cell.getType() == 1) {
-                for (int x = 0; x < Field.cell.size(); x++) {
-                    Field.cell.get(x).setEnabled(false);
-                    Field.cell.get(x).setText("");
-                    if (Field.cell.get(x).getType() == 1) {
-                        Field.cell.get(x).setText("M");
-                        Field.cell.get(x).setBackground(Color.red); 
+                for (int x = 0; x < Field.getCell().size(); x++) {
+                    Field.getCell().get(x).setEnabled(false);
+                    Field.getCell().get(x).setText("");
+                    if (Field.getCell().get(x).getType() == 1) {
+                        Field.getCell().get(x).setText("M");
+                        Field.getCell().get(x).setBackground(Color.red); 
                     }
-                    ViewField.frame.setVisible(false);
+                    ViewField.getFrame().setVisible(false);
                 }
                 cell.setText("M");
                 cell.setBackground(Color.red);
-                //status(false);
-                //show();
+                //this.controller.EndGame(false);
             }
 
             for (int x = 0; x < queue.size(); x++) {
@@ -252,8 +251,8 @@ public class Handler  {
                 temp.clickButton();
             }
 
-            for (int x = 0; x < Field.cell.size(); x++) {
-                 if (Field.cell.get(x).isDiscovered()) {
+            for (int x = 0; x < Field.getCell().size(); x++) {
+                 if (Field.getCell().get(x).isDiscovered()) {
                     discovered++;
                    // if (discovered == StartGame.GRIDSIZE * StartGame.GRIDSIZE) {
                         //status(true);
@@ -262,16 +261,16 @@ public class Handler  {
                  }
             }
 
-            if (discovered == Field.cell.size() - MinefieldController.MINES) {
-                for (int x = 0; x < Field.cell.size(); x++) {
-                    if (Field.cell.get(x).getType() == 1) {
-                        Field.cell.get(x).setEnabled(false);
-                        Field.cell.get(x).setText("M");
-                        Field.cell.get(x).setBackground(Color.red);
-                        ViewField.frame.setVisible(false);
+            if (discovered == Field.getCell().size() - ViewField.getGridSize()) {
+                for (int x = 0; x < Field.getCell().size(); x++) {
+                    if (Field.getCell().get(x).getType() == 1) {
+                        Field.getCell().get(x).setEnabled(false);
+                        Field.getCell().get(x).setText("M");
+                        Field.getCell().get(x).setBackground(Color.red);
+                        ViewField.getFrame().setVisible(false);
                     } else {
-                        Field.cell.get(x).setEnabled(false);
-                        Field.cell.get(x).setText("");
+                        Field.getCell().get(x).setEnabled(false);
+                        Field.getCell().get(x).setText("");
                     }
                 }
             }

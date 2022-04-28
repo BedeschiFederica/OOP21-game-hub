@@ -16,47 +16,76 @@ public class ViewField implements GameView {
     /**
      * frame is here so it can be used in every method.
      */
-    public static JFrame frame;
+    private static JFrame frame;
     private static String title;
+    private static  int mines;
+    private static int gridSize;
 
     /**
      * Constructor of field.
      * @param size needed to make the grid
      * @param title sets the title of the frame
      * @param startGame so it knows what game to start
+     * @param mine needed to know how many mines are needed
      * @param handler that makes all the check for the game.
      * 
      */
-    public ViewField(final int size, final String title, final MinefieldController startGame, final Handler handler) {
+    public ViewField(final int size, final int mine, final String title, final MinefieldController startGame, final Handler handler) {
         ViewField.title = title;
-        frame = new JFrame(title);
+        ViewField.mines = mine;
+        ViewField.gridSize = size;
+        setFrame(new JFrame(title));
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel jpField = new Field(new GridLayout(size, size), handler);
         //frame.setSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
-        frame.setPreferredSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
-        frame.setLocationByPlatform(true);
-        frame.setContentPane(jpField);
+        getFrame().setPreferredSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
+        getFrame().setLocationByPlatform(true);
+        getFrame().setContentPane(jpField);
         update(0);
-        frame.pack();
-        frame.setVisible(true);
+        getFrame().pack();
+        getFrame().setVisible(true);
     }
+
+    
 
     /**
      * Updates the title of the frame to know how many mines and flag are in the game.
      * @param flag needed to update in real time the number of flag
      */
     public static void update(final int flag) {
-        frame.setTitle(title + "Mines: " + MinefieldController.MINES + " - Flags: " + flag);
+        getFrame().setTitle(title + "Mines: " + mines + " - Flags: " + flag);
     }
 
-    @Override
+    /**
+     * @Ovveride to set the frame visible.
+     * @param visible true if the frame is set visible
+     */
     public void setVisible(final boolean visible) {
-        frame.setVisible(visible);
+        getFrame().setVisible(visible);
     }
 
-    @Override
+    /**
+     * @Override to dispose this frame
+     */
     public void dispose() {
-        frame.dispose();
+        getFrame().dispose();
+    }
+
+    public static JFrame getFrame() {
+        return frame;
+    }
+
+    /**
+     * @param frame needed to set the frame
+     */
+    public static void setFrame(final JFrame frame) {
+        ViewField.frame = frame;
+    }
+    public static int getMines() {
+        return mines;
+    }
+    public static int getGridSize() {
+        return gridSize;
     }
 }

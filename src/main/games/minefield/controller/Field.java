@@ -1,15 +1,17 @@
 package main.games.minefield.controller;
 
 import main.games.minefield.model.Handler;
+import main.games.minefield.view.ViewField;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
 public class Field extends JPanel {
 
+    private static final long serialVersionUID = 1787913230237933232L;
     //needed to draw the table
-    private int grid = MinefieldController.GRIDSIZE * MinefieldController.GRIDSIZE;
+    private int grid = ViewField.getGridSize() * ViewField.getGridSize();
     //variable neede to know if a cell is picked to have a mine or not
     private boolean mine = false;
     //array that has the position of all the mines
@@ -17,7 +19,7 @@ public class Field extends JPanel {
     /**
      * array that has the position of all the cells.
     */
-    public static ArrayList<Cell> cell = new ArrayList<Cell>();
+    private static ArrayList<Cell> cell = new ArrayList<Cell>();
 
     public Field(final GridLayout grid, final Handler handler) {
         super(grid);
@@ -30,7 +32,7 @@ public class Field extends JPanel {
      * @param handler that makes all the check for the game.
     */
     public void createCells(final Handler handler) {
-        for (int i = 1; i <= MinefieldController.MINES; i++) {
+        for (int i = 1; i <= ViewField.getMines(); i++) {
             while (!mine) {
                 int minePosition = (int) (Math.random() * grid);
                 if (!mines.contains(minePosition)) {
@@ -43,39 +45,39 @@ public class Field extends JPanel {
 
         for (int i = 0; i < grid; i++) {
             if (mines.contains(i)) {
-                cell.add(new Cell(1, i, false, false, handler));
-            } else if (i % MinefieldController.GRIDSIZE == 0) {
-                if (mines.contains(i - MinefieldController.GRIDSIZE) 
-                        || mines.contains(i - MinefieldController.GRIDSIZE + 1) 
+                getCell().add(new Cell(1, i, false, false, handler));
+            } else if (i % ViewField.getGridSize() == 0) {
+                if (mines.contains(i - ViewField.getGridSize()) 
+                        || mines.contains(i - ViewField.getGridSize() + 1) 
                         || mines.contains(i + 1) 
-                        || mines.contains(i + MinefieldController.GRIDSIZE) 
-                        || mines.contains(i + MinefieldController.GRIDSIZE + 1)) {
-                    cell.add(new Cell(2, i, false, false, handler));
+                        || mines.contains(i + ViewField.getGridSize()) 
+                        || mines.contains(i + ViewField.getGridSize() + 1)) {
+                    getCell().add(new Cell(2, i, false, false, handler));
                 } else {
-                    cell.add(new Cell(0, i, false, false, handler));
+                    getCell().add(new Cell(0, i, false, false, handler));
                 }
-            } else if (i % MinefieldController.GRIDSIZE == MinefieldController.GRIDSIZE - 1) {
-                if (mines.contains(i - MinefieldController.GRIDSIZE - 1) 
-                        || mines.contains(i - MinefieldController.GRIDSIZE) 
+            } else if (i % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
+                if (mines.contains(i - ViewField.getGridSize() - 1) 
+                        || mines.contains(i - ViewField.getGridSize()) 
                         || mines.contains(i - 1)
-                        || mines.contains(i + MinefieldController.GRIDSIZE - 1)
-                        || mines.contains(i + MinefieldController.GRIDSIZE)) {
-                    cell.add(new Cell(2, i, false, false, handler));
+                        || mines.contains(i + ViewField.getGridSize() - 1)
+                        || mines.contains(i + ViewField.getGridSize())) {
+                    getCell().add(new Cell(2, i, false, false, handler));
                 } else {
-                    cell.add(new Cell(0, i, false, false, handler));
+                    getCell().add(new Cell(0, i, false, false, handler));
                 }
             } else {
-                if (mines.contains(i - MinefieldController.GRIDSIZE - 1) 
-                        || mines.contains(i - MinefieldController.GRIDSIZE) 
-                        || mines.contains(i - MinefieldController.GRIDSIZE + 1) 
+                if (mines.contains(i - ViewField.getGridSize() - 1) 
+                        || mines.contains(i - ViewField.getGridSize()) 
+                        || mines.contains(i - ViewField.getGridSize() + 1) 
                         || mines.contains(i - 1) 
                         || mines.contains(i + 1) 
-                        || mines.contains(i + MinefieldController.GRIDSIZE - 1) 
-                        || mines.contains(i + MinefieldController.GRIDSIZE) 
-                        || mines.contains(i + MinefieldController.GRIDSIZE + 1)) {
-                    cell.add(new Cell(2, i, false, false, handler));
+                        || mines.contains(i + ViewField.getGridSize() - 1) 
+                        || mines.contains(i + ViewField.getGridSize()) 
+                        || mines.contains(i + ViewField.getGridSize() + 1)) {
+                    getCell().add(new Cell(2, i, false, false, handler));
                 } else {
-                    cell.add(new Cell(0, i, false, false, handler));
+                    getCell().add(new Cell(0, i, false, false, handler));
                 }
             }
         }
@@ -85,8 +87,16 @@ public class Field extends JPanel {
      * adding the cells to the field.
      */
     private void newCells() {
-     for (int i = 0; i < cell.size(); i++) {
-            add(cell.get(i));
+     for (int i = 0; i < getCell().size(); i++) {
+            add(getCell().get(i));
         }
+    }
+
+    public static ArrayList<Cell> getCell() {
+        return cell;
+    }
+
+    public static void setCell(final ArrayList<Cell> cell) {
+        Field.cell = cell;
     }
 }
