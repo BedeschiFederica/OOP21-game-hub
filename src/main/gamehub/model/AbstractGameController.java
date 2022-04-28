@@ -1,6 +1,6 @@
-package main.general;
+package main.gamehub.model;
 
-import main.dashboard.controller.MainController;
+import main.gamehub.controller.MainController;
 
 /**
  * Abstract class that represents a generic controller of a game.
@@ -41,15 +41,6 @@ public abstract class AbstractGameController implements GameController {
     @Override
     public void resume() {
         getView().setVisible(true);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void closeGame() {
-        this.mainController.showMainMenu();
-        getView().dispose();
     }
 
 }

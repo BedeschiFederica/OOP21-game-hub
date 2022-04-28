@@ -1,7 +1,7 @@
 package main.games.numericalbond.controller;
 
+import main.gamehub.model.GameController;
 import main.games.numericalbond.utility.Position;
-import main.general.GameController;
 
 /**
  * Interface that represents a controller of the game Numerical bond.

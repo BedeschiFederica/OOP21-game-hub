@@ -1,13 +1,14 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
-import main.dashboard.controller.MainController;
-import main.general.GameController;
+import main.gamehub.controller.MainController;
+import main.gamehub.model.GameController;
 
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -26,11 +27,11 @@ public class GameStartMenuGUI extends JFrame implements GameStartMenu {
     private static final Font NORMAL_FONT = new Font("Tahoma", Font.BOLD, 25);
     private static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(500, 500);
 
-    private final List<InputPanel> inputPanels;
+    private final List<InputPanelImpl> inputPanels = new ArrayList<>();
 
-    public GameStartMenuGUI(final MainController mainController, final GameController controller) {
+    public GameStartMenuGUI(final MainController mainController, final GameController controller,
+            final List<InputPanel> inputPanels) {
 
-        this.inputPanels = controller.getInputPanels();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setPreferredSize(new Dimension(screenSize.width / FRAME_SIZE_DIV, screenSize.height / FRAME_SIZE_DIV));
@@ -56,6 +57,7 @@ public class GameStartMenuGUI extends JFrame implements GameStartMenu {
         inputConstr.gridx = 0;
         inputConstr.gridy = 1;
         mainPanel.add(inputPanel, inputConstr);
+        inputPanels.forEach(p -> this.inputPanels.add((InputPanelImpl) p));
         this.inputPanels.forEach(p -> inputPanel.add(p));
 
         final JButton btnStart = new JButton("PLAY");

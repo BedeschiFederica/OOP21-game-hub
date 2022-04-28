@@ -1,7 +1,7 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
-import main.dashboard.controller.MainController;
-import main.general.GameController;
+import main.gamehub.controller.MainController;
+import main.gamehub.model.GameController;
 
 import java.awt.Font;
 import java.awt.GridBagLayout;

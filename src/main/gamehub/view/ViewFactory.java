@@ -1,9 +1,9 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
 import java.util.List;
 
-import main.dashboard.controller.MainController;
-import main.general.GameController;
+import main.gamehub.controller.MainController;
+import main.gamehub.model.GameController;
 
 /**
  * Interface that represents a factory for the view of the application.
@@ -26,9 +26,12 @@ public interface ViewFactory {
      *          the controller of the application
      * @param gameController
      *          the controller of the game that has to be started
+     * @param inputPanels
+     *          the input panels that game start menu has to have
      * @return the created game start menu.
      */
-    GameStartMenu createGameStartMenu(MainController mainController, GameController gameController);
+    GameStartMenu createGameStartMenu(MainController mainController, GameController gameController,
+            List<InputPanel> inputPanels);
 
     /**
      * Creates a pause menu.
@@ -52,5 +55,15 @@ public interface ViewFactory {
      */
     GameEndingView createGameEndingView(MainController mainController, GameController gameController,
             boolean isVictory);
+
+    /**
+     * Creates an input panel.
+     * @param inputName
+     *          the name of the input
+     * @param inputValuesList
+     *          the list of values of the input
+     * @return the created input panel
+     */
+    InputPanel createInputPanel(String inputName, List<Integer> inputValuesList);
 
 }

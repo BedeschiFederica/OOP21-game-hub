@@ -1,13 +1,15 @@
-package main.dashboard.controller;
+package main.gamehub.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import main.dashboard.view.MainMenu;
-import main.dashboard.view.ViewFactory;
-import main.dashboard.view.ViewFactoryImpl;
-import main.general.GameController;
+import main.gamehub.model.GameController;
+import main.gamehub.view.InputPanel;
+import main.gamehub.view.MainMenu;
+import main.gamehub.view.ViewFactory;
+import main.gamehub.view.ViewFactoryImpl;
 
 /**
  * Class that represents the controller of the application.
@@ -33,13 +35,22 @@ public class MainControllerImpl implements MainController {
         this.mainMenu.setVisible(true);
     }
 
+    private List<InputPanel> createInputPanels(final GameController controller) {
+        final List<InputPanel> inputPanels = new ArrayList<>();
+        for (final var e : controller.getInputs().entrySet()) {
+            inputPanels.add(this.viewFactory.createInputPanel(e.getKey(), e.getValue()));
+        }
+        return inputPanels;
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public void showStartPanel(final String gameName) {
         this.mainMenu.setVisible(false);
-        this.viewFactory.createGameStartMenu(this, this.gameControllers.get(gameName)).setVisible(true);
+        this.viewFactory.createGameStartMenu(this, this.gameControllers.get(gameName),
+                createInputPanels(this.gameControllers.get(gameName))).setVisible(true);
     }
 
     /**
@@ -55,7 +66,6 @@ public class MainControllerImpl implements MainController {
      */
     @Override
     public void showGameEnding(final GameController controller, final boolean isVictory) {
-        //new GameEndingGUI(this, controller, isVictory).setVisible(true);
         this.viewFactory.createGameEndingView(this, controller, isVictory).setVisible(true);
     }
 
@@ -72,7 +82,6 @@ public class MainControllerImpl implements MainController {
      */
     @Override
     public void pauseGame(final GameController controller) {
-        //new PauseMenuGUI(this, controller).display();
         this.viewFactory.createPauseMenu(this, controller).setVisible(true);
     }
 

@@ -1,6 +1,6 @@
 package main.general;
 
-import main.dashboard.controller.MainControllerImpl;
+import main.gamehub.controller.MainControllerImpl;
 import main.games.floodit.controller.FloodItController;
 import main.games.minefield.controller.MinefieldController;
 import main.games.numericalbond.controller.NumericalBondControllerImpl;

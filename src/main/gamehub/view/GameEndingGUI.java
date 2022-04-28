@@ -1,4 +1,4 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -12,8 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.dashboard.controller.MainController;
-import main.general.GameController;
+import main.gamehub.controller.MainController;
+import main.gamehub.model.GameController;
 
 /** 
  * Class that is needed for the endGame.

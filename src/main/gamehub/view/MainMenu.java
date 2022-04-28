@@ -1,4 +1,4 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
 /**
  * Interface for a main menu.

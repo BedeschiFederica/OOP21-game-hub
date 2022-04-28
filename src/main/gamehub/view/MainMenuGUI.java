@@ -1,8 +1,7 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
-import main.dashboard.controller.MainController;
-import main.dashboard.controller.MainControllerImpl;
-import main.general.GameController;
+import main.gamehub.controller.MainController;
+import main.gamehub.model.GameController;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;

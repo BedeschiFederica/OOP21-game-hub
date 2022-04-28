@@ -1,9 +1,9 @@
-package main.dashboard.view;
+package main.gamehub.model;
 
 /**
- * Interface for a view.
+ * Interface of a generic game view.
  */
-public interface View {
+public interface GameView {
 
     /**
      * Sets the visibility of the view.
@@ -11,5 +11,10 @@ public interface View {
      *          indicates if the view has to be visible or not
      */
     void setVisible(boolean visible);
+
+    /**
+     * Closes the view.
+     */
+    void dispose();
 
 }

@@ -1,6 +1,6 @@
-package main.dashboard.controller;
+package main.gamehub.controller;
 
-import main.general.GameController;
+import main.gamehub.model.GameController;
 
 /**
  * Interface that represents the controller of the application.

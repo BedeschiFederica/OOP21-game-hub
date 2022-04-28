@@ -1,9 +1,9 @@
 package main.games.floodit.view;
 
+import main.gamehub.model.GameView;
 import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Table;
-import main.general.GameView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
