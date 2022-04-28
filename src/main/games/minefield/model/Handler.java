@@ -5,6 +5,7 @@ import java.awt.Color;
 import main.games.minefield.view.ViewField;
 import main.games.minefield.controller.Cell;
 import main.games.minefield.controller.Field;
+import main.games.minefield.controller.MinefieldController;
 
 import java.util.ArrayList;
 public class Handler  {
@@ -12,8 +13,13 @@ public class Handler  {
     //array to know where is the player.
     private ArrayList<Cell> now = new ArrayList<Cell>();
     private ArrayList<Cell> queue = new ArrayList<Cell>();
+    private MinefieldController controller;
 
     private static int putFlag = 0;
+    
+    public Handler(MinefieldController controller) {
+        this.controller = controller;
+    }
 
     /**
      * method that discovers the cells.
@@ -298,7 +304,7 @@ public class Handler  {
      * @param res tells if the player has won or not
      * @return if the game is won or not
      */
-    public static boolean result(final boolean res) {
-        return res;
+    public void result(final boolean res) {
+        controller.endGame(res);
     }
 }
