@@ -1,6 +1,7 @@
 package main.games.minefield.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -41,9 +42,11 @@ public class ViewField implements GameView {
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JPanel mainPanel = new JPanel(new BorderLayout());
-        final JPanel pausePanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+        final JPanel pausePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        pausePanel.setBackground(Color.cyan);
         final JButton jbPause = new JButton("PAUSE");
         pausePanel.add(jbPause);
+        jbPause.setBackground(Color.yellow);
         jbPause.addActionListener(e -> startGame.pause());
         JPanel jpField = new Field(new GridLayout(size, size), handler);
         mainPanel.add(pausePanel, BorderLayout.NORTH);
