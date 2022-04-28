@@ -9,41 +9,51 @@ import main.games.minefield.view.ViewField;
 import main.general.AbstractGameController;
 import main.general.GameView;
 
-public class MinefieldController extends AbstractGameController{
+public class MinefieldController extends AbstractGameController {
 
-    /**
-     * the GRINDSIZE is needed for knowing the size of the table.
-     */
-    public static final int GRIDSIZE = 8 ;
-    /**
-     * the MINES is needed for knowing how many mines there are.
-     */
-    public static final int MINES = (int) Math.round(GRIDSIZE * GRIDSIZE * .1);
     /**
      * the NAME of the game.
     */
     public static final String NAME = "Minefield";
     private Handler handler = new Handler();
     private ViewField viewField;
+    private static final List<Integer> POS_GRID = List.of(4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+    private static final List<Integer> POS_MINES = List.of(4, 5, 6, 7, 8, 9, 10);
 
-    @Override
+    /**
+     * @return the view of minefield
+     */
     public GameView getView() {
-        // TODO Auto-generated method stub
         return viewField;
     }
 
-    @Override
+    /**
+     * @return the name of the game
+     */
     public String getGameName() {
         return NAME;
     }
-    @Override
+    /**
+     * @return the list of inputs needed.
+     */
     public List<InputPanel> getInputPanels() {
-        return List.of(new InputPanel("Cells:", List.of(4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20)), new InputPanel("Mines:", List.of(4, 5, 6, 7, 8, 9, 10)));
+        return List.of(new InputPanel("Cells", POS_GRID), new InputPanel("Mines:", POS_MINES));
     }
-    @Override
+    /**
+     * @param inputs gives the game the inputs needed.
+     */
     public void startGame(final int... inputs) {
-        this.viewField = new ViewField(GRIDSIZE, "Minefield - ", this, handler);
+        this.viewField = new ViewField(inputs[0], inputs[1], "Minefield - ", this, handler);
         new MinefieldController();
     }
-
-}
+    /**
+     * ends the game.
+     */
+    public void gameEnding() {
+        if (Handler.result(false)) {
+            this.endGame(false);
+        } else if (Handler.result(true)) {
+            this.endGame(true);
+        }
+     }
+ }

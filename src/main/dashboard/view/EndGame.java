@@ -24,10 +24,6 @@ public class EndGame extends JFrame {
 
     private static final long serialVersionUID = -2947972819890283488L;
     private static final int FONTSIZE = 48;
-
-//    private JLabel jlResult = new JLabel();
-//    private JPanel jp = new JPanel();
-
     /**
      * Creation of the Gui graphic.
      * 
@@ -81,36 +77,5 @@ public class EndGame extends JFrame {
         this.setLocationByPlatform(true);
         this.setVisible(true);
     }
-
-//    /**
-//     * Method used to show if the player has won or lost.
-//     * 
-//     * @param state if true the player has won, if false he has lost.
-//     */
-//    public void status(final boolean state) {
-//        final Font fState = new Font("Georgia", Font.BOLD, FONTSIZE);
-//        if (state == true) {
-//            this.jlResult = new JLabel("You Won!!!");
-//        } else {
-//            this.jlResult = new JLabel("You Lost!Try Again!");
-//        }
-//        jp.add(jlResult);
-//        jlResult.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        jlResult.setFont(fState);
-//    }
-
-//    /**
-//     * Method used to show the frame.
-//     */
-//    public void show() {
-//        jf.setVisible(true);
-//    }
-//
-//    /**
-//     * Method used to hide the frame.
-//     */
-//    private void hide() {
-//        jf.setVisible(false);
-//    }
 
 }

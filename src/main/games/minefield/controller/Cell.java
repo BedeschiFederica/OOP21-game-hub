@@ -3,10 +3,15 @@ package main.games.minefield.controller;
 import main.games.minefield.model.Handler;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
-import java.awt.event.*;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
 public class Cell extends JButton {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -9133241480886085487L;
     private int type;
     private int position;
     private boolean discovered;
