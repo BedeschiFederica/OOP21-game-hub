@@ -1,9 +1,12 @@
 package main.games.minefield.view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import main.games.minefield.controller.MinefieldController;
@@ -37,11 +40,17 @@ public class ViewField implements GameView {
         setFrame(new JFrame(title));
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        final JPanel mainPanel = new JPanel(new BorderLayout());
+        final JPanel pausePanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+        final JButton jbPause = new JButton("PAUSE");
+        pausePanel.add(jbPause);
+        jbPause.addActionListener(e -> startGame.pause());
         JPanel jpField = new Field(new GridLayout(size, size), handler);
-        //frame.setSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
+        mainPanel.add(pausePanel, BorderLayout.NORTH);
+        mainPanel.add(jpField, BorderLayout.CENTER);
         getFrame().setPreferredSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
         getFrame().setLocationByPlatform(true);
-        getFrame().setContentPane(jpField);
+        getFrame().getContentPane().add(mainPanel);
         update(0);
         getFrame().pack();
         getFrame().setVisible(true);
