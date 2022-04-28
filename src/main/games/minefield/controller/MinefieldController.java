@@ -44,7 +44,6 @@ public class MinefieldController extends AbstractGameController {
      */
     public void startGame(final int... inputs) {
         this.viewField = new ViewField(inputs[0], inputs[1], "Minefield - ", this, handler);
-        new MinefieldController();
     }
     /**
      * ends the game.

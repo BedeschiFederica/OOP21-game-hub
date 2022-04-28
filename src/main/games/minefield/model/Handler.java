@@ -252,7 +252,7 @@ public class Handler  {
             for (int x = 0; x < Field.getCell().size(); x++) {
                  if (Field.getCell().get(x).isDiscovered()) {
                     discovered++;
-                   if (discovered == ViewField.getGridSize() * ViewField.getGridSize()) {
+                   if (discovered == (ViewField.getGridSize() * ViewField.getGridSize())-ViewField.getMines()) {
                         result(true);
                     }
                  }
