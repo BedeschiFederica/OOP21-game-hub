@@ -23,6 +23,7 @@ public class Field extends JPanel {
 
     public Field(final GridLayout grid, final Handler handler) {
         super(grid);
+        cell.clear();
         createCells(handler);
         newCells();
     }
