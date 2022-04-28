@@ -39,6 +39,7 @@ public class ViewField implements GameView {
         frame.setContentPane(jpField);
         update(0);
         frame.pack();
+        frame.setVisible(true);
     }
 
     /**

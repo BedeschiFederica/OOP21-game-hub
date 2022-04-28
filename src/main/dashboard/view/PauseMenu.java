@@ -78,7 +78,7 @@ public class PauseMenu extends JFrame {
         final GridBagConstraints exitConstr = new GridBagConstraints();
         exitConstr.fill = GridBagConstraints.BOTH;
         exitConstr.gridx = 1;
-        exitConstr.gridy = 4;
+        exitConstr.gridy = 3;
         exitConstr.insets = BOTTOM_INSETS;
         exitConstr.weightx = 1;
         exitConstr.weighty = 1;
