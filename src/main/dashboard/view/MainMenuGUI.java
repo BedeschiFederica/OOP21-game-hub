@@ -1,6 +1,7 @@
 package main.dashboard.view;
 
 import main.dashboard.controller.MainController;
+import main.dashboard.controller.MainControllerImpl;
 import main.general.GameController;
 
 import javax.swing.BorderFactory;
@@ -36,13 +37,13 @@ public class MainMenuGUI extends JFrame implements MainMenu {
     private final MainController mainController;
 
     /**
-     * Builds a new {@link MainController}.
+     * Builds a new {@link MainControllerImpl}.
      * @param mainController
      *          the main controller
-     * @param controllers
+     * @param gameControllers
      *          the controllers of the games
      */
-    public MainMenuGUI(final MainController mainController, final List<GameController> controllers) {
+    public MainMenuGUI(final MainController mainController, final List<GameController> gameControllers) {
         this.mainController = mainController;
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -66,16 +67,13 @@ public class MainMenuGUI extends JFrame implements MainMenu {
         jbConstr.weightx = 1;
         jbConstr.weighty = 1;
 
-        for (final GameController c : controllers) {
+        for (final GameController c : gameControllers) {
             final JButton jb = new JButton(c.getGameName());
             jb.setBorder(BorderFactory.createRaisedBevelBorder());
             jb.setMargin(getInsets());
             jb.setFont(buttonFont);
-            jbConstr.gridy = controllers.indexOf(c);
-            jb.addActionListener(e -> {
-                this.mainController.showStartPanel(((JButton) e.getSource()).getText());
-                this.dispose();
-            });
+            jbConstr.gridy = gameControllers.indexOf(c);
+            jb.addActionListener(e -> this.mainController.showStartPanel(((JButton) e.getSource()).getText()));
             jb.setAlignmentX(CENTER_ALIGNMENT);
             jb.setBackground(DashboardColor.BUTTON.getActualColor());
             panel.add(jb, jbConstr);
@@ -83,6 +81,5 @@ public class MainMenuGUI extends JFrame implements MainMenu {
 
         this.pack();
         this.setLocationByPlatform(true);
-        this.setVisible(true);
     }
 }

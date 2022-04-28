@@ -20,7 +20,7 @@ import main.general.GameController;
  * 
  * 
  */
-public class EndGame extends JFrame {
+public class GameEndingGUI extends JFrame implements GameEndingView {
 
     private static final long serialVersionUID = -2947972819890283488L;
     private static final int FONTSIZE = 48;
@@ -31,7 +31,7 @@ public class EndGame extends JFrame {
      * @param gameController need to know what game had ended
      * @param isVictory need to know if it's a victory or not
      */
-    public EndGame(final MainController mainController, final GameController gameController, final boolean isVictory) {
+    public GameEndingGUI(final MainController mainController, final GameController gameController, final boolean isVictory) {
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setTitle("SCORE");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -75,7 +75,6 @@ public class EndGame extends JFrame {
         this.getContentPane().add(jp);
         this.pack();
         this.setLocationByPlatform(true);
-        this.setVisible(true);
     }
 
 }

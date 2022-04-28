@@ -15,7 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GameStartGUI extends JFrame {
+/**
+ * Class that represents the game start view.
+ */
+public class GameStartMenuGUI extends JFrame implements GameStartMenu {
 
     private static final long serialVersionUID = 1188589790801007209L;
     private static final int FRAME_SIZE_DIV = 2;
@@ -25,7 +28,7 @@ public class GameStartGUI extends JFrame {
 
     private final List<InputPanel> inputPanels;
 
-    public GameStartGUI(final MainController mainController, final GameController controller) {
+    public GameStartMenuGUI(final MainController mainController, final GameController controller) {
 
         this.inputPanels = controller.getInputPanels();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -72,6 +75,5 @@ public class GameStartGUI extends JFrame {
 
         this.pack();
         this.setLocationByPlatform(true);
-        this.setVisible(true);
     }
 }
