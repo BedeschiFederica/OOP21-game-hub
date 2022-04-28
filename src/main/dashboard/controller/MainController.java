@@ -57,6 +57,8 @@ public class MainController {
      * Shows the game ending of the game specified by the given controller.
      * @param controller
      *          the controller of the game
+     * @param isVictory 
+     *          needed to know if the player has won
      */
     public void showGameEnding(final GameController controller, final boolean isVictory) {
         new EndGame(this, controller, isVictory);
