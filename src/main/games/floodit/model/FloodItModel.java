@@ -169,6 +169,7 @@ public class FloodItModel {
         this.rowSize = 0;
         this.moves = 0;
         this.maxMoves = 0;
+        this.mCounter = null;
         this.currentColor = null;
         this.table = null;
         this.mainPuddle.clear();
