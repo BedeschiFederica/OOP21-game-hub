@@ -99,4 +99,7 @@ public class ViewField implements GameView {
     public static int getGridSize() {
         return gridSize;
     }
+    public static void setGridSize(final int gridSize) {
+        ViewField.gridSize = gridSize;
+    }
 }
