@@ -3,18 +3,20 @@ package test;
 import java.util.ArrayList;
 
 import main.games.minefield.controller.MinefieldController;
+import main.games.minefield.model.Handler;
+import main.games.minefield.view.ViewField;
 
 public class MinefieldTest {
 
     private int mines = 2;
     private int size = 2;
     private MinefieldController cont = new MinefieldController();
+    private Handler handler = new Handler(cont);
     /**
      * test if the grid size is correct.
      */
     void testSize() {
-        int sizeGrid = size * size;
-        System.out.print(sizeGrid); //4
+        ViewField viewfield = new ViewField(size, mines, "Minefield - ", cont, handler); 
     }
 
     /**
