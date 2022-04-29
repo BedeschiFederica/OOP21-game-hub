@@ -1,9 +1,9 @@
-package main.general;
+package main.gamehub.model;
 
 import java.util.List;
+import java.util.Map;
 
-import main.dashboard.controller.MainController;
-import main.dashboard.view.InputPanel;
+import main.gamehub.controller.MainController;
 
 /**
  * Interface of a generic game controller.
@@ -18,10 +18,10 @@ public interface GameController {
     void setMainController(MainController mainController);
 
     /**
-     * Gets the input panels of the game.
-     * @return the input panels of the game
+     * Gets the inputs that the game needs.
+     * @return the input that the game needs.
      */
-    List<InputPanel> getInputPanels();
+    Map<String, List<Integer>> getInputs();
 
     /**
      * Gets the view of the game.
@@ -58,10 +58,5 @@ public interface GameController {
      * Resumes the game.
      */
     void resume();
-
-    /**
-     * Closes the game interrupting it. It returns to the main menu.
-     */
-    void closeGame();
 
 }

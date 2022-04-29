@@ -258,8 +258,9 @@ public class Handler  {
             for (int x = 0; x < Field.getCell().size(); x++) {
                  if (Field.getCell().get(x).isDiscovered()) {
                     discovered++;
-                   if (discovered == (ViewField.getGridSize() * ViewField.getGridSize())-ViewField.getMines()) {
+                   if (discovered == (ViewField.getGridSize() * ViewField.getGridSize())-ViewField.getMines()) 
                         result(true);
+                        return;
                     }
                  }
             }
@@ -302,7 +303,6 @@ public class Handler  {
     /**
      * 
      * @param res tells if the player has won or not
-     * @return if the game is won or not
      */
     public void result(final boolean res) {
         controller.endGame(res);

@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import main.games.minefield.controller.MinefieldController;
 import main.games.minefield.model.Handler;
-import main.general.GameView;
+import main.gamehub.model.GameView;
 import main.games.minefield.controller.Field;
 
 public class ViewField implements GameView {

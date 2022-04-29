@@ -1,13 +1,12 @@
 package main.games.minefield.controller;
 
-
 import java.util.List;
+import java.util.Map;
 
-import main.dashboard.view.InputPanel;
+import main.gamehub.model.AbstractGameController;
+import main.gamehub.model.GameView;
 import main.games.minefield.model.Handler;
 import main.games.minefield.view.ViewField;
-import main.general.AbstractGameController;
-import main.general.GameView;
 
 public class MinefieldController extends AbstractGameController {
 
@@ -34,10 +33,12 @@ public class MinefieldController extends AbstractGameController {
         return NAME;
     }
     /**
-     * @return the list of inputs needed.
+     * {@inheritDoc}
      */
-    public List<InputPanel> getInputPanels() {
-        return List.of(new InputPanel("Cells", POS_GRID), new InputPanel("Mines:", POS_MINES));
+    @Override
+    protected void addInputs(final Map<String, List<Integer>> inputsMap) {
+        inputsMap.put("Cells", POS_GRID);
+        inputsMap.put("Mines:", POS_MINES);
     }
     /**
      * @param inputs gives the game the inputs needed.

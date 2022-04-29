@@ -1,12 +1,14 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
-import main.dashboard.controller.MainController;
-import main.general.GameController;
+import main.gamehub.controller.MainController;
+import main.gamehub.model.GameController;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -27,22 +29,22 @@ public class MainMenuGUI extends JFrame implements MainMenu {
      */
     private static final long serialVersionUID = -7833926492439181130L;
     private static final int FRAME_SIZE_DIV = 3;
-    private static final int BUTTON_SIZE_DIV = 18;
+    private static final int BUTTON_SIZE_DIV = 25;
     private static final int FONT_SIZE_DIV = 36;
-    private static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(400, 400);
+    private static final Dimension MINIMUM_FRAME_DIMENSION = new Dimension(500, 500);
     //private static final Font BUTTON_FONT = new Font("Tahoma", Font.BOLD, 35);
     //private static final Insets INSETS = new Insets(BUTTON_SIZE_DIV, BUTTON_SIZE_DIV, BUTTON_SIZE_DIV, BUTTON_SIZE_DIV);
 
     private final MainController mainController;
 
     /**
-     * Builds a new {@link MainController}.
+     * Builds a new {@link MainControllerImpl}.
      * @param mainController
      *          the main controller
-     * @param controllers
+     * @param gameControllers
      *          the controllers of the games
      */
-    public MainMenuGUI(final MainController mainController, final List<GameController> controllers) {
+    public MainMenuGUI(final MainController mainController, final List<GameController> gameControllers) {
         this.mainController = mainController;
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -53,29 +55,34 @@ public class MainMenuGUI extends JFrame implements MainMenu {
         final Insets insets = new Insets(screenSize.height / BUTTON_SIZE_DIV, screenSize.width / BUTTON_SIZE_DIV,
                                     screenSize.height / BUTTON_SIZE_DIV, screenSize.width / BUTTON_SIZE_DIV);
         final Font buttonFont = new Font("Tahoma", Font.BOLD, screenSize.height / FONT_SIZE_DIV);
+        final Font titleFont = new Font("Tahoma", Font.BOLD, screenSize.height / (FONT_SIZE_DIV / 2));
 
         final JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.setBackground(DashboardColor.BACKGROUND.getActualColor());
         this.getContentPane().add(panel);
 
+        final JLabel lblTitle = new JLabel("GAME HUB", SwingConstants.CENTER);
+        lblTitle.setForeground(DashboardColor.TITLE.getActualColor());
+        lblTitle.setFont(titleFont);
+
         final GridBagConstraints jbConstr = new GridBagConstraints();
         jbConstr.fill = GridBagConstraints.BOTH;
         jbConstr.insets = insets;
         jbConstr.gridx = 1;
+        jbConstr.gridy = 0;
         jbConstr.weightx = 1;
         jbConstr.weighty = 1;
 
-        for (final GameController c : controllers) {
+        panel.add(lblTitle, jbConstr);
+
+        for (final GameController c : gameControllers) {
             final JButton jb = new JButton(c.getGameName());
             jb.setBorder(BorderFactory.createRaisedBevelBorder());
             jb.setMargin(getInsets());
             jb.setFont(buttonFont);
-            jbConstr.gridy = controllers.indexOf(c);
-            jb.addActionListener(e -> {
-                this.mainController.showStartPanel(((JButton) e.getSource()).getText());
-                this.dispose();
-            });
+            jbConstr.gridy = gameControllers.indexOf(c) + 1;
+            jb.addActionListener(e -> this.mainController.showStartPanel(((JButton) e.getSource()).getText()));
             jb.setAlignmentX(CENTER_ALIGNMENT);
             jb.setBackground(DashboardColor.BUTTON.getActualColor());
             panel.add(jb, jbConstr);
@@ -83,6 +90,5 @@ public class MainMenuGUI extends JFrame implements MainMenu {
 
         this.pack();
         this.setLocationByPlatform(true);
-        this.setVisible(true);
     }
 }
