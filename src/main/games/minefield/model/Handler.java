@@ -129,7 +129,6 @@ public class Handler  {
                         if (Field.getCell().get(position - 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        System.out.println(dangerCount);
                     }
                 } else if (position >= (ViewField.getGridSize() * (ViewField.getGridSize() - 1))) {
                     if (position % ViewField.getGridSize() == 0) {
