@@ -60,14 +60,10 @@ public class GameEndingGUI extends JFrame implements GameEndingView {
             jlResult = new JLabel("You Lost! Try Again!", SwingConstants.CENTER);
         }
         jlResult.setForeground(DashboardColor.TITLE.getActualColor());
-        //jlResult.setAlignmentX(Component.CENTER_ALIGNMENT);
         jlResult.setFont(fState);
         jp.add(jlResult, constraints);
-
         final JButton jbNewGame = new JButton("NEW GAME");
         final JButton jbMenu = new JButton("RETURN TO MAIN MENU");
-        //jbNewGame.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //jbMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
         jbNewGame.setBackground(DashboardColor.BUTTON.getActualColor());
         jbMenu.setBackground(DashboardColor.BUTTON.getActualColor());
         jbNewGame.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -81,7 +77,6 @@ public class GameEndingGUI extends JFrame implements GameEndingView {
             this.dispose();
         });
         jp.setBackground(DashboardColor.BACKGROUND.getActualColor());
-        //jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
         constraints.gridy = 1;
         jp.add(jbNewGame, constraints);
         constraints.gridy = 2;

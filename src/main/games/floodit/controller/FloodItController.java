@@ -29,6 +29,28 @@ public class FloodItController extends AbstractGameController {
         this.view = new FloodItView(this);
     }
 
+    /**
+     * Starts a new game.
+     * 
+     * @param inputs size and number of colors.
+     */
+    @Override
+    public void startGame(final int... inputs) {
+        final int size = inputs[0];
+        final int colors = inputs[1];
+        model.clear();
+        model.setTSize(size);
+        model.setNumofColors(colors);
+        model.setSelectedColors(Colors.getRandomColors(colors));
+        model.setTable();
+        model.setMCounter(new MaxMovesCounter(model.getRowSize()));
+        model.setMaxMoves();
+        this.startingPuddleSetup();
+        view.setGamePanel(model.getTable());
+        this.updateView();
+        view.display();
+    }
+
     // Sets up the starting puddle and color.
     private void startingPuddleSetup() {
         model.getMainPuddle().clear();
@@ -100,28 +122,6 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Starts a new game.
-     * 
-     * @param inputs size and number of colors.
-     */
-    @Override
-    public void startGame(final int... inputs) {
-        final int size = inputs[0];
-        final int colors = inputs[1];
-        model.clear();
-        model.setTSize(size);
-        model.setNumofColors(colors);
-        model.setSelectedColors(Colors.getRandomColors(colors));
-        model.setTable();
-        model.setMCounter(new MaxMovesCounter(model.getRowSize()));
-        model.setMaxMoves();
-        this.startingPuddleSetup();
-        view.setGamePanel(model.getTable());
-        this.updateView();
-        view.display();
-    }
-
-    /**
      * Updates the cells and moves visualization.
      */
     public void updateView() {
@@ -132,7 +132,7 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Gets the game view.
+     * {@inheritDoc}
      */
     @Override
     public GameView getView() {
@@ -140,7 +140,7 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Gets the game name.
+     * {@inheritDoc}
      */
     @Override
     public String getGameName() {

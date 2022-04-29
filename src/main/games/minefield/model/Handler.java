@@ -8,6 +8,7 @@ import main.games.minefield.controller.Field;
 import main.games.minefield.controller.MinefieldController;
 
 import java.util.ArrayList;
+
 public class Handler  {
 
     //array to know where is the player.
