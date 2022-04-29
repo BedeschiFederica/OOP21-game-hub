@@ -8,16 +8,16 @@ import main.games.minefield.controller.Field;
 import main.games.minefield.controller.MinefieldController;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Handler  {
 
     //array to know where is the player.
-    private ArrayList<Cell> now = new ArrayList<Cell>();
-    private ArrayList<Cell> queue = new ArrayList<Cell>();
-    private MinefieldController controller;
-
-    private static int putFlag = 0;
-
+    private List<Cell> now = new ArrayList<>();
+    private List<Cell> queue = new ArrayList<>();
+    private final MinefieldController controller;
+    private static int putFlag;
+  
     public Handler(final MinefieldController controller) {
         this.controller = controller;
     }
@@ -33,61 +33,61 @@ public class Handler  {
             cell.setEnabled(false);
             cell.setDiscovered(true);
 
-            int position = cell.getPosition();
+            final int position = cell.getPosition();
             if (cell.getType() == 0) {
                 if (position < ViewField.getGridSize()) {
                     if (position % ViewField.getGridSize() == 0) {
-                        queue.add(Field.getCell().get((position + ViewField.getGridSize())));
-                        queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
-                        queue.add(Field.getCell().get((position + 1)));
+                        queue.add(Field.getCell().get(position + ViewField.getGridSize()));
+                        queue.add(Field.getCell().get(position + ViewField.getGridSize() + 1));
+                        queue.add(Field.getCell().get(position + 1));
                     } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
-                        queue.add(Field.getCell().get((position + ViewField.getGridSize())));
-                        queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
-                        queue.add(Field.getCell().get((position - 1)));
+                        queue.add(Field.getCell().get(position + ViewField.getGridSize()));
+                        queue.add(Field.getCell().get(position + ViewField.getGridSize() - 1));
+                        queue.add(Field.getCell().get(position - 1));
                     } else {
-                        queue.add(Field.getCell().get((position + ViewField.getGridSize())));
-                        queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
-                        queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
-                        queue.add(Field.getCell().get((position + 1)));
-                        queue.add(Field.getCell().get((position - 1)));
+                        queue.add(Field.getCell().get(position + ViewField.getGridSize()));
+                        queue.add(Field.getCell().get(position + ViewField.getGridSize() + 1));
+                        queue.add(Field.getCell().get(position + ViewField.getGridSize() - 1));
+                        queue.add(Field.getCell().get(position + 1));
+                        queue.add(Field.getCell().get(position - 1));
                     }
                 } else if (position >= (ViewField.getGridSize() * (ViewField.getGridSize() - 1))) {
                     if (position % ViewField.getGridSize() == 0) {
-                        queue.add(Field.getCell().get((position - ViewField.getGridSize())));
-                        queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
-                        queue.add(Field.getCell().get((position + 1)));
+                        queue.add(Field.getCell().get(position - ViewField.getGridSize()));
+                        queue.add(Field.getCell().get(position - ViewField.getGridSize() + 1));
+                        queue.add(Field.getCell().get(position + 1));
                     } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
-                        queue.add(Field.getCell().get((position - ViewField.getGridSize())));
-                        queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
-                        queue.add(Field.getCell().get((position - 1)));
+                        queue.add(Field.getCell().get(position - ViewField.getGridSize()));
+                        queue.add(Field.getCell().get(position - ViewField.getGridSize() - 1));
+                        queue.add(Field.getCell().get(position - 1));
                     } else {
-                        queue.add(Field.getCell().get((position - ViewField.getGridSize())));
-                        queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
-                        queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
-                        queue.add(Field.getCell().get((position + 1)));
-                        queue.add(Field.getCell().get((position - 1)));
+                        queue.add(Field.getCell().get(position - ViewField.getGridSize()));
+                        queue.add(Field.getCell().get(position - ViewField.getGridSize() + 1));
+                        queue.add(Field.getCell().get(position - ViewField.getGridSize() - 1));
+                        queue.add(Field.getCell().get(position + 1));
+                        queue.add(Field.getCell().get(position - 1));
                     }
                 } else if (position % ViewField.getGridSize() == 0) {
-                    queue.add(Field.getCell().get((position - ViewField.getGridSize())));
-                    queue.add(Field.getCell().get((position + ViewField.getGridSize())));
-                    queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
-                    queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
-                    queue.add(Field.getCell().get((position + 1)));
+                    queue.add(Field.getCell().get(position - ViewField.getGridSize()));
+                    queue.add(Field.getCell().get(position + ViewField.getGridSize()));
+                    queue.add(Field.getCell().get(position - ViewField.getGridSize() + 1));
+                    queue.add(Field.getCell().get(position + ViewField.getGridSize() + 1));
+                    queue.add(Field.getCell().get(position + 1));
                 } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
-                    queue.add(Field.getCell().get((position - ViewField.getGridSize())));
-                    queue.add(Field.getCell().get((position + ViewField.getGridSize())));
-                    queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
-                    queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
-                    queue.add(Field.getCell().get((position - 1)));
+                    queue.add(Field.getCell().get(position - ViewField.getGridSize()));
+                    queue.add(Field.getCell().get(position + ViewField.getGridSize()));
+                    queue.add(Field.getCell().get(position - ViewField.getGridSize() - 1));
+                    queue.add(Field.getCell().get(position + ViewField.getGridSize() - 1));
+                    queue.add(Field.getCell().get(position - 1));
                 } else {
-                    queue.add(Field.getCell().get((position - ViewField.getGridSize())));
-                    queue.add(Field.getCell().get((position + ViewField.getGridSize())));
-                    queue.add(Field.getCell().get((position - ViewField.getGridSize() - 1)));
-                    queue.add(Field.getCell().get((position + ViewField.getGridSize() - 1)));
-                    queue.add(Field.getCell().get((position - ViewField.getGridSize() + 1)));
-                    queue.add(Field.getCell().get((position + ViewField.getGridSize() + 1)));
-                    queue.add(Field.getCell().get((position - 1)));
-                    queue.add(Field.getCell().get((position + 1)));
+                    queue.add(Field.getCell().get(position - ViewField.getGridSize()));
+                    queue.add(Field.getCell().get(position + ViewField.getGridSize()));
+                    queue.add(Field.getCell().get(position - ViewField.getGridSize() - 1));
+                    queue.add(Field.getCell().get(position + ViewField.getGridSize() - 1));
+                    queue.add(Field.getCell().get(position - ViewField.getGridSize() + 1));
+                    queue.add(Field.getCell().get(position + ViewField.getGridSize() + 1));
+                    queue.add(Field.getCell().get(position - 1));
+                    queue.add(Field.getCell().get(position + 1));
                 }
             } else if (cell.getType() == 2) {
                 //i see if there is a mine near the cell
@@ -185,44 +185,44 @@ public class Handler  {
                         dangerCount++; 
                         }
                 } else if (position % ViewField.getGridSize() == ViewField.getGridSize() - 1) {
-                    if (Field.getCell().get((position - ViewField.getGridSize())).getType() == 1) {
+                    if (Field.getCell().get(position - ViewField.getGridSize()).getType() == 1) {
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position + ViewField.getGridSize())).getType() == 1) { 
+                    if (Field.getCell().get(position + ViewField.getGridSize()).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position - ViewField.getGridSize() - 1)).getType() == 1) { 
+                    if (Field.getCell().get(position - ViewField.getGridSize() - 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position + ViewField.getGridSize() - 1)).getType() == 1) { 
+                    if (Field.getCell().get(position + ViewField.getGridSize() - 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position - 1)).getType() == 1) { 
+                    if (Field.getCell().get(position - 1).getType() == 1) { 
                         dangerCount++; 
                         }
                 } else {
-                    if (Field.getCell().get((position - ViewField.getGridSize())).getType() == 1) { 
+                    if (Field.getCell().get(position - ViewField.getGridSize()).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position + ViewField.getGridSize())).getType() == 1) { 
+                    if (Field.getCell().get(position + ViewField.getGridSize()).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position - ViewField.getGridSize() - 1)).getType() == 1) { 
+                    if (Field.getCell().get(position - ViewField.getGridSize() - 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position + ViewField.getGridSize() - 1)).getType() == 1) { 
+                    if (Field.getCell().get(position + ViewField.getGridSize() - 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position - ViewField.getGridSize() + 1)).getType() == 1) { 
+                    if (Field.getCell().get(position - ViewField.getGridSize() + 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position + ViewField.getGridSize() + 1)).getType() == 1) { 
+                    if (Field.getCell().get(position + ViewField.getGridSize() + 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position - 1)).getType() == 1) { 
+                    if (Field.getCell().get(position - 1).getType() == 1) { 
                         dangerCount++; 
                         }
-                    if (Field.getCell().get((position + 1)).getType() == 1) { 
+                    if (Field.getCell().get(position + 1).getType() == 1) { 
                         dangerCount++; 
                         }
                 }
@@ -250,7 +250,7 @@ public class Handler  {
             }
             queue.clear();
             while (!now.isEmpty()) {
-                Cell temp = now.get(0);
+                final Cell temp = now.get(0);
                 now.remove(0);
                 temp.clickButton();
             }

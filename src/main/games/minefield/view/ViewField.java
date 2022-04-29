@@ -36,8 +36,8 @@ public class ViewField implements GameView {
      */
     public ViewField(final int size, final int mine, final String title, final MinefieldController startGame, final Handler handler) {
         ViewField.title = title;
-        this.mines = mine;
-        this.gridSize = size;
+        ViewField.mines = mine;
+        ViewField.gridSize = size;
         setFrame(new JFrame(title));
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +48,7 @@ public class ViewField implements GameView {
         pausePanel.add(jbPause);
         jbPause.setBackground(Color.yellow);
         jbPause.addActionListener(e -> startGame.pause());
-        JPanel jpField = new Field(new GridLayout(size, size), handler);
+        final JPanel jpField = new Field(new GridLayout(size, size), handler);
         mainPanel.add(pausePanel, BorderLayout.NORTH);
         mainPanel.add(jpField, BorderLayout.CENTER);
         getFrame().setPreferredSize(new Dimension(screenSize.width / 2, screenSize.height / 2));
@@ -82,7 +82,10 @@ public class ViewField implements GameView {
     public void dispose() {
         getFrame().dispose();
     }
-
+    /**
+     * 
+     * @return frame.
+     */
     public static JFrame getFrame() {
         return frame;
     }
@@ -99,7 +102,5 @@ public class ViewField implements GameView {
     public static int getGridSize() {
         return gridSize;
     }
-//    public static void setGridSize(final int gridSize) {
-//        ViewField.gridSize = gridSize;
-//    }
+
 }
