@@ -97,26 +97,11 @@ public class GamePanel extends JPanel {
     public void setBlockNumber(final Position pos, final int blockNumber) {
         this.blocks.get(pos).setText(Integer.toString(blockNumber));
         if (blockNumber > 0) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    GamePanel.this.blocks.get(pos).setBackground(BUTTON_DEFAULT_COLOR);
-                }
-            }); 
+            SwingUtilities.invokeLater(() -> this.blocks.get(pos).setBackground(BUTTON_DEFAULT_COLOR)); 
         } else if (blockNumber < 0) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    GamePanel.this.blocks.get(pos).setBackground(BUTTON_ERROR_COLOR);
-                }
-            });
+            SwingUtilities.invokeLater(() -> this.blocks.get(pos).setBackground(BUTTON_ERROR_COLOR));
         } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    GamePanel.this.blocks.get(pos).setBackground(BUTTON_CLEARED_COLOR);
-                }
-            });
+            SwingUtilities.invokeLater(() -> this.blocks.get(pos).setBackground(BUTTON_CLEARED_COLOR));
         }
     }
 

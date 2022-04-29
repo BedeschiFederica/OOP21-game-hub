@@ -27,8 +27,6 @@ public class InputPanelImpl extends JPanel implements InputPanel {
       constraints.insets = COMPONENTS_INSETS;
       constraints.gridx = 1;
       constraints.gridy = 2;
-      // colorsConstr.weightx = 1;
-      // colorsConstr.weighty = 1;
       add(label, constraints);
 
       this.comboBox = new JComboBox<>(valuesList.toArray(new Integer[0]));
@@ -36,8 +34,6 @@ public class InputPanelImpl extends JPanel implements InputPanel {
       constraints.insets = COMPONENTS_INSETS;
       constraints.gridx = 2;
       constraints.gridy = 2;
-      // colorsComboConstr.weightx = 1;
-      // colorsComboConstr.weighty = 1;
       add(this.comboBox, constraints);
     }
 

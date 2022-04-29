@@ -9,6 +9,7 @@ import main.games.minefield.controller.MinefieldController;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class Handler  {
 
     //array to know where is the player.
@@ -16,6 +17,7 @@ public class Handler  {
     private List<Cell> queue = new ArrayList<>();
     private final MinefieldController controller;
     private static int putFlag;
+  
     public Handler(final MinefieldController controller) {
         this.controller = controller;
     }
@@ -127,7 +129,6 @@ public class Handler  {
                         if (Field.getCell().get(position - 1).getType() == 1) { 
                             dangerCount++; 
                             }
-                        System.out.println(dangerCount);
                     }
                 } else if (position >= (ViewField.getGridSize() * (ViewField.getGridSize() - 1))) {
                     if (position % ViewField.getGridSize() == 0) {
