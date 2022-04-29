@@ -258,7 +258,7 @@ public class Handler  {
             for (int x = 0; x < Field.getCell().size(); x++) {
                  if (Field.getCell().get(x).isDiscovered()) {
                     discovered++;
-                   if (discovered == ViewField.getGridSize() * ViewField.getGridSize() - ViewField.getMines()) {
+                   if (discovered == (ViewField.getGridSize() * ViewField.getGridSize()) - ViewField.getMines()) {
                         result(true);
                         return;
                     }
@@ -272,6 +272,7 @@ public class Handler  {
                         Field.getCell().get(x).setText("M");
                         Field.getCell().get(x).setBackground(Color.red);
                         ViewField.getFrame().setVisible(false);
+                        result(false);
                     } else {
                         Field.getCell().get(x).setEnabled(false);
                         Field.getCell().get(x).setText("");
@@ -301,7 +302,6 @@ public class Handler  {
         }
     }
     /**
-     * 
      * @param res tells if the player has won or not
      */
     public void result(final boolean res) {
