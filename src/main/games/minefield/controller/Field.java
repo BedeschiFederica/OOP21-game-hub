@@ -25,6 +25,7 @@ public class Field extends JPanel {
         super(grid);
         createCells(handler);
         newCells();
+        cell.clear();
     }
 
     /**
