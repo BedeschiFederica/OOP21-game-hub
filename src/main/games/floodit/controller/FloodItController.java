@@ -2,14 +2,12 @@ package main.games.floodit.controller;
 
 import main.gamehub.model.AbstractGameController;
 import main.gamehub.model.GameView;
-import main.gamehub.view.InputPanelImpl;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
 import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.view.FloodItView;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +27,28 @@ public class FloodItController extends AbstractGameController {
     public FloodItController() {
         this.model = new FloodItModel();
         this.view = new FloodItView(this);
+    }
+
+    /**
+     * Starts a new game.
+     * 
+     * @param inputs size and number of colors.
+     */
+    @Override
+    public void startGame(final int... inputs) {
+        final int size = inputs[0];
+        final int colors = inputs[1];
+        model.clear();
+        model.setTSize(size);
+        model.setNumofColors(colors);
+        model.setSelectedColors(Colors.getRandomColors(colors));
+        model.setTable();
+        model.setMCounter(new MaxMovesCounter(model.getRowSize()));
+        model.setMaxMoves();
+        this.startingPuddleSetup();
+        view.setGamePanel(model.getTable());
+        this.updateView();
+        view.display();
     }
 
     // Sets up the starting puddle and color.
@@ -102,28 +122,6 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Starts a new game.
-     * 
-     * @param inputs size and number of colors.
-     */
-    @Override
-    public void startGame(final int... inputs) {
-        final int size = inputs[0];
-        final int colors = inputs[1];
-        model.clear();
-        model.setTSize(size);
-        model.setNumofColors(colors);
-        model.setSelectedColors(Colors.getRandomColors(colors));
-        model.setTable();
-        model.setMCounter(new MaxMovesCounter(model.getRowSize()));
-        model.setMaxMoves();
-        this.startingPuddleSetup();
-        view.setGamePanel(model.getTable());
-        this.updateView();
-        view.display();
-    }
-
-    /**
      * Updates the cells and moves visualization.
      */
     public void updateView() {
@@ -134,7 +132,7 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Gets the game view.
+     * {@inheritDoc}
      */
     @Override
     public GameView getView() {
@@ -142,7 +140,7 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Gets the game name.
+     * {@inheritDoc}
      */
     @Override
     public String getGameName() {
