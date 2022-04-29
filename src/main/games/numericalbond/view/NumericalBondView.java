@@ -33,9 +33,4 @@ public interface NumericalBondView extends GameView {
      */
     void deselect();
 
-    /**
-     * Closes the view.
-     */
-    void dispose();
-
 }
