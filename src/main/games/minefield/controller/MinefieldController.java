@@ -38,7 +38,7 @@ public class MinefieldController extends AbstractGameController {
     @Override
     protected void addInputs(final Map<String, List<Integer>> inputsMap) {
         inputsMap.put("Cells", POS_GRID);
-        inputsMap.put("Mines:", POS_MINES);
+        inputsMap.put("Mines", POS_MINES);
     }
     /**
      * @param inputs gives the game the inputs needed.

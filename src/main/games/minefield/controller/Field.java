@@ -26,7 +26,6 @@ public class Field extends JPanel {
         cell.clear();
         createCells(handler);
         newCells();
-        cell.clear();
     }
 
     /**

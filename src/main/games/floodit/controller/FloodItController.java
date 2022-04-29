@@ -2,14 +2,12 @@ package main.games.floodit.controller;
 
 import main.gamehub.model.AbstractGameController;
 import main.gamehub.model.GameView;
-import main.gamehub.view.InputPanelImpl;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
 import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.view.FloodItView;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;

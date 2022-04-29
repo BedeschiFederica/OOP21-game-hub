@@ -38,6 +38,8 @@ public class ViewField implements GameView {
         ViewField.title = title;
         this.mines = mine;
         this.gridSize = size;
+        System.out.println("Size: " + this.gridSize + " " + size);
+        System.out.println("Mines: " + this.mines + " " + mine);
         setFrame(new JFrame(title));
         final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +101,7 @@ public class ViewField implements GameView {
     public static int getGridSize() {
         return gridSize;
     }
-    public static void setGridSize(final int gridSize) {
-        ViewField.gridSize = gridSize;
-    }
+//    public static void setGridSize(final int gridSize) {
+//        ViewField.gridSize = gridSize;
+//    }
 }
