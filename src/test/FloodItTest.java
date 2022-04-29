@@ -37,9 +37,10 @@ class FloodItTest {
      */
     @Test
     void testCellFlooding() {
-        final Pair<Integer, Integer> position = new Pair<>(2, 3);
-        final Cell cell1 = new Cell(Colors.INDIGO, position);
-        final Cell cell2 = new Cell(Colors.GREEN, position);
+        final Pair<Integer, Integer> position1 = new Pair<>(2, 3);
+        final Pair<Integer, Integer> position2 = new Pair<>(4, 2);
+        final Cell cell1 = new Cell(Colors.INDIGO, position1);
+        final Cell cell2 = new Cell(Colors.GREEN, position2);
         assertFalse(cell1.isFlooded());
         assertFalse(cell2.isFlooded());
         cell1.flood();

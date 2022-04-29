@@ -94,8 +94,9 @@ public enum Colors {
      */
     public static Colors translateColor(final Color colorToTranslate) {
         final List<Colors> colorsList = new LinkedList<>(Arrays.asList(Colors.values()));
-        final List<Colors> requestedColor = colorsList.stream().filter(c -> c.getActualColor().equals(colorToTranslate))
-                .collect(Collectors.toList());
+        final List<Colors> requestedColor = colorsList.stream()
+                                            .filter(c -> c.getActualColor().equals(colorToTranslate))
+                                            .collect(Collectors.toList());
         if (requestedColor.isEmpty()) {
             return null;
         }
