@@ -1,9 +1,9 @@
 package main.games.floodit.view;
 
+import main.gamehub.model.GameView;
 import main.games.floodit.controller.FloodItController;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Table;
-import main.general.GameView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class FloodItView implements GameView {
     private GamePanel gamePanel;
 
     public FloodItView(final FloodItController controller) {
-        this.frame = new JFrame();
+        this.frame = new JFrame("GAME HUB - Flood It");
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 
@@ -84,7 +84,7 @@ public class FloodItView implements GameView {
      * @param newTable The cells table to show.
      */
     public void setGamePanel(final Table newTable) {
-        this.gamePanel = new GamePanel(controller, cellsMap, cellButtons, newTable, this);
+        this.gamePanel = new GamePanel(controller, cellsMap, cellButtons, newTable);
         frame.getContentPane().removeAll();
         this.frame.getContentPane().add(gamePanel);
     }

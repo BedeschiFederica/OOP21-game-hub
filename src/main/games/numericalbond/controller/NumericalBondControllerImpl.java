@@ -1,16 +1,16 @@
 package main.games.numericalbond.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import main.dashboard.view.InputPanel;
+import main.gamehub.model.AbstractGameController;
+import main.gamehub.model.GameView;
 import main.games.numericalbond.model.Grid;
 import main.games.numericalbond.model.LevelGeneratorImpl;
 import main.games.numericalbond.utility.Position;
 import main.games.numericalbond.view.NumericalBondGUI;
-import main.games.numericalbond.view.NumericalBondInputPanelsCreator;
 import main.games.numericalbond.view.NumericalBondView;
-import main.general.AbstractGameController;
-import main.general.GameView;
 
 /**
  * Class that represents a controller of the game Numerical bond.
@@ -18,6 +18,8 @@ import main.general.GameView;
 public class NumericalBondControllerImpl extends AbstractGameController implements NumericalBondController {
 
     private static final String GAME_NAME = "Numerical Bond";
+    private static final String INPUT_NAME = "Number of lines";
+    private static final List<Integer> INPUT_VALUES = List.of(3, 4);
 
     private NumericalBondView view;
     private Grid grid;
@@ -26,8 +28,8 @@ public class NumericalBondControllerImpl extends AbstractGameController implemen
      * {@inheritDoc}
      */
     @Override
-    public List<InputPanel> getInputPanels() {
-        return NumericalBondInputPanelsCreator.getInputPanels();
+    protected void addInputs(final Map<String, List<Integer>> inputsMap) {
+        inputsMap.put(INPUT_NAME, INPUT_VALUES);
     }
 
     /**

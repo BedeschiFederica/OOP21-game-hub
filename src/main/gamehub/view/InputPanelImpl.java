@@ -1,4 +1,4 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -11,14 +11,14 @@ import javax.swing.JPanel;
 /**
  * Class that represents a panel to get an input for a game.
  */
-public class InputPanel extends JPanel {
+public class InputPanelImpl extends JPanel implements InputPanel {
 
     private static final long serialVersionUID = 8517532871235887502L;
     private static final Insets COMPONENTS_INSETS = new Insets(0, 0, 5, 5);
 
     private final JComboBox<Integer> comboBox;
 
-    public InputPanel(final String labelName, final List<Integer> valuesList) {
+    public InputPanelImpl(final String labelName, final List<Integer> valuesList) {
       this.setBackground(DashboardColor.BACKGROUND.getActualColor());
       final JLabel label = new JLabel(labelName + ": ");
       label.setForeground(DashboardColor.TITLE.getActualColor());
@@ -42,9 +42,9 @@ public class InputPanel extends JPanel {
     }
 
     /**
-     * Gets the selected input.
-     * @return the selected input
+     * {@inheritDoc}
      */
+    @Override
     public int getInput() {
         return (int) this.comboBox.getSelectedItem();
     }

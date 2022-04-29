@@ -1,9 +1,9 @@
-package main.general;
+package main.gamehub.view;
 
 /**
- * Interface of a generic game view.
+ * Interface for a view.
  */
-public interface GameView {
+public interface View {
 
     /**
      * Sets the visibility of the view.
@@ -11,10 +11,5 @@ public interface GameView {
      *          indicates if the view has to be visible or not
      */
     void setVisible(boolean visible);
-
-    /**
-     * Closes the view.
-     */
-    void dispose();
 
 }

@@ -1,16 +1,18 @@
 package main.games.floodit.controller;
 
-import main.dashboard.view.InputPanel;
+import main.gamehub.model.AbstractGameController;
+import main.gamehub.model.GameView;
+import main.gamehub.view.InputPanelImpl;
 import main.games.floodit.model.Cell;
 import main.games.floodit.model.Colors;
 import main.games.floodit.model.FloodItModel;
 import main.games.floodit.model.MaxMovesCounter;
 import main.games.floodit.view.FloodItView;
-import main.general.AbstractGameController;
-import main.general.GameView;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The Flood It's game controller.
@@ -148,11 +150,12 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Gets the input panels needed.
+     * {@inheritDoc}
      */
     @Override
-    public List<InputPanel> getInputPanels() {
-        return List.of(new InputPanel("Cells", POSSIBLE_CELLS), new InputPanel("Colors", POSSIBLE_COLORS));
+    protected void addInputs(final Map<String, List<Integer>> inputsMap) {
+        inputsMap.put("Cells", POSSIBLE_CELLS);
+        inputsMap.put("Colors", POSSIBLE_COLORS);
     }
 
 }

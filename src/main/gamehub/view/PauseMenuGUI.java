@@ -1,7 +1,7 @@
-package main.dashboard.view;
+package main.gamehub.view;
 
-import main.dashboard.controller.MainController;
-import main.general.GameController;
+import main.gamehub.controller.MainController;
+import main.gamehub.model.GameController;
 
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class PauseMenu extends JFrame {
+public class PauseMenuGUI extends JFrame implements PauseMenu {
 
     private static final long serialVersionUID = -7762097272351186299L;
     private static final int SIZE_DIV = 3;
@@ -24,8 +24,13 @@ public class PauseMenu extends JFrame {
     private static final Insets CENTER_INSETS = new Insets(20, 100, 20, 100);
     private static final Insets BOTTOM_INSETS = new Insets(20, 100, 100, 100);
 
-    public PauseMenu(final MainController mainController, final GameController gameController) {
+    public PauseMenuGUI(final MainController mainController, final GameController gameController) {
 
+        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        final int sw = (int) screen.getWidth();
+        this.setSize(sw / SIZE_DIV, sw / SIZE_DIV);
+        this.setMinimumSize(MINIMUM_FRAME_DIMENSION);
+        this.setLocationByPlatform(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         final JPanel panel = new JPanel();
         final GridBagLayout layout = new GridBagLayout();
@@ -85,15 +90,4 @@ public class PauseMenu extends JFrame {
         panel.add(btnExit, exitConstr);
     }
 
-    /**
-     * Displays the pause menu.
-     */
-    public void display() {
-        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        final int sw = (int) screen.getWidth();
-        this.setSize(sw / SIZE_DIV, sw / SIZE_DIV);
-        this.setMinimumSize(MINIMUM_FRAME_DIMENSION);
-        this.setLocationByPlatform(true);
-        this.setVisible(true);
-    }
 }

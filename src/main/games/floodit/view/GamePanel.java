@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
     private final JLabel lblMoves;
     private final Map<JButton, Cell> cellsMap;
 
-    public GamePanel(final FloodItController controller, final Map<JButton, Cell> map, final List<JButton> cellButtons, final Table gameTable, final FloodItView gameView) {
+    public GamePanel(final FloodItController controller, final Map<JButton, Cell> map, final List<JButton> cellButtons, final Table gameTable) {
         this.lblMoves = new JLabel();
         this.cellsMap = map;
 
@@ -40,6 +40,10 @@ public class GamePanel extends JPanel {
         topPanel.setBackground(Colors.LIGHT_BLUE.getActualColor());
         add(topPanel, BorderLayout.NORTH);
 
+        final JLabel lblTitle = new JLabel("Flood It!");
+        lblTitle.setFont(FONT);
+        topPanel.add(lblTitle);
+
         final JButton btnPause = new JButton("Menu");
         btnPause.setBackground(Colors.YELLOW.getActualColor());
         btnPause.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -52,20 +56,6 @@ public class GamePanel extends JPanel {
             }
         });
         topPanel.add(btnPause);
-
-        final JLabel lblTitle = new JLabel("Flood It!");
-        lblTitle.setFont(FONT);
-        topPanel.add(lblTitle);
-
-        final JButton btnExit = new JButton("Exit");
-        btnExit.setBackground(Colors.YELLOW.getActualColor());
-        btnExit.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
-        btnExit.addActionListener(e -> {
-                controller.closeGame();
-                gameView.getFrame().dispose();
-            });
-        topPanel.add(btnExit);
 
         // Generates the buttons table
         final JPanel boardPanel = new JPanel(new GridLayout(gameTable.getBoardSize(), gameTable.getBoardSize()));
