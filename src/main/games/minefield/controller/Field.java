@@ -6,6 +6,7 @@ import main.games.minefield.view.ViewField;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Field extends JPanel {
 
@@ -13,20 +14,19 @@ public class Field extends JPanel {
     //needed to draw the table
     private int grid = ViewField.getGridSize() * ViewField.getGridSize();
     //variable neede to know if a cell is picked to have a mine or not
-    private boolean mine = false;
+    private boolean mine;
     //array that has the position of all the mines
-    private ArrayList<Integer> mines = new ArrayList<Integer>();
+    private List<Integer> mines = new ArrayList<>();
     /**
      * array that has the position of all the cells.
     */
-    private static ArrayList<Cell> cell = new ArrayList<Cell>();
+    private static List<Cell> cell = new ArrayList<>();
 
     public Field(final GridLayout grid, final Handler handler) {
         super(grid);
         cell.clear();
         createCells(handler);
         newCells();
-        cell.clear();
     }
 
     /**
@@ -36,7 +36,7 @@ public class Field extends JPanel {
     public void createCells(final Handler handler) {
         for (int i = 1; i <= ViewField.getMines(); i++) {
             while (!mine) {
-                int minePosition = (int) (Math.random() * grid);
+                final int minePosition = (int) (Math.random() * grid);
                 if (!mines.contains(minePosition)) {
                     mines.add(minePosition);
                     mine = true;
@@ -94,11 +94,11 @@ public class Field extends JPanel {
         }
     }
 
-    public static ArrayList<Cell> getCell() {
+    public static List<Cell> getCell() {
         return cell;
     }
 
-    public static void setCell(final ArrayList<Cell> cell) {
+    public static void setCell(final List<Cell> cell) {
         Field.cell = cell;
     }
 }

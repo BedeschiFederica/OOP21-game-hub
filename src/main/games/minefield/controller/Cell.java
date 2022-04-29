@@ -12,12 +12,12 @@ public class Cell extends JButton {
      * 
      */
     private static final long serialVersionUID = -9133241480886085487L;
-    private int type;
-    private int position;
+    private final int type;
+    private final int position;
     private boolean discovered;
     private boolean flagged;
 
-    private Handler handler;
+    private final Handler handler;
 
     /**
      * variable used for knowing information about a cell.
