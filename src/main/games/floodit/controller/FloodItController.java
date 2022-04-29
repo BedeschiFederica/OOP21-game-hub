@@ -150,14 +150,12 @@ public class FloodItController extends AbstractGameController {
     }
 
     /**
-     * Gets the input panels needed.
+     * {@inheritDoc}
      */
     @Override
-    public Map<String, List<Integer>> getInputs() {
-        final Map<String, List<Integer>> inputs = new HashMap<>();
-        inputs.put("Cells", POSSIBLE_CELLS);
-        inputs.put("Colors", POSSIBLE_COLORS);
-        return inputs;
+    protected void addInputs(final Map<String, List<Integer>> inputsMap) {
+        inputsMap.put("Cells", POSSIBLE_CELLS);
+        inputsMap.put("Colors", POSSIBLE_COLORS);
     }
 
 }

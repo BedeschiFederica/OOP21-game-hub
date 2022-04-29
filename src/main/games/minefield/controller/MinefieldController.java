@@ -1,7 +1,5 @@
 package main.games.minefield.controller;
 
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,13 +33,12 @@ public class MinefieldController extends AbstractGameController {
         return NAME;
     }
     /**
-     * @return the list of inputs needed.
+     * {@inheritDoc}
      */
-    public Map<String, List<Integer>> getInputs() {
-        final Map<String, List<Integer>> inputs = new HashMap<>();
-        inputs.put("Cells", POS_GRID);
-        inputs.put("Mines:", POS_MINES);
-        return inputs;
+    @Override
+    protected void addInputs(final Map<String, List<Integer>> inputsMap) {
+        inputsMap.put("Cells", POS_GRID);
+        inputsMap.put("Mines:", POS_MINES);
     }
     /**
      * @param inputs gives the game the inputs needed.

@@ -1,5 +1,9 @@
 package main.gamehub.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import main.gamehub.controller.MainController;
 
 /**
@@ -15,6 +19,23 @@ public abstract class AbstractGameController implements GameController {
     @Override
     public void setMainController(final MainController mainController) {
         this.mainController = mainController;
+    }
+
+    /**
+     * Adds inputs to the given map.
+     * @param inputsMap
+     *          the map to modify
+     */
+    protected abstract void addInputs(Map<String, List<Integer>> inputsMap);
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public final Map<String, List<Integer>> getInputs() {
+        final Map<String, List<Integer>> inputsMap = new HashMap<>();
+        addInputs(inputsMap);
+        return inputsMap;
     }
 
     /**

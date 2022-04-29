@@ -28,10 +28,8 @@ public class NumericalBondControllerImpl extends AbstractGameController implemen
      * {@inheritDoc}
      */
     @Override
-    public Map<String, List<Integer>> getInputs() {
-        final Map<String, List<Integer>> inputs = new HashMap<>();
-        inputs.put(INPUT_NAME, INPUT_VALUES);
-        return inputs;
+    protected void addInputs(final Map<String, List<Integer>> inputsMap) {
+        inputsMap.put(INPUT_NAME, INPUT_VALUES);
     }
 
     /**
