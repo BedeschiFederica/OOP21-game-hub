@@ -16,8 +16,7 @@ public class Handler  {
     private MinefieldController controller;
 
     private static int putFlag = 0;
-    
-    public Handler(MinefieldController controller) {
+    public Handler(final MinefieldController controller) {
         this.controller = controller;
     }
 
