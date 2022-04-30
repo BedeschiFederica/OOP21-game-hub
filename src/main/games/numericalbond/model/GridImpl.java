@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 
 import main.games.numericalbond.utility.Position;
+import main.games.numericalbond.utility.PositionImpl;
 
 /**
  * Class that represents a (square) grid of blocks.
@@ -15,32 +16,32 @@ public class GridImpl implements Grid {
 
     private static final int MAX_LINKS_PER_BLOCK = 99;
 
-    private final int numLines;
+    private final int size;
     private final Map<Position, Block> blocks;
 
     /**
      * Builds a new {@link GridImpl}.
-     * @param numLines
-     *          the number of lines that the square grid has
+     * @param size
+     *          the size of the square grid
      */
-    public GridImpl(final int numLines) {
-        this.numLines = numLines;
+    public GridImpl(final int size) {
+        this.size = size;
         this.blocks = new HashMap<>();
-        IntStream.range(0, this.numLines)
-                .forEach(i -> IntStream.range(0, this.numLines)
-                        .forEach(j -> this.blocks.put(new Position(i, j), new BlockImpl(MAX_LINKS_PER_BLOCK))));
+        IntStream.range(0, this.size)
+                .forEach(i -> IntStream.range(0, this.size)
+                        .forEach(j -> this.blocks.put(new PositionImpl(i, j), new BlockImpl(MAX_LINKS_PER_BLOCK))));
     }
 
     /**
      * Builds a new {@link GridImpl}.
-     * @param numLines
-     *          the number of lines that the square grid has
+     * @param size
+     *          the size of the square grid
      * @param blocks
      *          the map of the blocks that the grid will have
      */
-    public GridImpl(final int numLines, final Map<Position, Block> blocks) {
+    public GridImpl(final int size, final Map<Position, Block> blocks) {
         Objects.requireNonNull(blocks);
-        this.numLines = numLines;
+        this.size = size;
         this.blocks = Map.copyOf(blocks);
     }
 
@@ -48,8 +49,8 @@ public class GridImpl implements Grid {
      * {@inheritDoc}
      */
     @Override
-    public int getNumLines() {
-        return this.numLines;
+    public int getSize() {
+        return this.size;
     }
 
     /**
@@ -66,8 +67,8 @@ public class GridImpl implements Grid {
     @Override
     public boolean isLegal(final Position position) {
         return position != null
-                && position.getX() >= 0 && position.getX() < this.numLines
-                && position.getY() >= 0 && position.getY() < this.numLines;
+                && position.getX() >= 0 && position.getX() < this.size
+                && position.getY() >= 0 && position.getY() < this.size;
     }
 
     private void requireLegalPosition(final Position position) {
@@ -164,7 +165,7 @@ public class GridImpl implements Grid {
      */
     @Override
     public String toString() {
-        return "Grid [numLines=" + this.numLines + ", blocks=" + this.blocks + "]";
+        return "GridImpl [size=" + this.size + ", blocks=" + this.blocks + "]";
     }
 
 }

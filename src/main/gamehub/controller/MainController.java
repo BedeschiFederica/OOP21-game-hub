@@ -4,7 +4,7 @@ import main.gamehub.model.GameController;
 
 /**
  * Interface that represents the controller of the application.
- * It manages the dashboard view and the GameControllers.
+ * It manages the application's general view and the GameControllers.
  */
 public interface MainController {
 

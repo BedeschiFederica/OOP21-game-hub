@@ -1,75 +1,31 @@
 package main.games.numericalbond.utility;
 
-import java.util.Objects;
-
 /**
- * Class that represents a position specified by its coordinates x and y.
+ * Interface that represents a position specified by its coordinates x and y.
+ * It's like a data type, it's made to be used everywhere you need it.
  */
-public class Position {
-
-    private final int x;
-    private final int y;
-
-    /**
-     * Builds a new {@link Position}.
-     * @param x
-     *          its x coordinate
-     * @param y
-     *          its y coordinate
-     */
-    public Position(final int x, final int y) {
-        this.x = x;
-        this.y = y;
-    }
+public interface Position {
 
     /**
      * Gets the x coordinate.
      * @return the x coordinate
      */
-    public int getX() {
-        return this.x;
-    }
+    int getX();
 
     /**
      * Gets the y coordinate.
      * @return the y coordinate
      */
-    public int getY() {
-        return this.y;
-    }
+    int getY();
 
     /**
      * {@inheritDoc}
      */
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.x, this.y);
-    }
+    int hashCode();
 
     /**
      * {@inheritDoc}
      */
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Position other = (Position) obj;
-        return this.x == other.x && this.y == other.y;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        return "Position [x=" + this.x + ", y=" + this.y + "]";
-    }
+    boolean equals(Object obj);
 
 }

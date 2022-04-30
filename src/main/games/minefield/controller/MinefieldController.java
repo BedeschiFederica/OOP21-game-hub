@@ -14,7 +14,7 @@ public class MinefieldController extends AbstractGameController {
      * the NAME of the game.
     */
     public static final String NAME = "Minefield";
-    private Handler handler = new Handler(this);
+    private final Handler handler = new Handler(this);
     private ViewField viewField;
     private static final List<Integer> POS_GRID = List.of(4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
     private static final List<Integer> POS_MINES = List.of(4, 5, 6, 7, 8, 9, 10);

@@ -93,7 +93,7 @@ public class BlockImpl implements Block {
      */
     @Override
     public String toString() {
-        return "Block [linksToHave=" + this.linksToHave + ", linksPerSide" + this.linksPerSide + "]";
+        return "BlockImpl [linksToHave=" + this.linksToHave + ", linksPerSide" + this.linksPerSide + "]";
     }
 
 }

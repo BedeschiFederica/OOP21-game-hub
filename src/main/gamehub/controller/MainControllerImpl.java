@@ -1,9 +1,9 @@
 package main.gamehub.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import main.gamehub.model.GameController;
 import main.gamehub.view.InputPanel;
@@ -13,11 +13,11 @@ import main.gamehub.view.ViewFactoryImpl;
 
 /**
  * Class that represents the controller of the application.
- * It manages the dashboard view and the GameControllers.
+ * It manages the application's general view and the GameControllers.
  */
 public class MainControllerImpl implements MainController {
 
-    private final Map<String, GameController> gameControllers = new HashMap<>();
+    private final Map<String, GameController> gameControllers = new TreeMap<>();
     private final ViewFactory viewFactory = new ViewFactoryImpl();
     private final MainMenu mainMenu;
 

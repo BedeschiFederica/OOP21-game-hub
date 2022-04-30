@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import main.games.numericalbond.utility.Position;
+import main.games.numericalbond.utility.PositionImpl;
 
 /**
  * Class that represents a level generator of the game Numerical Bond.
@@ -34,7 +35,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
     private void createRandomLinks(final int numLines) {
         final int numLinks = (int) (Math.pow(numLines, 3) / 2);
         for (int count = 0; count < numLinks;) {
-            final Position firstPos = new Position(RANDOM_SEED.nextInt(numLines), RANDOM_SEED.nextInt(numLines));
+            final Position firstPos = new PositionImpl(RANDOM_SEED.nextInt(numLines), RANDOM_SEED.nextInt(numLines));
             final Block firstBlock = this.grid.getBlockAt(firstPos);
             Direction direction;
             Optional<Position> secondPos;
@@ -55,7 +56,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
     private void initialiseBlocks() {
         final Map<Position, Block> initialisedBlocks = new HashMap<>();
         this.grid.getBlocks().forEach((p, b) -> initialisedBlocks.put(p, new BlockImpl(b.getCurrentLinks())));
-        this.grid = new GridImpl(this.grid.getNumLines(), initialisedBlocks);
+        this.grid = new GridImpl(this.grid.getSize(), initialisedBlocks);
     }
 
     /**

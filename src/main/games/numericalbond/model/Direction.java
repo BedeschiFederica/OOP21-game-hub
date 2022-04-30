@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 import main.games.numericalbond.utility.Position;
+import main.games.numericalbond.utility.PositionImpl;
 
 /**
  * Enum that represents a direction.
@@ -17,22 +18,22 @@ public enum Direction {
     /**
      * UP. X coordinate lowered by one.
      */
-    UP(p -> new Position(p.getX() - 1, p.getY())),
+    UP(p -> new PositionImpl(p.getX() - 1, p.getY())),
 
     /**
      * RIGHT. Y coordinate increased by one.
      */
-    RIGHT(p -> new Position(p.getX(), p.getY() + 1)),
+    RIGHT(p -> new PositionImpl(p.getX(), p.getY() + 1)),
 
     /**
      * DOWN. X coordinate increased by one.
      */
-    DOWN(p -> new Position(p.getX() + 1, p.getY())),
+    DOWN(p -> new PositionImpl(p.getX() + 1, p.getY())),
 
     /**
      * LEFT. Y coordinate lowered by one.
      */
-    LEFT(p -> new Position(p.getX(), p.getY() - 1));
+    LEFT(p -> new PositionImpl(p.getX(), p.getY() - 1));
 
     private static final Random RANDOM_SEED = new Random();
 
@@ -87,4 +88,5 @@ public enum Direction {
     public static Direction getRandomDirection() {
         return Direction.values()[RANDOM_SEED.nextInt(Direction.values().length)];
     }
+
 }

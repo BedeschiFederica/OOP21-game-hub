@@ -13,11 +13,11 @@ import java.util.List;
 public class Handler  {
 
     //array to know where is the player.
-    private List<Cell> now = new ArrayList<>();
-    private List<Cell> queue = new ArrayList<>();
+    private final List<Cell> now = new ArrayList<>();
+    private final List<Cell> queue = new ArrayList<>();
     private final MinefieldController controller;
     private static int putFlag;
-  
+
     public Handler(final MinefieldController controller) {
         this.controller = controller;
     }

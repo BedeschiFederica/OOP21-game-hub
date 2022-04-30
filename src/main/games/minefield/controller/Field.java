@@ -12,11 +12,11 @@ public class Field extends JPanel {
 
     private static final long serialVersionUID = 1787913230237933232L;
     //needed to draw the table
-    private int grid = ViewField.getGridSize() * ViewField.getGridSize();
-    //variable neede to know if a cell is picked to have a mine or not
+    private final int grid = ViewField.getGridSize() * ViewField.getGridSize();
+    //variable needed to know if a cell is picked to have a mine or not
     private boolean mine;
     //array that has the position of all the mines
-    private List<Integer> mines = new ArrayList<>();
+    private final List<Integer> mines = new ArrayList<>();
     /**
      * array that has the position of all the cells.
     */
@@ -33,7 +33,7 @@ public class Field extends JPanel {
      * method that create the table needed and that saves the position of the mines.
      * @param handler that makes all the check for the game.
     */
-    public void createCells(final Handler handler) {
+    public final void createCells(final Handler handler) {
         for (int i = 1; i <= ViewField.getMines(); i++) {
             while (!mine) {
                 final int minePosition = (int) (Math.random() * grid);

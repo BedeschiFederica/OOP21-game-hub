@@ -11,10 +11,10 @@ import main.games.numericalbond.utility.Position;
 public interface Grid {
 
     /**
-     * Gets the number of lines of the grid.
-     * @return the number of lines of the grid
+     * Gets the size of the grid.
+     * @return the size of the grid
      */
-    int getNumLines();
+    int getSize();
 
     /**
      * Gets the map of the blocks.

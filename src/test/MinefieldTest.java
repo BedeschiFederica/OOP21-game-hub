@@ -7,13 +7,13 @@ import java.util.List;
 
 public class MinefieldTest {
 
-    private int mines = 2;
-    private int size = 2;
+    private static final int MINES = 2;
+    private static final int SIZE = 2;
     /**
      * test if the grid size is correct.
      */
     void testSize() {
-        final int sizeGrid = size * size;
+        final int sizeGrid = SIZE * SIZE;
         assertEquals(sizeGrid, 4);
     }
 
@@ -26,9 +26,9 @@ public class MinefieldTest {
         final List<Integer> arrayCasual = new ArrayList<>();
         arrayCasual.add(1);
         arrayCasual.add(2);
-        for (int i = 1; i <= mines; i++) {
+        for (int i = 1; i <= MINES; i++) {
             while (!mine) {
-                final int minePosition = (int) (Math.random() * size * size);
+                final int minePosition = (int) (Math.random() * SIZE * SIZE);
                 if (!minesContains.contains(minePosition)) {
                     minesContains.add(minePosition);
                     mine = true;
@@ -36,7 +36,7 @@ public class MinefieldTest {
             }
             mine = false;
         }
-        for (int i = 1; i <= mines; i++) {
+        for (int i = 1; i <= MINES; i++) {
             System.out.print(minesContains.get(i));
             assertEquals(minesContains.get(i), arrayCasual.get(i));
             }

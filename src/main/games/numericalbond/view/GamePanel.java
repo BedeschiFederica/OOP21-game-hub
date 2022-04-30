@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import main.games.numericalbond.utility.Position;
+import main.games.numericalbond.utility.PositionImpl;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -54,7 +55,7 @@ public class GamePanel extends JPanel {
 
         for (int i = 0; i < numLines; i++) {
             for (int j = 0; j < numLines; j++) {
-                final Position pos = new Position(i, j);
+                final Position pos = new PositionImpl(i, j);
                 final JButton jb = new JButton();
                 this.positions.put(jb, pos);
                 this.blocks.put(pos, jb);

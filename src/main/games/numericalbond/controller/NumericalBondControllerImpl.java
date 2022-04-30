@@ -17,8 +17,8 @@ import main.games.numericalbond.view.NumericalBondView;
 public class NumericalBondControllerImpl extends AbstractGameController implements NumericalBondController {
 
     private static final String GAME_NAME = "Numerical Bond";
-    private static final String INPUT_NAME = "Number of lines";
-    private static final List<Integer> INPUT_VALUES = List.of(3, 4);
+    private static final String INPUT_NAME = "Grid size";
+    private static final List<Integer> INPUT_VALUES = List.of(3, 4, 5);
 
     private NumericalBondView view;
     private Grid grid;
