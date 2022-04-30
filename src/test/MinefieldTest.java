@@ -2,48 +2,38 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
+
+import main.games.minefield.controller.Cell;
+import main.games.minefield.view.ViewField;
 
 class MinefieldTest {
 
     private static final int MINES = 2;
     private static final int SIZE = 2;
+    private static final int TYPE = 0;
+    private static final int POSITION = 10;
 
     /**
      * test if the grid size is correct.
      */
     @Test
     void testSize() {
-        final int sizeGrid = SIZE * SIZE;
-        assertEquals(sizeGrid, 4);
+        new ViewField(SIZE, MINES, "", null, null);
+        assertEquals(ViewField.getGridSize(), SIZE);
     }
 
     /**
-     * test the mines.
+     * test cell.
      */
     @Test
-    void testMinePosition() {
-        boolean mine = false;
-        final List<Integer> minesContains = new ArrayList<>();
-        final List<Integer> arrayCasual = new ArrayList<>();
-        arrayCasual.add(1);
-        arrayCasual.add(2);
-        for (int i = 1; i <= MINES; i++) {
-            while (!mine) {
-                final int minePosition = (int) (Math.random() * SIZE * SIZE);
-                if (!minesContains.contains(minePosition)) {
-                    minesContains.add(minePosition);
-                    mine = true;
-                }
-            }
-            mine = false;
-        }
-        for (int i = 1; i <= MINES; i++) {
-            System.out.print(minesContains.get(i));
-            assertEquals(minesContains.get(i), arrayCasual.get(i));
-        }
+    void testCell() {
+        final Cell cell = new Cell(TYPE, POSITION, false, false, null);
+        assertEquals(cell.getType(), TYPE);
+        assertEquals(cell.getPosition(), POSITION);
+        cell.setDiscovered(true);
+        assertEquals(cell.isDiscovered(), true);
+        cell.setFlagged(true);
+        assertEquals(cell.isFlagged(), true);
     }
 }
