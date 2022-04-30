@@ -5,13 +5,17 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MinefieldTest {
+import org.junit.jupiter.api.Test;
+
+class MinefieldTest {
 
     private static final int MINES = 2;
     private static final int SIZE = 2;
+
     /**
      * test if the grid size is correct.
      */
+    @Test
     void testSize() {
         final int sizeGrid = SIZE * SIZE;
         assertEquals(sizeGrid, 4);
@@ -20,6 +24,7 @@ public class MinefieldTest {
     /**
      * test the mines.
      */
+    @Test
     void testMinePosition() {
         boolean mine = false;
         final List<Integer> minesContains = new ArrayList<>();
@@ -39,6 +44,6 @@ public class MinefieldTest {
         for (int i = 1; i <= MINES; i++) {
             System.out.print(minesContains.get(i));
             assertEquals(minesContains.get(i), arrayCasual.get(i));
-            }
+        }
     }
 }

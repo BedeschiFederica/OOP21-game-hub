@@ -80,11 +80,22 @@ public class GamePanel extends JPanel {
         this.isOneBlockSelected = true;
     }
 
+    private void setBlockBackground(final JButton jb) {
+        final int blockNumber = Integer.parseInt(jb.getText());
+        if (blockNumber > 0) {
+            SwingUtilities.invokeLater(() -> jb.setBackground(BUTTON_DEFAULT_COLOR)); 
+        } else if (blockNumber < 0) {
+            SwingUtilities.invokeLater(() -> jb.setBackground(BUTTON_ERROR_COLOR));
+        } else {
+            SwingUtilities.invokeLater(() -> jb.setBackground(BUTTON_CLEARED_COLOR));
+        }
+    }
+
     /**
      * Deselects the selected block.
      */
     public void deselect() {
-        this.selectedBlock.setBackground(BUTTON_DEFAULT_COLOR);
+        setBlockBackground(this.selectedBlock);
         this.isOneBlockSelected = false;
     }
 
@@ -97,13 +108,7 @@ public class GamePanel extends JPanel {
      */
     public void setBlockNumber(final Position pos, final int blockNumber) {
         this.blocks.get(pos).setText(Integer.toString(blockNumber));
-        if (blockNumber > 0) {
-            SwingUtilities.invokeLater(() -> this.blocks.get(pos).setBackground(BUTTON_DEFAULT_COLOR)); 
-        } else if (blockNumber < 0) {
-            SwingUtilities.invokeLater(() -> this.blocks.get(pos).setBackground(BUTTON_ERROR_COLOR));
-        } else {
-            SwingUtilities.invokeLater(() -> this.blocks.get(pos).setBackground(BUTTON_CLEARED_COLOR));
-        }
+        setBlockBackground(this.blocks.get(pos));
     }
 
     /**
